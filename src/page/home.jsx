@@ -2,8 +2,22 @@ import { motion } from "framer-motion";
 import { Card, CardContent } from "../components/ui/card";
 import { Button } from "../components/ui/button";
 import { Mail, CheckCircle } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 export default function DevfastLanding() {
+  const navigate = useNavigate();
+
+  const landing =()=>{
+    navigate("/samples/landing")
+  }
+
+  const business =()=>{
+    navigate("/samples/business")
+  }
+
+  const web =()=>{
+    navigate("/samples/webapp")
+  }
   return (
     <div className="min-h-screen bg-gray-950 text-white">
       {/* HERO */}
@@ -39,23 +53,63 @@ export default function DevfastLanding() {
         ))}
       </section>
 
-      {/* SAMPLE PROJECTS */}
-      <section className="py-24 px-6 max-w-6xl mx-auto">
-        <h2 className="text-3xl font-bold text-center mb-12">Sample Projects</h2>
-        <div className="grid md:grid-cols-3 gap-6">
-          {[1, 2, 3].map((item) => (
-            <Card key={item} className="bg-gray-900 rounded-2xl">
-              <CardContent className="p-6">
-                <h3 className="text-xl font-semibold">Project {item}</h3>
-                <p className="text-gray-400 mt-2">
-                  Example startup website with modern UI and strong CTA.
-                </p>
-                <Button className="mt-4 w-full">Select This Project</Button>
-              </CardContent>
-            </Card>
-          ))}
-        </div>
-      </section>
+   {/* SAMPLE PROJECTS */}
+<section className="py-24 px-6 max-w-6xl mx-auto">
+  <h2 className="text-3xl font-bold text-center mb-12">
+    Sample Projects
+  </h2>
+
+  <div className="grid md:grid-cols-3 gap-6">
+    {/* Project 1 */}
+    <Card className="bg-gray-900 rounded-2xl shadow-lg">
+      <CardContent className="p-6">
+        <h3 className="text-xl font-semibold">
+          Startup Landing Page
+        </h3>
+        <p className="text-gray-400 mt-2">
+          High-conversion landing page for SaaS startups.
+          Clean layout, strong CTA, and fast loading.
+        </p>
+        <Button onClick={landing}  className="mt-4 w-full">
+          View This Sample
+        </Button>
+      </CardContent>
+    </Card>
+
+    {/* Project 2 */}
+    <Card className="bg-gray-900 rounded-2xl shadow-lg">
+      <CardContent className="p-6">
+        <h3 className="text-xl font-semibold">
+          Business Website
+        </h3>
+        <p className="text-gray-400 mt-2">
+          Professional website for small businesses.
+          Mobile-friendly, SEO-ready, and easy to manage.
+        </p>
+        <Button onClick={business}  className="mt-4 w-full">
+          View This Sample
+        </Button>
+      </CardContent>
+    </Card>
+
+    {/* Project 3 */}
+    <Card className="bg-gray-900 rounded-2xl shadow-lg">
+      <CardContent className="p-6">
+        <h3 className="text-xl font-semibold">
+          Web App Dashboard
+        </h3>
+        <p className="text-gray-400 mt-2">
+          Admin dashboard UI with modern components.
+          Ideal for MVPs and internal tools.
+        </p>
+        <Button onClick={web}  className="mt-4 w-full">
+          View This Sample
+        </Button>
+      </CardContent>
+    </Card>
+  </div>
+</section>
+
 
       {/* CONTACT */}
       <section className="bg-gray-900 py-20 px-6 text-center">
@@ -63,17 +117,17 @@ export default function DevfastLanding() {
         <p className="text-gray-400 mt-4">
           Click below to email me and let me know what website you need.
         </p>
-        <a
+        <a 
           href="mailto:youremail@gmail.com?subject=Website%20Project%20Inquiry"
         >
-          <Button className="mt-6 px-8 py-6 rounded-2xl text-lg">
+          <Button className="mt-2 px-4 py-1 rounded-lg text-md ">
             <Mail className="mr-2" /> Email Devfast
           </Button>
         </a>
       </section>
 
       {/* FOOTER */}
-      <footer className="text-center py-6 text-gray-500">
+      <footer className="text-center py-4 text-gray-700">
         © {new Date().getFullYear()} Devfast. Built fast. Built right.
       </footer>
     </div>
