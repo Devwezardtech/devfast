@@ -44,6 +44,18 @@ export default function DevfastLanding() {
     navigate("/project/inkmaster")
   }
 
+  const urbanTee =()=>{
+    navigate("/project/urbanTee")
+  }
+
+    const donLeoFitness =()=>{
+      navigate("/project/donLeoFitness")
+    }
+
+  const primeNestRealty =()=>{
+    navigate("/project/primeNestRealty")
+  }
+
   return (
     <div className="min-h-screen bg-gray-950 text-white">
       {/* HERO */}
@@ -224,7 +236,50 @@ export default function DevfastLanding() {
       </CardContent>
     </Card>
 
-    
+     <Card className="bg-gray-900 rounded-2xl shadow-lg">
+      <CardContent className="p-6">
+        <h3 className="text-xl font-semibold">
+          UrbanTee
+        </h3>
+        <p className="text-gray-400 mt-2">
+          Admin dashboard UI with modern components.
+          Ideal for MVPs and internal tools.
+        </p>
+        <Button onClick={urbanTee}  className="mt-4 w-full">
+          View This Sample
+        </Button>
+      </CardContent>
+    </Card>
+
+    <Card className="bg-gray-900 rounded-2xl shadow-lg">
+      <CardContent className="p-6">
+        <h3 className="text-xl font-semibold">
+          DonLeo Fitness
+        </h3>
+        <p className="text-gray-400 mt-2">
+          Admin dashboard UI with modern components.
+          Ideal for MVPs and internal tools.
+        </p>
+        <Button onClick={donLeoFitness}  className="mt-4 w-full">
+          View This Sample
+        </Button>
+      </CardContent>
+    </Card>
+
+    <Card className="bg-gray-900 rounded-2xl shadow-lg">
+      <CardContent className="p-6">
+        <h3 className="text-xl font-semibold">
+          PrimeNest Realty
+        </h3>
+        <p className="text-gray-400 mt-2">
+          Admin dashboard UI with modern components.
+          Ideal for MVPs and internal tools.
+        </p>
+        <Button onClick={primeNestRealty}  className="mt-4 w-full">
+          View This Sample
+        </Button>
+      </CardContent>
+    </Card>
 
 
   </div>

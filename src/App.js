@@ -10,6 +10,9 @@ import EventsWebinarLanding from "./page/sample/events";
 import AutoGalaxyProductLanding from "./page/sample/AutoGalaxy";
 import EachaCafeLanding from "./page/sample/EachaRestaurant";
 import InkMasterLanding from "./page/sample/Inkmaster";
+import UrbanTeeLanding from "./page/sample/UrbanTee";
+import DonLeoFitnessLanding from "./page/sample/DonLeoFitness";
+import PrimeNestRealtyLanding from "./page/sample/PrimeNestRealty";
 
 
 export default function App() {
@@ -28,6 +31,9 @@ export default function App() {
       <Route path="/project/autogalaxy" element={<AutoGalaxyProductLanding />} />
       <Route path="/project/eacha" element={<EachaCafeLanding />} />
       <Route path="/project/inkmaster" element={<InkMasterLanding />} />
+      <Route path="/project/urbanTee" element={<UrbanTeeLanding />} />
+      <Route path="/project/donLeoFitness" element={<DonLeoFitnessLanding />} />
+      <Route path="/project/primeNestRealty" element={<PrimeNestRealtyLanding />} />
       
     
 
