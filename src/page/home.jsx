@@ -4,73 +4,40 @@ import { Button } from "../components/ui/button";
 import { Mail, CheckCircle } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
+const fadeUp = {
+  hidden: { opacity: 0, y: 30 },
+  visible: { opacity: 1, y: 0 },
+};
+
 export default function DevfastLanding() {
   const navigate = useNavigate();
-
-  const landing =()=>{
-    navigate("/project/landing")
-  }
-
-  const business =()=>{
-    navigate("/project/business")
-  }
-
-  const web =()=>{
-    navigate("/project/webapp")
-  }
-
-  
-  const lorecafe =()=>{
-    navigate("/project/lorecafe")
-  }
-
-  const contractor =()=>{
-    navigate("/project/engineer")
-  }
-
-  const events =()=>{
-    navigate("/project/events/webinar")
-  }
-
-  const AutoGalaxy =()=>{
-    navigate("/project/autogalaxy")
-  }
-
-  const eacha =()=>{
-    navigate("/project/eacha")
-  }
-
-  const inkmaster =()=>{  
-    navigate("/project/inkmaster")
-  }
-
-  const urbanTee =()=>{
-    navigate("/project/urbanTee")
-  }
-
-    const donLeoFitness =()=>{
-      navigate("/project/donLeoFitness")
-    }
-
-  const primeNestRealty =()=>{
-    navigate("/project/primeNestRealty")
-  }
+  const go = (path) => navigate(path);
 
   return (
     <div className="min-h-screen bg-gray-950 text-white">
+
       {/* HERO */}
-      <section className="text-center py-24 px-6">
+      <section className="text-center py-28 px-6">
         <motion.h1
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
+          initial="hidden"
+          animate="visible"
+          variants={fadeUp}
           className="text-4xl md:text-6xl font-bold"
         >
           Devfast 🚀
         </motion.h1>
-        <p className="mt-6 text-gray-400 max-w-2xl mx-auto">
+
+        <motion.p
+          variants={fadeUp}
+          initial="hidden"
+          animate="visible"
+          transition={{ delay: 0.2 }}
+          className="mt-6 text-gray-400 max-w-2xl mx-auto"
+        >
           Fast, modern websites for startups and small businesses.
           From landing pages to full web apps — built to convert.
-        </p>
+        </motion.p>
+
         <Button className="mt-8 text-lg px-8 py-6 rounded-2xl">
           View Sample Projects
         </Button>
@@ -79,212 +46,168 @@ export default function DevfastLanding() {
       {/* SERVICES */}
       <section className="grid md:grid-cols-3 gap-6 px-6 max-w-6xl mx-auto">
         {["Landing Pages", "Business Websites", "Web Apps"].map((service) => (
-          <Card key={service} className="bg-gray-900 rounded-2xl shadow-lg">
-            <CardContent className="p-6">
-              <CheckCircle className="mb-4" />
-              <h3 className="text-xl font-semibold">{service}</h3>
-              <p className="text-gray-400 mt-2">
-                Clean UI, fast load, mobile‑friendly.
-              </p>
-            </CardContent>
-          </Card>
+          <motion.div
+            key={service}
+            whileHover={{ y: -6 }}
+            transition={{ type: "spring", stiffness: 200 }}
+          >
+            <Card className="bg-gray-900 rounded-2xl shadow-lg">
+              <CardContent className="p-6">
+                <CheckCircle className="mb-4 text-indigo-500" />
+                <h3 className="text-xl font-semibold">{service}</h3>
+                <p className="text-gray-400 mt-2">
+                  Clean UI, fast load, mobile-friendly.
+                </p>
+              </CardContent>
+            </Card>
+          </motion.div>
         ))}
       </section>
 
-   {/* SAMPLE PROJECTS */}
-<section className="py-24 px-6 max-w-6xl mx-auto">
-  <h2 className="text-3xl font-bold text-center mb-12">
-    Sample Projects
-  </h2>
+      {/* PROJECTS */}
+      <section className="py-24 px-6 max-w-6xl mx-auto">
+        <h2 className="text-3xl font-bold text-center mb-12">
+          Sample Projects
+        </h2>
 
-  <div className="grid md:grid-cols-3 gap-6">
-    {/* Project 1 */}
-    <Card className="bg-gray-900 rounded-2xl shadow-lg">
-      <CardContent className="p-6">
-        <h3 className="text-xl font-semibold">
-          Startup Landing Page
-        </h3>
-        <p className="text-gray-400 mt-2">
-          High-conversion landing page for SaaS startups.
-          Clean layout, strong CTA, and fast loading.
-        </p>
-        <Button onClick={landing}  className="mt-4 w-full">
-          View This Sample
-        </Button>
-      </CardContent>
-    </Card>
+        <div className="grid md:grid-cols-3 gap-8">
+          {[
+            {
+              title: "Startup Landing Page",
+              img: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f",
+              action: () => go("/project/landing"),
+            },
+            {
+              title: "Business Website",
+              img: "https://images.unsplash.com/photo-1498050108023-c5249f4df085",
+              action: () => go("/project/business"),
+            },
+            {
+              title: "Web App Dashboard",
+              img: "https://images.unsplash.com/photo-1551288049-bebda4e38f71",
+              action: () => go("/project/webapp"),
+            },
+            {
+              title: "LoreCafe",
+              img: "https://images.unsplash.com/photo-1504754524776-8f4f37790ca0",
+              action: () => go("/project/lorecafe"),
+            },
+            {
+              title: "Engineer / Contractor",
+              img: "https://images.unsplash.com/photo-1503387762-592deb58ef4e",
+              action: () => go("/project/engineer"),
+            },
+            {
+              title: "Event / Webinar",
+              img: "https://images.unsplash.com/photo-1515169067865-5387ec356754",
+              action: () => go("/project/events/webinar"),
+            },
+            {
+              title: "AutoGalaxy",
+              img: "https://images.unsplash.com/photo-1503376780353-7e6692767b70",
+              action: () => go("/project/autogalaxy"),
+            },
+            {
+              title: "Eacha Restaurant",
+              img: "https://images.unsplash.com/photo-1528605248644-14dd04022da1",
+              action: () => go("/project/eacha"),
+            },
+            {
+              title: "Tattoo Artist Booking",
+              img: "https://images.unsplash.com/photo-1545235617-9465d2a55698",
+              action: () => go("/project/inkmaster"),
+            },
+            {
+              title: "UrbanTee",
+              img: "https://images.unsplash.com/photo-1521334884684-d80222895322",
+              action: () => go("/project/urbanTee"),
+            },
+            {
+              title: "DonLeo Fitness",
+              img: "https://images.unsplash.com/photo-1534438327276-14e5300c3a48",
+              action: () => go("/project/donLeoFitness"),
+            },
+            {
+              title: "PrimeNest Realty",
+              img: "https://images.unsplash.com/photo-1560518883-ce09059eeffa",
+              action: () => go("/project/primeNestRealty"),
+            },
+          ].map((project) => (
+            <motion.div
+              key={project.title}
+              whileHover={{ scale: 1.03 }}
+            >
+              <Card className="bg-gray-900 rounded-2xl overflow-hidden shadow-lg">
+                <img
+                  src={project.img}
+                  alt={project.title}
+                  className="h-44 w-full object-cover"
+                />
+                <CardContent className="p-6">
+                  <h3 className="text-xl font-semibold">
+                    {project.title}
+                  </h3>
+                  <Button
+                    onClick={project.action}
+                    className="mt-4 w-full"
+                  >
+                    View This Sample
+                  </Button>
+                </CardContent>
+              </Card>
+            </motion.div>
+          ))}
+        </div>
+      </section>
 
-    {/* Project 2 */}
-    <Card className="bg-gray-900 rounded-2xl shadow-lg">
-      <CardContent className="p-6">
-        <h3 className="text-xl font-semibold">
-          Business Website
-        </h3>
-        <p className="text-gray-400 mt-2">
-          Professional website for small businesses.
-          Mobile-friendly, SEO-ready, and easy to manage.
-        </p>
-        <Button onClick={business}  className="mt-4 w-full">
-          View This Sample
-        </Button>
-      </CardContent>
-    </Card>
+      {/* TESTIMONIALS */}
+      <section className="py-20 px-6 bg-gray-900">
+        <h2 className="text-3xl font-bold text-center mb-12">
+          What Clients Say
+        </h2>
 
-    {/* Project 3 */}
-    <Card className="bg-gray-900 rounded-2xl shadow-lg">
-      <CardContent className="p-6">
-        <h3 className="text-xl font-semibold">
-          Web App Dashboard
-        </h3>
-        <p className="text-gray-400 mt-2">
-          Admin dashboard UI with modern components.
-          Ideal for MVPs and internal tools.
-        </p>
-        <Button onClick={web}  className="mt-4 w-full">
-          View This Sample
-        </Button>
-      </CardContent>
-    </Card>
-
-     <Card className="bg-gray-900 rounded-2xl shadow-lg">
-      <CardContent className="p-6">
-        <h3 className="text-xl font-semibold">
-          LoreCafe
-        </h3>
-        <p className="text-gray-400 mt-2">
-          Admin dashboard UI with modern components.
-          Ideal for MVPs and internal tools.
-        </p>
-        <Button onClick={lorecafe}  className="mt-4 w-full">
-          View This Sample
-        </Button>
-      </CardContent>
-    </Card>
-
-    <Card className="bg-gray-900 rounded-2xl shadow-lg">
-      <CardContent className="p-6">
-        <h3 className="text-xl font-semibold">
-          Professional Services Website – Engineer / Contractor
-        </h3>
-        <p className="text-gray-400 mt-2">
-          Admin dashboard UI with modern components.
-          Ideal for MVPs and internal tools.
-        </p>
-        <Button onClick={contractor}  className="mt-4 w-full">
-          View This Sample
-        </Button>
-      </CardContent>
-    </Card>
-
-    <Card className="bg-gray-900 rounded-2xl shadow-lg">
-      <CardContent className="p-6">
-        <h3 className="text-xl font-semibold">
-          Event / Webinar
-        </h3>
-        <p className="text-gray-400 mt-2">
-          Admin dashboard UI with modern components.
-          Ideal for MVPs and internal tools.
-        </p>
-        <Button onClick={events}  className="mt-4 w-full">
-          View This Sample
-        </Button>
-      </CardContent>
-    </Card>
-
-    <Card className="bg-gray-900 rounded-2xl shadow-lg">
-      <CardContent className="p-6">
-        <h3 className="text-xl font-semibold">
-          AutoGalaxy
-        </h3>
-        <p className="text-gray-400 mt-2">
-          Admin dashboard UI with modern components.
-          Ideal for MVPs and internal tools.
-        </p>
-        <Button onClick={AutoGalaxy}  className="mt-4 w-full">
-          View This Sample
-        </Button>
-      </CardContent>
-    </Card>
-
-    <Card className="bg-gray-900 rounded-2xl shadow-lg">
-      <CardContent className="p-6">
-        <h3 className="text-xl font-semibold">
-          Eacha Restaurant
-        </h3>
-        <p className="text-gray-400 mt-2">
-          Admin dashboard UI with modern components.
-          Ideal for MVPs and internal tools.
-        </p>
-        <Button onClick={eacha}  className="mt-4 w-full">
-          View This Sample
-        </Button>
-      </CardContent>
-    </Card>
-
-    <Card className="bg-gray-900 rounded-2xl shadow-lg">
-      <CardContent className="p-6">
-        <h3 className="text-xl font-semibold">
-          Tattoo Artist Service Booking
-        </h3>
-        <p className="text-gray-400 mt-2">
-          Admin dashboard UI with modern components.
-          Ideal for MVPs and internal tools.
-        </p>
-        <Button onClick={inkmaster}  className="mt-4 w-full">
-          View This Sample
-        </Button>
-      </CardContent>
-    </Card>
-
-     <Card className="bg-gray-900 rounded-2xl shadow-lg">
-      <CardContent className="p-6">
-        <h3 className="text-xl font-semibold">
-          UrbanTee
-        </h3>
-        <p className="text-gray-400 mt-2">
-          Admin dashboard UI with modern components.
-          Ideal for MVPs and internal tools.
-        </p>
-        <Button onClick={urbanTee}  className="mt-4 w-full">
-          View This Sample
-        </Button>
-      </CardContent>
-    </Card>
-
-    <Card className="bg-gray-900 rounded-2xl shadow-lg">
-      <CardContent className="p-6">
-        <h3 className="text-xl font-semibold">
-          DonLeo Fitness
-        </h3>
-        <p className="text-gray-400 mt-2">
-          Admin dashboard UI with modern components.
-          Ideal for MVPs and internal tools.
-        </p>
-        <Button onClick={donLeoFitness}  className="mt-4 w-full">
-          View This Sample
-        </Button>
-      </CardContent>
-    </Card>
-
-    <Card className="bg-gray-900 rounded-2xl shadow-lg">
-      <CardContent className="p-6">
-        <h3 className="text-xl font-semibold">
-          PrimeNest Realty
-        </h3>
-        <p className="text-gray-400 mt-2">
-          Admin dashboard UI with modern components.
-          Ideal for MVPs and internal tools.
-        </p>
-        <Button onClick={primeNestRealty}  className="mt-4 w-full">
-          View This Sample
-        </Button>
-      </CardContent>
-    </Card>
-
-
-  </div>
-</section>
-
+        <div className="grid md:grid-cols-3 gap-6 max-w-6xl mx-auto">
+          {[
+            {
+              name: "Michael Reyes",
+              role: "Startup Founder",
+              img: "https://randomuser.me/api/portraits/men/32.jpg",
+              text: "Devfast delivered fast and the design looks premium. My conversion rate improved immediately.",
+            },
+            {
+              name: "Anna Cruz",
+              role: "Cafe Owner",
+              img: "https://randomuser.me/api/portraits/women/44.jpg",
+              text: "The website looks professional and my customers love the booking feature.",
+            },
+            {
+              name: "James Lim",
+              role: "Real Estate Agent",
+              img: "https://randomuser.me/api/portraits/men/65.jpg",
+              text: "Clean UI, smooth flow, and very easy to work with. Highly recommended.",
+            },
+          ].map((t) => (
+            <Card key={t.name} className="bg-gray-800 rounded-2xl">
+              <CardContent className="p-6">
+                <div className="flex items-center gap-4">
+                  <img
+                    src={t.img}
+                    alt={t.name}
+                    className="w-12 h-12 rounded-full object-cover"
+                  />
+                  <div>
+                    <h4 className="font-semibold">{t.name}</h4>
+                    <p className="text-sm text-gray-400">{t.role}</p>
+                  </div>
+                </div>
+                <p className="text-gray-300 mt-4 text-sm">
+                  “{t.text}”
+                </p>
+              </CardContent>
+            </Card>
+          ))}
+        </div>
+      </section>
 
       {/* CONTACT */}
       <section className="bg-gray-900 py-20 px-6 text-center">
@@ -292,16 +215,13 @@ export default function DevfastLanding() {
         <p className="text-gray-400 mt-4">
           Click below to email me and let me know what website you need.
         </p>
-        <a 
-          href="mailto:youremail@gmail.com?subject=Website%20Project%20Inquiry"
-        >
-          <Button className="mt-2 px-4 py-1 rounded-lg text-md ">
+        <a href="mailto:youremail@gmail.com">
+          <Button className="mt-4 px-6 py-3 rounded-xl">
             <Mail className="mr-2" /> Email Devfast
           </Button>
         </a>
       </section>
 
-      {/* FOOTER */}
       <footer className="text-center py-4 text-gray-700">
         © {new Date().getFullYear()} Devfast. Built fast. Built right.
       </footer>
