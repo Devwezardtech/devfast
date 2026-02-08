@@ -7,6 +7,7 @@ import CanelsaHotelLanding from "./page/sample/business";
 import LoreCafeLanding from "./page/sample/LoreCafeLanding";
 import ContractorLanding from "./page/sample/enginner";
 import EventsWebinarLanding from "./page/sample/events";
+import AutoGalaxyProductLanding from "./page/sample/AutoGalaxy";
 
 
 export default function App() {
@@ -16,12 +17,13 @@ export default function App() {
       <Route path="/" element={<DevfastLanding />} />
 
       {/* Sample Projects */}
-      <Route path="/samples/landing" element={<LandingSample />} />
-      <Route path="/samples/business" element={<CanelsaHotelLanding />} />
-      <Route path="/samples/webapp" element={<WebAppDashboardSample />} />
-      <Route path="/samples/lorecafe" element={<LoreCafeLanding />} />
-      <Route path="/samples/engineer" element={<ContractorLanding />} />
-      <Route path="/samples/events/webinar" element={<EventsWebinarLanding />} />
+      <Route path="/project/landing" element={<LandingSample />} />
+      <Route path="/project/business" element={<CanelsaHotelLanding />} />
+      <Route path="/project/webapp" element={<WebAppDashboardSample />} />
+      <Route path="/project/lorecafe" element={<LoreCafeLanding />} />
+      <Route path="/project/engineer" element={<ContractorLanding />} />
+      <Route path="/project/events/webinar" element={<EventsWebinarLanding />} />
+        <Route path="/project/autogalaxy" element={<AutoGalaxyProductLanding />} />
       
     
 

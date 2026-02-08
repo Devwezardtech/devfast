@@ -8,28 +8,32 @@ export default function DevfastLanding() {
   const navigate = useNavigate();
 
   const landing =()=>{
-    navigate("/samples/landing")
+    navigate("/project/landing")
   }
 
   const business =()=>{
-    navigate("/samples/business")
+    navigate("/project/business")
   }
 
   const web =()=>{
-    navigate("/samples/webapp")
+    navigate("/project/webapp")
   }
 
   
   const lorecafe =()=>{
-    navigate("/samples/lorecafe")
+    navigate("/project/lorecafe")
   }
 
   const contractor =()=>{
-    navigate("/samples/engineer")
+    navigate("/project/engineer")
   }
 
   const events =()=>{
-    navigate("/samples/events/webinar")
+    navigate("/project/events/webinar")
+  }
+
+  const AutoGalaxy =()=>{
+    navigate("/project/autogalaxy")
   }
 
   return (
@@ -166,6 +170,23 @@ export default function DevfastLanding() {
         </Button>
       </CardContent>
     </Card>
+
+    <Card className="bg-gray-900 rounded-2xl shadow-lg">
+      <CardContent className="p-6">
+        <h3 className="text-xl font-semibold">
+          AutoGalaxy
+        </h3>
+        <p className="text-gray-400 mt-2">
+          Admin dashboard UI with modern components.
+          Ideal for MVPs and internal tools.
+        </p>
+        <Button onClick={AutoGalaxy}  className="mt-4 w-full">
+          View This Sample
+        </Button>
+      </CardContent>
+    </Card>
+
+    
 
 
   </div>
