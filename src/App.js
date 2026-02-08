@@ -8,6 +8,8 @@ import LoreCafeLanding from "./page/sample/LoreCafeLanding";
 import ContractorLanding from "./page/sample/enginner";
 import EventsWebinarLanding from "./page/sample/events";
 import AutoGalaxyProductLanding from "./page/sample/AutoGalaxy";
+import EachaCafeLanding from "./page/sample/EachaRestaurant";
+import InkMasterLanding from "./page/sample/Inkmaster";
 
 
 export default function App() {
@@ -23,7 +25,9 @@ export default function App() {
       <Route path="/project/lorecafe" element={<LoreCafeLanding />} />
       <Route path="/project/engineer" element={<ContractorLanding />} />
       <Route path="/project/events/webinar" element={<EventsWebinarLanding />} />
-        <Route path="/project/autogalaxy" element={<AutoGalaxyProductLanding />} />
+      <Route path="/project/autogalaxy" element={<AutoGalaxyProductLanding />} />
+      <Route path="/project/eacha" element={<EachaCafeLanding />} />
+      <Route path="/project/inkmaster" element={<InkMasterLanding />} />
       
     
 

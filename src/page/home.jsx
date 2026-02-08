@@ -36,6 +36,14 @@ export default function DevfastLanding() {
     navigate("/project/autogalaxy")
   }
 
+  const eacha =()=>{
+    navigate("/project/eacha")
+  }
+
+  const inkmaster =()=>{  
+    navigate("/project/inkmaster")
+  }
+
   return (
     <div className="min-h-screen bg-gray-950 text-white">
       {/* HERO */}
@@ -181,6 +189,36 @@ export default function DevfastLanding() {
           Ideal for MVPs and internal tools.
         </p>
         <Button onClick={AutoGalaxy}  className="mt-4 w-full">
+          View This Sample
+        </Button>
+      </CardContent>
+    </Card>
+
+    <Card className="bg-gray-900 rounded-2xl shadow-lg">
+      <CardContent className="p-6">
+        <h3 className="text-xl font-semibold">
+          Eacha Restaurant
+        </h3>
+        <p className="text-gray-400 mt-2">
+          Admin dashboard UI with modern components.
+          Ideal for MVPs and internal tools.
+        </p>
+        <Button onClick={eacha}  className="mt-4 w-full">
+          View This Sample
+        </Button>
+      </CardContent>
+    </Card>
+
+    <Card className="bg-gray-900 rounded-2xl shadow-lg">
+      <CardContent className="p-6">
+        <h3 className="text-xl font-semibold">
+          Tattoo Artist Service Booking
+        </h3>
+        <p className="text-gray-400 mt-2">
+          Admin dashboard UI with modern components.
+          Ideal for MVPs and internal tools.
+        </p>
+        <Button onClick={inkmaster}  className="mt-4 w-full">
           View This Sample
         </Button>
       </CardContent>
