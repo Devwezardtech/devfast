@@ -105,9 +105,9 @@ const LoreCafeLanding = () => {
         <div className="max-w-6xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center">
           <p>&copy; {new Date().getFullYear()} LoreCafe. All rights reserved.</p>
           <div className="flex gap-6 mt-4 md:mt-0">
-            <a href="#" className="hover:text-gray-200 transition">Facebook</a>
-            <a href="#" className="hover:text-gray-200 transition">Instagram</a>
-            <a href="#" className="hover:text-gray-200 transition">Twitter</a>
+            <a href="https://facebook.com/lorecafe" className="hover:text-gray-200 transition">Facebook</a>
+            <a href="https://instagram.com/lorecafe" className="hover:text-gray-200 transition">Instagram</a>
+            <a href="https://twitter.com/lorecafe" className="hover:text-gray-200 transition">Twitter</a>
           </div>
         </div>
       </footer>

@@ -151,9 +151,9 @@ const landingsample = () => {
         <div className="max-w-6xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center">
           <p>&copy; {new Date().getFullYear()} DevTact. All rights reserved.</p>
           <div className="flex gap-6 mt-4 md:mt-0">
-            <a href="#" className="hover:text-blue-400 transition">Facebook</a>
-            <a href="#" className="hover:text-blue-400 transition">LinkedIn</a>
-            <a href="#" className="hover:text-blue-400 transition">Twitter</a>
+            <a href="https://facebook.com/devtact" className="hover:text-blue-400 transition">Facebook</a>
+            <a href="https://linkedin.com/company/devtact" className="hover:text-blue-400 transition">LinkedIn</a>
+            <a href="https://twitter.com/devtact" className="hover:text-blue-400 transition">Twitter</a>
           </div>
         </div>
       </footer>

@@ -30,7 +30,7 @@ const ProfessionalServicesLanding = () => {
         transition={{ duration: 1 }}
       >
 
-         
+
         <h1 className="text-4xl md:text-6xl font-bold mb-4">John Anderson Engineering</h1>
         <p className="text-lg md:text-2xl mb-6">Professional Engineering & Contracting Services</p>
         <button className="bg-yellow-400 text-blue-900 font-bold px-8 py-3 rounded-lg shadow-lg hover:bg-yellow-300 transition">
@@ -122,9 +122,9 @@ const ProfessionalServicesLanding = () => {
         <div className="max-w-6xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center">
           <p>&copy; {new Date().getFullYear()} John Anderson Engineering. All rights reserved.</p>
           <div className="flex gap-6 mt-4 md:mt-0">
-            <a href="#" className="hover:text-yellow-400 transition">LinkedIn</a>
-            <a href="#" className="hover:text-yellow-400 transition">Facebook</a>
-            <a href="#" className="hover:text-yellow-400 transition">Email</a>
+            <a href="https://linkedin.com/in/john-anderson-engineering" className="hover:text-yellow-400 transition">LinkedIn</a>
+            <a href="https://facebook.com/john-anderson-engineering" className="hover:text-yellow-400 transition">Facebook</a>
+            <a href="mailto:john@andersonengineering.com" className="hover:text-yellow-400 transition">Email</a>
           </div>
         </div>
       </footer>

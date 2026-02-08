@@ -142,9 +142,9 @@ const BusinessEventLanding = () => {
         <div className="max-w-6xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center">
           <p>&copy; {new Date().getFullYear()} Alexander Business Event. All rights reserved.</p>
           <div className="flex gap-6 mt-4 md:mt-0">
-            <a href="#" className="hover:text-yellow-400 transition">Facebook</a>
-            <a href="#" className="hover:text-yellow-400 transition">Instagram</a>
-            <a href="#" className="hover:text-yellow-400 transition">Email</a>
+            <a href="https://facebook.com/alexanderbusiness" className="hover:text-yellow-400 transition">Facebook</a>
+            <a href="https://instagram.com/alexanderbusiness" className="hover:text-yellow-400 transition">Instagram</a>
+            <a href="mailto:info@alexanderbusiness.com" className="hover:text-yellow-400 transition">Email</a>
           </div>
         </div>
       </footer>
