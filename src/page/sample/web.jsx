@@ -62,13 +62,11 @@ export default function WebAppDashboardSample() {
         <p className="text-gray-400 mt-4">
           Click below and tell me you want the “Web App Dashboard” design.
         </p>
-        <a
-          href="mailto:youremail@gmail.com?subject=I%20want%20the%20Web%20App%20Dashboard"
-        >
+       
           <Button className="mt-6 px-8 py-6 text-lg">
             Book This Design
           </Button>
-        </a>
+        
       </section>
     </div>
   );
