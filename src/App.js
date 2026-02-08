@@ -2,8 +2,9 @@ import React from "react";
 import { Routes, Route } from "react-router-dom";
 import DevfastLanding from "./page/home";
 import LandingSample from "./page/sample/landing";
-import BusinessWebsiteSample from "./page/sample/business";
 import WebAppDashboardSample from "./page/sample/web";
+import CanelsaHotelLanding from "./page/sample/business";
+import LoreCafeLanding from "./page/sample/LoreCafeLanding";
 
 
 export default function App() {
@@ -14,8 +15,10 @@ export default function App() {
 
       {/* Sample Projects */}
       <Route path="/samples/landing" element={<LandingSample />} />
-      <Route path="/samples/business" element={<BusinessWebsiteSample />} />
+      <Route path="/samples/business" element={<CanelsaHotelLanding />} />
       <Route path="/samples/webapp" element={<WebAppDashboardSample />} />
+      <Route path="/samples/lorecafe" element={<LoreCafeLanding />} />
+      
     
 
       {/* 404 Fallback (optional but recommended) */}

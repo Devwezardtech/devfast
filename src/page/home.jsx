@@ -18,6 +18,12 @@ export default function DevfastLanding() {
   const web =()=>{
     navigate("/samples/webapp")
   }
+
+  
+  const lorecafe =()=>{
+    navigate("/samples/lorecafe")
+  }
+
   return (
     <div className="min-h-screen bg-gray-950 text-white">
       {/* HERO */}
@@ -107,6 +113,23 @@ export default function DevfastLanding() {
         </Button>
       </CardContent>
     </Card>
+
+     <Card className="bg-gray-900 rounded-2xl shadow-lg">
+      <CardContent className="p-6">
+        <h3 className="text-xl font-semibold">
+          LoreCafe
+        </h3>
+        <p className="text-gray-400 mt-2">
+          Admin dashboard UI with modern components.
+          Ideal for MVPs and internal tools.
+        </p>
+        <Button onClick={lorecafe}  className="mt-4 w-full">
+          View This Sample
+        </Button>
+      </CardContent>
+    </Card>
+
+
   </div>
 </section>
 
