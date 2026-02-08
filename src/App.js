@@ -5,6 +5,8 @@ import LandingSample from "./page/sample/landing";
 import WebAppDashboardSample from "./page/sample/web";
 import CanelsaHotelLanding from "./page/sample/business";
 import LoreCafeLanding from "./page/sample/LoreCafeLanding";
+import ContractorLanding from "./page/sample/enginner";
+import EventsWebinarLanding from "./page/sample/events";
 
 
 export default function App() {
@@ -18,6 +20,8 @@ export default function App() {
       <Route path="/samples/business" element={<CanelsaHotelLanding />} />
       <Route path="/samples/webapp" element={<WebAppDashboardSample />} />
       <Route path="/samples/lorecafe" element={<LoreCafeLanding />} />
+      <Route path="/samples/engineer" element={<ContractorLanding />} />
+      <Route path="/samples/events/webinar" element={<EventsWebinarLanding />} />
       
     
 

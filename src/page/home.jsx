@@ -24,6 +24,14 @@ export default function DevfastLanding() {
     navigate("/samples/lorecafe")
   }
 
+  const contractor =()=>{
+    navigate("/samples/engineer")
+  }
+
+  const events =()=>{
+    navigate("/samples/events/webinar")
+  }
+
   return (
     <div className="min-h-screen bg-gray-950 text-white">
       {/* HERO */}
@@ -124,6 +132,36 @@ export default function DevfastLanding() {
           Ideal for MVPs and internal tools.
         </p>
         <Button onClick={lorecafe}  className="mt-4 w-full">
+          View This Sample
+        </Button>
+      </CardContent>
+    </Card>
+
+    <Card className="bg-gray-900 rounded-2xl shadow-lg">
+      <CardContent className="p-6">
+        <h3 className="text-xl font-semibold">
+          Professional Services Website – Engineer / Contractor
+        </h3>
+        <p className="text-gray-400 mt-2">
+          Admin dashboard UI with modern components.
+          Ideal for MVPs and internal tools.
+        </p>
+        <Button onClick={contractor}  className="mt-4 w-full">
+          View This Sample
+        </Button>
+      </CardContent>
+    </Card>
+
+    <Card className="bg-gray-900 rounded-2xl shadow-lg">
+      <CardContent className="p-6">
+        <h3 className="text-xl font-semibold">
+          Event / Webinar
+        </h3>
+        <p className="text-gray-400 mt-2">
+          Admin dashboard UI with modern components.
+          Ideal for MVPs and internal tools.
+        </p>
+        <Button onClick={events}  className="mt-4 w-full">
           View This Sample
         </Button>
       </CardContent>
