@@ -141,20 +141,79 @@ export default function DevfastLanding() {
         </div>
       </section>
 
-      {/* CONTACT */}
-      <section className="bg-gradient-to-r from-sky-50 to-white py-24 px-6 text-center">
-        <h2 className="text-3xl font-bold text-slate-900">
-          Book an Appointment
-        </h2>
-        <p className="text-slate-600 mt-4">
-          Click below to email me and let me know what website you need.
-        </p>
-        <a href="mailto:youremail@gmail.com">
-          <Button className="mt-6 px-8 py-4 rounded-xl bg-blue-500 hover:bg-blue-600 shadow-md">
-            <Mail className="mr-2" /> Email Devfast
-          </Button>
-        </a>
-      </section>
+    {/* CONTACT */}
+<section className="bg-gradient-to-r from-sky-50 to-white py-24 px-6">
+  <div className="max-w-3xl mx-auto text-center">
+    <h2 className="text-3xl font-bold text-slate-900">
+      Book an Appointment
+    </h2>
+    <p className="text-slate-600 mt-4">
+      Tell me about your project and I’ll get back to you.
+    </p>
+<div className="mt-10 grid gap-6 text-left">
+   <div>
+        <label className="block text-sm font-medium text-slate-700">
+          Your Name
+        </label>
+        <input
+          type="text"
+          name="Name"
+          required
+          className="mt-2 w-full rounded-xl border border-slate-200 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
+          placeholder="Enter your name"
+        />
+      </div>
+
+      <div>
+        <label className="block text-sm font-medium text-slate-700">
+          Email Address
+        </label>
+        <input
+          type="email"
+          name="Email"
+          required
+          className="mt-2 w-full rounded-xl border border-slate-200 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
+          placeholder="client@gmail.com"
+        />
+      </div>
+
+      <div>
+        <label className="block text-sm font-medium text-slate-700">
+          Project Details
+        </label>
+        <textarea
+          name="Message"
+          rows="5"
+          required
+          className="mt-2 w-full rounded-xl border border-slate-200 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
+          placeholder="Tell me what kind of website you need..."
+        />
+      </div>
+
+<div className="w-full items-center justify-center flex">
+
+</div>
+     
+  <a
+        href="https://m.me/Devfast" // Your actual FB Messenger link
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <div className="w-full items-center justify-center flex">
+          <Button className="py-4 px-8 text-lg rounded-xl bg-blue-500 hover:bg-blue-600 shadow-md flex items-center gap-2">
+          <Mail className="mr-2" />
+          Send Inquiry
+        </Button>
+
+        </div>
+        
+      </a>
+
+</div>
+  </div>
+</section>
+
+
 
       <footer className="text-center py-6 text-slate-400 text-sm">
         © {new Date().getFullYear()} Devfast. Built fast. Built right.
