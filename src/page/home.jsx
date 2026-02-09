@@ -98,10 +98,11 @@ export default function DevfastLanding() {
               action: () => go("/project/engineer"),
             },
             {
-              title: "Event / Webinar",
-              img: "https://images.unsplash.com/photo-1515169067865-5387ec356754",
-              action: () => go("/project/events/webinar"),
-            },
+  title: "Event / Webinar",
+  img: "https://images.unsplash.com/photo-1540575467063-178a50c2df87",
+  action: () => go("/project/events/webinar"),
+},
+
             {
               title: "AutoGalaxy",
               img: "https://images.unsplash.com/photo-1503376780353-7e6692767b70",
