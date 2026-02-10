@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { motion } from "framer-motion";
 
 const AutoGalaxyBMWLanding = () => {
-  const [selectedCar, setSelectedCar] = useState(0);
+  const [selectedCar] = useState(0);
 
   // BMW top models / brand logos (all BMW)
   const topBMWModels = [

@@ -28,12 +28,6 @@ const faqs = [
   { q: "Is there a dress code?", a: "Business casual is recommended for comfort and professionalism." },
 ];
 
-{/*const sponsors = [
-  "https://upload.wikimedia.org/wikipedia/commons/2/27/PHP-logo.svg",
-  "https://upload.wikimedia.org/wikipedia/commons/9/99/Unofficial_JavaScript_logo_2.svg",
-  "https://upload.wikimedia.org/wikipedia/commons/6/6a/HTML5_logo_and_wordmark.svg",
-];*/}
-
 const sponsors = [
 ];
 

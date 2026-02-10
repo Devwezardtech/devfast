@@ -10,24 +10,6 @@ const projectImages = [
   "https://images.unsplash.com/photo-1570129477492-45c003edd2be",
 ];
 
-const equipment = [
-  {
-    name: "Tower Crane in Action",
-    desc: "High-rise construction and site material handling.",
-    img: "https://images.unsplash.com/photo-1570129477492-45c003edd2be",
-  },
-  {
-    name: "Backhoe Excavator",
-    desc: "Foundation excavation and land preparation.",
-    img: "https://images.unsplash.com/photo-1581090700227-1e37b190418e",
-  },
-  {
-    name: "Bulldozer Earthworks",
-    desc: "Land grading, material moving, and site leveling.",
-    img: "https://images.unsplash.com/photo-1590658268037-6bf12165a8df",
-  },
-];
-
 
 const ProfessionalServicesLanding = () => {
   const services = [
