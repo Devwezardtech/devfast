@@ -195,10 +195,11 @@ export default function DevfastLanding() {
 </div>
      
   <a
-        href="https://m.me/Devfast" // Your actual FB Messenger link
-        target="_blank"
-        rel="noopener noreferrer"
-      >
+  href="https://m.me/801311679735475"
+  target="_blank"
+  rel="noopener noreferrer"
+>
+
         <div className="w-full items-center justify-center flex">
           <Button className="py-4 px-8 text-lg rounded-xl bg-blue-500 hover:bg-blue-600 shadow-md flex items-center gap-2">
           <Mail className="mr-2" />
