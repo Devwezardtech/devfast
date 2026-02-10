@@ -66,20 +66,32 @@ const AutoGalaxyBMWLanding = () => {
     <div className="font-sans text-gray-800 bg-gray-50">
 
       {/* HERO */}
-      <motion.section
-        className="bg-gradient-to-r from-blue-900 to-indigo-800 text-white min-h-screen flex flex-col justify-center items-center text-center px-6"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 1 }}
-      >
-        <h1 className="text-4xl md:text-6xl font-bold mb-4">AutoGalaxy BMW Launch</h1>
-        <p className="text-lg md:text-2xl mb-6">
-          Discover the latest BMW models from around the world!
-        </p>
-        <button className="bg-yellow-400 text-blue-900 px-8 py-3 rounded-lg font-bold hover:bg-yellow-300 transition">
-          Pre-Order Now
-        </button>
-      </motion.section>
+<motion.section
+  className="relative min-h-screen flex flex-col justify-center items-center text-center px-6 text-white"
+  initial={{ opacity: 0 }}
+  animate={{ opacity: 1 }}
+  transition={{ duration: 1 }}
+  style={{
+    backgroundImage: 'url("https://images.unsplash.com/photo-1552519507-da3b142c6e3d?crop=entropy&cs=tinysrgb&fit=max&w=600&h=400")',
+    backgroundSize: "cover",
+    backgroundPosition: "center",
+  }}
+>
+  {/* Overlay */}
+  <div className="absolute inset-0 bg-black bg-opacity-50"></div>
+
+  {/* Hero content */}
+  <div className="relative z-10 flex flex-col justify-center items-center">
+    <h1 className="text-4xl md:text-6xl font-bold mb-4">AutoGalaxy BMW Launch</h1>
+    <p className="text-lg md:text-2xl mb-6">
+      Discover the latest BMW models from around the world!
+    </p>
+    <button className="bg-yellow-400 text-blue-900 px-8 py-3 rounded-lg font-bold hover:bg-yellow-300 transition">
+      Pre-Order Now
+    </button>
+  </div>
+</motion.section>
+
 
       {/* TOP BMW MODELS */}
       <section className="max-w-6xl mx-auto px-6 py-16">
