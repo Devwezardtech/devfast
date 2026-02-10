@@ -123,7 +123,7 @@ const ProfessionalServicesLanding = () => {
         <div className="max-w-6xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center">
           <p>&copy; {new Date().getFullYear()} John Anderson Engineering. All rights reserved.</p>
           <div className="flex gap-6 mt-4 md:mt-0">
-         <h4 className="hover:text-yellow-400 transition" >Faceboojk</h4>
+         <h4 className="hover:text-yellow-400 transition" >Facebook</h4>
          <h4 className="hover:text-yellow-400 transition" >LinkedIn</h4>
          <h4 className="hover:text-yellow-400 transition" >Email</h4>
           </div>
