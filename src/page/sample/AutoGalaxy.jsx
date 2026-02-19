@@ -24,7 +24,7 @@ const cars = [
   },
   {
     name: "Isuzu D-Max 3.0 LS-E 4x4 AT",
-    price: "$80,000",
+    price: "₱1,890,000",
     img: "/image/car5.png",
   },
   {
