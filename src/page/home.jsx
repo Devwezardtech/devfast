@@ -44,27 +44,50 @@ export default function DevfastLanding() {
       </section>
 
       {/* SERVICES */}
-      <section className="grid md:grid-cols-3 gap-6 px-6 max-w-6xl mx-auto">
-        {["Landing Pages", "Business Websites", "Web Apps"].map((service) => (
-          <motion.div
-            key={service}
-            whileHover={{ y: -6 }}
-            transition={{ type: "spring", stiffness: 200 }}
-          >
-            <Card className="bg-white rounded-2xl border border-slate-100 shadow-sm hover:shadow-xl transition-all duration-500">
-              <CardContent className="p-6">
-                <CheckCircle className="mb-4 text-blue-500" />
-                <h3 className="text-xl font-semibold text-slate-900">
-                  {service}
-                </h3>
-                <p className="text-slate-500 mt-2">
-                  Clean UI, fast load, mobile-friendly.
-                </p>
-              </CardContent>
-            </Card>
-          </motion.div>
-        ))}
-      </section>
+<section className="py-24 px-6 max-w-6xl mx-auto">
+  <h2 className="text-3xl font-bold text-center mb-12">
+    What I Offer
+  </h2>
+
+  <div className="grid md:grid-cols-3 gap-8">
+    {[
+      {
+        title: "Landing Pages",
+        description:
+          "High-converting landing pages designed to capture leads and turn visitors into customers.",
+      },
+      {
+        title: "Business Websites",
+        description:
+          "Professional websites that build trust, showcase your services, and strengthen your brand.",
+      },
+      {
+        title: "Web Applications",
+        description:
+          "Custom systems and web apps built for performance, scalability, and real business growth.",
+      },
+    ].map((service) => (
+      <motion.div
+        key={service.title}
+        whileHover={{ y: -8 }}
+        transition={{ type: "spring", stiffness: 200 }}
+      >
+        <Card className="bg-white rounded-2xl border border-slate-100 shadow-sm hover:shadow-xl transition-all duration-500 h-full">
+          <CardContent className="p-8">
+            <CheckCircle className="mb-5 text-blue-500 w-8 h-8" />
+            <h3 className="text-xl font-semibold text-slate-900">
+              {service.title}
+            </h3>
+            <p className="text-slate-600 mt-3 leading-relaxed">
+              {service.description}
+            </p>
+          </CardContent>
+        </Card>
+      </motion.div>
+    ))}
+  </div>
+</section>
+
 
       {/* PROJECTS */}
       <section className="py-28 px-6 max-w-6xl mx-auto">
@@ -74,13 +97,11 @@ export default function DevfastLanding() {
 
         <div className="grid md:grid-cols-3 gap-8">
           {[
-            { title: "Startup Landing Page", img: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f", action: () => go("/project/landing") },
-            { title: "Business Website", img: "https://images.unsplash.com/photo-1498050108023-c5249f4df085", action: () => go("/project/business") },
-            { title: "Web App Dashboard", img: "https://images.unsplash.com/photo-1551288049-bebda4e38f71", action: () => go("/project/webapp") },
+            { title: "Ecommerce Website / System", img: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f", action: () => window.location.href = "https://mus-ecommerce-shop.onrender.com" },
             { title: "LoreCafe", img: "https://images.unsplash.com/photo-1504754524776-8f4f37790ca0", action: () => go("/project/lorecafe") },
             { title: "Engineer / Contractor", img: "https://images.unsplash.com/photo-1503387762-592deb58ef4e", action: () => go("/project/engineer") },
             { title: "Event / Webinar", img: "https://images.unsplash.com/photo-1540575467063-178a50c2df87", action: () => go("/project/events/webinar") },
-            { title: "AutoGalaxy", img: "https://images.unsplash.com/photo-1503376780353-7e6692767b70", action: () => go("/project/autogalaxy") },
+            { title: "AutoGalaxy", img: "/image/car3.png", action: () => go("/project/autogalaxy") },
             { title: "Eacha Restaurant", img: "https://images.unsplash.com/photo-1528605248644-14dd04022da1", action: () => go("/project/eacha") },
             { title: "Tattoo Artist Booking", img: "https://images.unsplash.com/photo-1545235617-9465d2a55698", action: () => go("/project/inkmaster") },
             { title: "UrbanTee", img: "https://images.unsplash.com/photo-1521334884684-d80222895322", action: () => go("/project/urbanTee") },

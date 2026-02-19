@@ -8,7 +8,7 @@ const cars = [
     img: "/image/car1.png",
   },
   {
-    name: "Toyota Hilux Conquest 2.8 4x4 AT",
+    name: "Toyota Hilux Conquest 2.8 4x4",
     price: "₱1,963,000",
     img: "/image/car2.png",
   },
