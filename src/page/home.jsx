@@ -1,13 +1,16 @@
 import { motion } from "framer-motion";
 import { Card, CardContent } from "../components/ui/card";
 import { Button } from "../components/ui/button";
-import { Mail, CheckCircle } from "lucide-react";
+import { Mail, CheckCircle} from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 30 },
   visible: { opacity: 1, y: 0 },
 };
+
+const developerPhoto = "/developer_photo.png"; 
+
 
 export default function DevfastLanding() {
   const navigate = useNavigate();
@@ -234,6 +237,76 @@ export default function DevfastLanding() {
 </div>
   </div>
 </section>
+
+{/* MEET THE DEVELOPER */}
+ <section className="py-24 px-6 bg-gradient-to-r from-blue-50 to-white relative overflow-hidden">
+
+      <div className="max-w-4xl mx-auto text-center relative z-10">
+        <h2 className="text-3xl font-bold text-slate-900 mb-12">
+         Developer
+        </h2>
+
+        <motion.div
+          className="flex flex-col md:flex-row items-center gap-10 bg-white rounded-3xl shadow-2xl p-8 hover:shadow-3xl transition-all duration-500"
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+        >
+          {/* Avatar */}
+          <motion.img
+            src={developerPhoto}
+            alt="Ejemar Maloloy-on"
+            className="w-44 h-44 rounded-full object-cover border-4 border-blue-500 shadow-lg"
+            whileHover={{ scale: 1.08 }}
+            transition={{ type: "spring", stiffness: 300 }}
+          />
+
+          {/* Developer Info */}
+          <div className="text-left md:text-left flex-1">
+            <h3 className="text-2xl font-bold text-slate-900 mb-2">
+              Ejemar Maloloy-on
+            </h3>
+            <p className="text-slate-600 mb-2 font-medium">Full-Stack Web Developer</p>
+            <p className="text-slate-600 mb-4 leading-relaxed">
+              I build fast, modern, and high-converting websites for startups and small businesses. 
+              Your project is my priority.
+            </p>
+
+            {/* Portfolio & Email Buttons */}
+            <div className="flex flex-col sm:flex-row sm:items-center gap-3 mb-4">
+              <a
+                href="https://devwezardtech.github.io/Portfolio/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center px-6 py-3 bg-blue-500 text-white rounded-xl font-semibold hover:bg-blue-600 transition shadow-md"
+              >
+                <span className="mr-2">Portfolio</span>
+                <CheckCircle className="w-4 h-4" />
+              </a>
+
+              <a
+                href="mailto:ejemarmaloloyon007@gmail.com"
+                className="inline-flex items-center justify-center px-6 py-3 bg-gray-200 text-slate-900 rounded-xl font-semibold hover:bg-gray-300 transition shadow-md"
+              >
+                <Mail className="mr-2 w-4 h-4" />
+                Email Me
+              </a>
+            </div>
+
+            {/* Social Icons */}
+            <div className="flex items-center gap-4 mt-2">
+              <div href="https://github.com/Devwezardtech" target="_blank" rel="noopener noreferrer" className="w-6 h-6 text-gray-700 hover:text-black transition">
+              </div>
+              <div href="https://www.linkedin.com/in/ejemarmaloloyon/" target="_blank" rel="noopener noreferrer" className="w-6 h-6 text-blue-600 hover:text-blue-800 transition">
+              </div>
+            </div>
+
+            <p className="mt-4 text-slate-500 text-sm">📞 +63 970 450 5022</p>
+          </div>
+        </motion.div>
+      </div>
+    </section>
+
 
 
 
