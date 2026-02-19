@@ -3,32 +3,32 @@ import { motion } from "framer-motion";
 
 const cars = [
   {
-    name: "2021 Toyota Fortuner 4x2 G AT",
+    name: "Toyota Fortuner 4x2 G AT",
     price: "$78,000",
     img: "/image/car1.png",
   },
   {
-    name: "2021 Toyota Hilux Conquest 2.8 4x4 AT",
+    name: "Toyota Hilux Conquest 2.8 4x4 AT",
     price: "$92,000",
     img: "/image/car2.png",
   },
   {
-    name: "2021 Toyota Fortuner 2.8 4x4 LTD",
+    name: "Toyota Fortuner 2.8 4x4 LTD",
     price: "$120,000",
     img: "/image/car3.png",
   },
   {
-    name: "BMW 5 Series",
+    name: "Toyota Corolla Cross 1.8 G CVT",
     price: "$65,000",
     img: "/image/car4.png",
   },
   {
-    name: "BMW X5",
+    name: "Isuzu D-Max 3.0 LS-E 4x4 AT",
     price: "$80,000",
     img: "/image/car5.png",
   },
   {
-    name: "BMW M3 Touring",
+    name: "Toyota Yaris Cross",
     price: "$85,000",
     img: "/image/car6.png",
   },
@@ -46,7 +46,7 @@ const AutoGalaxyBMWLanding = () => {
         transition={{ duration: 1 }}
         style={{
           backgroundImage:
-            'url("https://images.unsplash.com/photo-1552519507-da3b142c6e3d?crop=entropy&cs=tinysrgb&fit=max&w=600&h=400")',
+            'url("/image/car3.png")',
           backgroundSize: "cover",
           backgroundPosition: "center",
         }}
@@ -56,10 +56,10 @@ const AutoGalaxyBMWLanding = () => {
 
         <div className="relative z-10">
           <h1 className="text-5xl md:text-7xl font-bold mb-6 tracking-wide">
-            AutoGalaxy BMW
+            AutoGalaxy Toyota
           </h1>
           <p className="text-lg md:text-2xl mb-8 text-gray-200">
-            Experience German Engineering Excellence
+            Experience Engineering Excellence
           </p>
           <button className="bg-white text-black px-10 py-4 rounded-full font-semibold hover:bg-gray-200 transition shadow-xl">
             Explore Models
@@ -70,7 +70,7 @@ const AutoGalaxyBMWLanding = () => {
       {/* BMW COLLECTION */}
       <section className="max-w-7xl mx-auto px-6 py-20">
         <h2 className="text-4xl font-bold text-center mb-16">
-          BMW Collection 2026
+          Toyota Collection 2026
         </h2>
 
         <div className="grid md:grid-cols-3 gap-10">
@@ -112,14 +112,14 @@ const AutoGalaxyBMWLanding = () => {
         <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-10">
           <div className="bg-white p-8 rounded-2xl shadow-lg">
             <p className="text-gray-700 mb-4">
-              “The BMW M4 completely changed my driving experience. Pure power and luxury.”
+              “The Toyota completely changed my driving experience. Pure power.”
             </p>
             <h4 className="font-semibold">— Daniel R.</h4>
           </div>
 
           <div className="bg-white p-8 rounded-2xl shadow-lg">
             <p className="text-gray-700 mb-4">
-              “AutoGalaxy made my purchase smooth and professional. Highly recommended!”
+              “Toyota made my purchase smooth and professional. Highly recommended!”
             </p>
             <h4 className="font-semibold">— Sophia L.</h4>
           </div>
@@ -129,7 +129,7 @@ const AutoGalaxyBMWLanding = () => {
       {/* CONTACT */}
       <section className="bg-white py-20 px-6">
         <h2 className="text-4xl font-bold text-center mb-10">
-          Pre-Order Your BMW
+          Pre-Order Your Toyota
         </h2>
 
         <form className="max-w-xl mx-auto grid gap-6">
@@ -157,7 +157,7 @@ const AutoGalaxyBMWLanding = () => {
 
       {/* FOOTER */}
       <footer className="bg-black text-white py-8 text-center">
-        <p>© 2026 AutoGalaxy BMW. All Rights Reserved.</p>
+        <p>© 2026 AutoGalaxy Toyota. All Rights Reserved.</p>
       </footer>
     </div>
   );
