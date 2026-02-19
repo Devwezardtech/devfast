@@ -4,22 +4,22 @@ import { motion } from "framer-motion";
 const cars = [
   {
     name: "Toyota Fortuner 4x2 G AT",
-    price: "$78,000",
+    price: "₱2,030,000",
     img: "/image/car1.png",
   },
   {
     name: "Toyota Hilux Conquest 2.8 4x4 AT",
-    price: "$92,000",
+    price: "₱1,963,000",
     img: "/image/car2.png",
   },
   {
     name: "Toyota Fortuner 2.8 4x4 LTD",
-    price: "$120,000",
+    price: "₱2,656,000",
     img: "/image/car3.png",
   },
   {
     name: "Toyota Corolla Cross 1.8 G CVT",
-    price: "$65,000",
+    price: "₱1,300,000",
     img: "/image/car4.png",
   },
   {
@@ -29,7 +29,7 @@ const cars = [
   },
   {
     name: "Toyota Yaris Cross",
-    price: "$85,000",
+    price: "₱1,690,000",
     img: "/image/car6.png",
   },
 ];
