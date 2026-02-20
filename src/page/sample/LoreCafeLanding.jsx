@@ -8,6 +8,17 @@ const menuImages = [
   "/lorecafe_image/aacafe1.png",
 ];
 
+{
+  /**
+   * this photo is for the backgrond of the hero section and also the inhance part or where the best location of the cafe is, but it is not used in the current design because it is not suitable for the hero section, but it can be used for the story section or the gallery section if needed.
+   * 
+   * "/lorecafe_image/acafe1.png",
+   * "/lorecafe_image/acafe2.png",
+   * "/lorecafe_image/acafe3.png",
+   * 
+   */
+}
+
 const galleryImages = [
   "/lorecafe_image/cafe1.png",
   "/lorecafe_image/cafe2.png",
@@ -35,20 +46,32 @@ const LoreCafeLanding = () => {
     <div className="font-sans text-gray-800 bg-gray-50">
 
       {/* HERO */}
-      <motion.section
-        className="bg-gradient-to-br from-amber-200 via-yellow-300 to-orange-200 text-slate-900 h-screen flex flex-col justify-center items-center text-center px-6"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 1 }}
-      >
-        <h1 className="text-5xl md:text-6xl font-bold mb-4">LoreCafe</h1>
-        <p className="text-lg md:text-2xl mb-8 max-w-xl">
-          Your cozy coffee heaven in Tacloban City ☕
-        </p>
-        <button className="bg-white px-8 py-3 rounded-xl font-semibold shadow-lg hover:scale-105 transition">
-          Reserve a Table
-        </button>
-      </motion.section>
+<motion.section
+  className="relative h-screen flex flex-col justify-center items-center text-center px-6 text-white"
+  style={{
+    backgroundImage: "url('/lorecafe_image/acafe1.png')",
+    backgroundSize: "cover",
+    backgroundPosition: "center",
+  }}
+  initial={{ opacity: 0 }}
+  animate={{ opacity: 1 }}
+  transition={{ duration: 1 }}
+>
+  {/* Dark Overlay */}
+  <div className="absolute inset-0 bg-black/50"></div>
+
+  <div className="relative z-10">
+    <h1 className="text-5xl md:text-6xl font-bold mb-4 drop-shadow-lg">
+      LoreCafe
+    </h1>
+    <p className="text-lg md:text-2xl mb-8 max-w-xl">
+      Your cozy coffee heaven in Tacloban City ☕
+    </p>
+    <button className="bg-white text-black px-8 py-3 rounded-xl font-semibold shadow-lg hover:scale-105 transition">
+      Reserve a Table
+    </button>
+  </div>
+</motion.section>
 
       {/* MENU */}
       <section className="max-w-6xl mx-auto px-6 py-20">
@@ -71,15 +94,28 @@ const LoreCafeLanding = () => {
         </div>
       </section>
 
-      {/* STORY */}
-      <section className="bg-gray-100 py-20 px-6">
-        <h2 className="text-3xl font-bold text-center mb-8">Our Story</h2>
-        <p className="max-w-3xl mx-auto text-center text-gray-700 text-lg">
-          LoreCafe is a family-owned café in the heart of Tacloban City.  
-          We serve handcrafted coffee, fresh pastries, and a warm space
-          where friends and families connect.
-        </p>
-      </section>
+     {/* STORY */}
+<section
+  className="relative py-24 px-6 text-white text-center"
+  style={{
+    backgroundImage: "url('/lorecafe_image/acafe2.png')",
+    backgroundSize: "cover",
+    backgroundPosition: "center",
+  }}
+>
+  {/* Overlay */}
+  <div className="absolute inset-0 bg-black/60"></div>
+
+  <div className="relative z-10 max-w-3xl mx-auto">
+    <h2 className="text-3xl font-bold mb-8">Our Story</h2>
+    <p className="text-lg leading-relaxed">
+      LoreCafe is a family-owned café in the heart of Tacloban City.
+      We serve handcrafted coffee, fresh pastries, and a warm space
+      where friends and families connect.
+    </p>
+  </div>
+</section>
+
 
       {/* GALLERY */}
       <section className="max-w-6xl mx-auto px-6 py-20">
@@ -112,6 +148,17 @@ const LoreCafeLanding = () => {
           ))}
         </div>
       </section>
+
+      <section
+  className="h-72 relative flex items-center justify-center text-white"
+  style={{
+    backgroundImage: "url('/lorecafe_image/acafe3.png')",
+    backgroundSize: "cover",
+    backgroundPosition: "center",
+  }}
+>
+  <div className="absolute inset-0 bg-black/50"></div>
+</section>
 
       {/* CONTACT & MAP */}
       <section className="max-w-6xl mx-auto px-6 py-20">
