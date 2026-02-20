@@ -101,7 +101,7 @@ export default function DevfastLanding() {
         <div className="grid md:grid-cols-3 gap-8">
           {[
             { title: "Ecommerce Website / System", img: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f", action: () => window.location.href = "https://mus-ecommerce-shop.onrender.com" },
-            { title: "LoreCafe", img: "https://images.unsplash.com/photo-1504754524776-8f4f37790ca0", action: () => go("/project/lorecafe") },
+            { title: "LoreCafe", img: "/lorecafe_image/acafe3.png", action: () => go("/project/lorecafe") },
             { title: "Engineer / Contractor", img: "https://images.unsplash.com/photo-1503387762-592deb58ef4e", action: () => go("/project/engineer") },
             { title: "Event / Webinar", img: "https://images.unsplash.com/photo-1540575467063-178a50c2df87", action: () => go("/project/events/webinar") },
             { title: "AutoGalaxy", img: "/image/car3.png", action: () => go("/project/autogalaxy") },

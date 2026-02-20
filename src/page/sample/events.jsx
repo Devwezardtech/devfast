@@ -1,6 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 
+const fadeUp = {
+  hidden: { opacity: 0, y: 50 },
+  show: { opacity: 1, y: 0, transition: { duration: 0.8 } },
+};
+
 const speakers = [
   { name: "Alexander Reyes", title: "Business Growth Expert", img: "https://randomuser.me/api/portraits/men/32.jpg" },
   { name: "Elena Cruz", title: "Marketing Strategist", img: "https://randomuser.me/api/portraits/women/44.jpg" },
@@ -11,31 +16,27 @@ const speakers = [
 const benefits = [
   "Hands-on Business Growth Workshops",
   "1-on-1 Mentorship Opportunities",
-  "Live Case Studies from Successful Entrepreneurs",
-  "Networking with Like-Minded Professionals",
-  "Actionable Strategies to Scale Your Business",
+  "Live Case Studies from 7-Figure Entrepreneurs",
+  "High-Level Networking",
+  "Actionable Scaling Frameworks",
 ];
 
 const testimonials = [
-  { name: "David P.", text: "Last year’s event boosted my business revenue by 30%!" },
-  { name: "Sophia M.", text: "Amazing insights and practical strategies I could apply immediately." },
-  { name: "James L.", text: "The mentorship sessions were priceless!" },
+  { name: "David P.", text: "This event increased my revenue by 30%." },
+  { name: "Sophia M.", text: "Practical strategies I applied immediately." },
+  { name: "James L.", text: "The mentorship sessions were priceless." },
 ];
 
 const faqs = [
-  { q: "Where is the event?", a: "Tacloban City Convention Center, Tacloban, Philippines." },
-  { q: "Who should attend?", a: "Entrepreneurs, startup founders, business professionals, and marketers." },
-  { q: "Is there a dress code?", a: "Business casual is recommended for comfort and professionalism." },
+  { q: "Where is the event?", a: "Tacloban City Convention Center." },
+  { q: "Who should attend?", a: "Entrepreneurs, founders, marketers." },
+  { q: "Dress code?", a: "Business casual." },
 ];
-
-const sponsors = [
-];
-
-
 
 const BusinessEventLanding = () => {
-  const [timeLeft, setTimeLeft] = useState(86400); // 24-hour countdown
+  const [open, setOpen] = useState(false);
   const [activeFAQ, setActiveFAQ] = useState(null);
+  const [timeLeft, setTimeLeft] = useState(86400);
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -52,186 +53,143 @@ const BusinessEventLanding = () => {
   };
 
   return (
-    <div className="font-sans text-gray-800 bg-gradient-to-b from-gray-50 to-gray-100 relative">
+    <div className="bg-black text-white font-sans scroll-smooth">
 
-      {/* Sticky CTA */}
-      <a
-        href="#register"
-        className="fixed right-6 bottom-6 bg-yellow-400 text-blue-900 font-bold px-6 py-4 rounded-full shadow-xl z-50 hover:bg-yellow-300 transition transform hover:scale-105"
+      {/* HERO */}
+      <section
+        className="relative h-screen flex items-center justify-center text-center px-6"
+        style={{
+          backgroundImage: "url('https://images.unsplash.com/photo-1507679799987-c73779587ccf')",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          backgroundAttachment: "fixed",
+        }}
       >
-        Register Now
-      </a>
+        <div className="absolute inset-0 bg-black/70"></div>
 
-      {/* Hero */}
-      <motion.section
-        className="relative h-screen flex flex-col justify-center items-center text-center px-6 bg-gradient-to-br from-blue-900 via-blue-800 to-indigo-900 overflow-hidden"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 1 }}
-      >
-        <motion.h1
-          className="text-5xl md:text-6xl font-extrabold text-white mb-4 drop-shadow-lg"
-          initial={{ y: 40, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ delay: 0.3 }}
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="relative z-10 max-w-3xl"
         >
-          Alexander's Business Growth Event
-        </motion.h1>
-        <motion.p
-          className="text-lg md:text-2xl mb-6 text-gray-200 drop-shadow"
-          initial={{ y: 40, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ delay: 0.5 }}
-        >
-          Accelerate your business with top strategies and expert guidance.
-        </motion.p>
-        <motion.button
-          className="bg-yellow-400 text-blue-900 font-bold px-8 py-3 rounded-xl shadow-2xl hover:bg-yellow-300 transition transform hover:scale-105"
-          whileHover={{ scale: 1.05 }}
-        >
-          Register Now
-        </motion.button>
-      </motion.section>
-
-      {/* Event Highlights */}
-      <section className="py-16 px-6 max-w-6xl mx-auto">
-        <h2 className="text-4xl font-bold text-center mb-12 text-blue-900">Event Highlights</h2>
-        <div className="grid md:grid-cols-3 gap-8">
-          {benefits.map((b, idx) => (
-            <motion.div
-              key={idx}
-              className="p-6 rounded-2xl bg-white/80 backdrop-blur-sm shadow-xl text-center hover:shadow-2xl hover:scale-105 transition transform"
-              whileInView={{ opacity: 1, y: 0 }}
-              initial={{ opacity: 0, y: 20 }}
-              viewport={{ once: true }}
-              transition={{ delay: idx * 0.1 }}
-            >
-              <p className="font-semibold text-gray-800">{b}</p>
-            </motion.div>
-          ))}
-        </div>
+          <h1 className="text-5xl md:text-6xl font-extrabold mb-6">
+            Business Growth Mastery 2026
+          </h1>
+          <p className="text-xl text-gray-300 mb-8">
+            Scale smarter. Network stronger. Grow faster.
+          </p>
+          <button
+            onClick={() => setOpen(true)}
+            className="bg-yellow-400 text-black font-bold px-8 py-3 rounded-xl shadow-2xl hover:scale-105 transition"
+          >
+            Secure Your Seat
+          </button>
+        </motion.div>
       </section>
 
-      {/* Speakers */}
-      <section className="bg-gradient-to-b from-gray-100 to-gray-50 py-16 px-6">
-        <h2 className="text-4xl font-bold text-center mb-12 text-blue-900">Meet the Speakers</h2>
-        <div className="grid md:grid-cols-4 gap-8">
+      {/* BENEFITS */}
+      <motion.section
+        variants={fadeUp}
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true }}
+        className="py-24 px-6 max-w-6xl mx-auto"
+      >
+        <h2 className="text-4xl font-bold text-center mb-16">
+          Event Highlights
+        </h2>
+        <div className="grid md:grid-cols-3 gap-8">
+          {benefits.map((b, idx) => (
+            <div key={idx} className="bg-white/10 backdrop-blur-md p-8 rounded-3xl shadow-xl hover:scale-105 transition border border-white/10">
+              {b}
+            </div>
+          ))}
+        </div>
+      </motion.section>
+
+      {/* SPEAKERS */}
+      <section className="py-24 px-6 bg-gradient-to-b from-black to-gray-900">
+        <h2 className="text-4xl font-bold text-center mb-16">Meet The Speakers</h2>
+        <div className="grid md:grid-cols-4 gap-10 max-w-6xl mx-auto">
           {speakers.map((s, idx) => (
             <motion.div
               key={idx}
-              className="relative bg-white/70 backdrop-blur-md rounded-2xl shadow-xl p-6 text-center overflow-hidden group"
               whileHover={{ scale: 1.05 }}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: idx * 0.1 }}
+              className="bg-white/10 backdrop-blur-lg p-6 rounded-3xl text-center border border-white/10"
             >
-              <img src={s.img} alt={s.name} className="rounded-full w-32 h-32 mx-auto mb-4 shadow-md transition-transform duration-500 group-hover:scale-110" />
+              <img src={s.img} alt={s.name} className="w-32 h-32 mx-auto rounded-full mb-4 border-4 border-yellow-400" />
               <h3 className="font-bold text-xl">{s.name}</h3>
-              <p className="text-gray-700">{s.title}</p>
-              <div className="absolute bottom-4 left-0 right-0 flex justify-center gap-4 opacity-0 group-hover:opacity-100 transition-opacity">
-                <a href="https://linkedin.com" className="text-blue-900 hover:text-yellow-400 font-semibold">LinkedIn</a>
-                <a href="https://twitter.com" className="text-blue-900 hover:text-yellow-400 font-semibold">Twitter</a>
-              </div>
+              <p className="text-gray-300">{s.title}</p>
             </motion.div>
           ))}
         </div>
       </section>
 
-      {/* Schedule */}
-      <section className="py-16 px-6 max-w-6xl mx-auto">
-        <h2 className="text-4xl font-bold text-center mb-12 text-blue-900">Event Schedule</h2>
-        <div className="grid md:grid-cols-3 gap-8">
-          {["09:00 AM", "11:00 AM", "02:00 PM"].map((time, idx) => (
-            <motion.div
-              key={idx}
-              className="bg-white/80 backdrop-blur-sm p-6 rounded-2xl shadow-xl text-center hover:scale-105 transition transform"
-            >
-              <h3 className="font-semibold text-lg mb-2">{time}</h3>
-              <p>{idx === 0 ? "Opening Remarks & Keynote" : idx === 1 ? "Workshops & Interactive Sessions" : "Networking & Closing Session"}</p>
-            </motion.div>
+      {/* TESTIMONIALS */}
+      <section className="py-24 px-6">
+        <h2 className="text-4xl font-bold text-center mb-16">What Attendees Say</h2>
+        <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+          {testimonials.map((t, idx) => (
+            <div key={idx} className="bg-white/10 backdrop-blur-md p-8 rounded-3xl border border-white/10">
+              <p className="mb-4 text-gray-300">"{t.text}"</p>
+              <h4 className="font-bold">{t.name}</h4>
+            </div>
           ))}
         </div>
       </section>
 
       {/* FAQ */}
-      <section className="py-16 px-6 max-w-4xl mx-auto">
-        <h2 className="text-4xl font-bold text-center mb-12 text-blue-900">Frequently Asked Questions</h2>
+      <section className="py-24 px-6 max-w-4xl mx-auto">
+        <h2 className="text-4xl font-bold text-center mb-12">FAQ</h2>
         {faqs.map((f, idx) => (
-          <div key={idx} className="border-b py-4 cursor-pointer" onClick={() => setActiveFAQ(activeFAQ === idx ? null : idx)}>
-            <h3 className="font-semibold text-lg flex justify-between items-center">
+          <div
+            key={idx}
+            className="border-b border-white/20 py-4 cursor-pointer"
+            onClick={() => setActiveFAQ(activeFAQ === idx ? null : idx)}
+          >
+            <h3 className="flex justify-between font-semibold">
               {f.q} <span>{activeFAQ === idx ? "-" : "+"}</span>
             </h3>
-            {activeFAQ === idx && <p className="mt-2 text-gray-700">{f.a}</p>}
+            {activeFAQ === idx && <p className="mt-2 text-gray-400">{f.a}</p>}
           </div>
         ))}
       </section>
 
-      {/* Testimonials */}
-      <section className="bg-gradient-to-b from-gray-50 to-gray-100 py-16 px-6">
-        <h2 className="text-4xl font-bold text-center mb-12 text-blue-900">What Past Attendees Say</h2>
-        <div className="grid md:grid-cols-3 gap-8">
-          {testimonials.map((t, idx) => (
-            <motion.div
-              key={idx}
-              className="bg-white/70 backdrop-blur-sm p-6 rounded-2xl shadow-xl hover:shadow-2xl hover:scale-105 transition transform"
-              whileInView={{ opacity: 1, y: 0 }}
-              initial={{ opacity: 0, y: 20 }}
-              viewport={{ once: true }}
+      {/* COUNTDOWN */}
+      <section className="py-4 text-center bg-yellow-400 text-black">
+        <h3 className="text-3xl font-bold mb-4">Event Starts In:</h3>
+        <p className="text-4xl font-extrabold">{formatTime(timeLeft)}</p>
+      </section>
+
+      {/* MODAL */}
+      {open && (
+        <div className="fixed inset-0 bg-black/70 flex items-center justify-center z-50">
+          <div className="bg-white text-black rounded-3xl p-10 w-full max-w-md relative">
+            <button
+              onClick={() => setOpen(false)}
+              className="absolute top-4 right-4"
             >
-              <p className="text-gray-800 mb-4">"{t.text}"</p>
-              <h4 className="font-semibold text-blue-900">{t.name}</h4>
-            </motion.div>
-          ))}
-        </div>
-      </section>
-
-      {/* Countdown */}
-      <section className="bg-blue-900 text-white text-center py-12">
-        <h3 className="text-2xl font-bold mb-4">Hurry! Registration Ends In:</h3>
-        <p className="text-3xl font-bold">{formatTime(timeLeft)}</p>
-      </section>
-
-      {/* Registration Form */}
-      <section id="register" className="py-16 px-6 max-w-2xl mx-auto">
-        <h2 className="text-4xl font-bold text-center mb-8 text-blue-900">RSVP / Register</h2>
-        <form className="bg-white/80 backdrop-blur-md p-8 rounded-2xl shadow-xl grid gap-4">
-          <input type="text" placeholder="Full Name" className="border p-3 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-900"/>
-          <input type="email" placeholder="Email Address" className="border p-3 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-900"/>
-          <input type="tel" placeholder="Phone Number" className="border p-3 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-900"/>
-          <button className="bg-blue-900 text-white font-bold px-6 py-3 rounded-xl hover:bg-blue-800 transition">Register Now</button>
-        </form>
-      </section>
-
-      {/* Sponsors */}
-      <section className="py-16 px-6">
-        <h2 className="text-4xl font-bold text-center mb-12 text-blue-900">Our Sponsors</h2>
-        <div className="flex flex-wrap justify-center items-center gap-8">
-          {sponsors.map((s, idx) => <img key={idx} src={s} alt={`Sponsor ${idx}`} className="h-12 object-contain" />)}
-        </div>
-      </section>
-
-      {/* Location Map */}
-      <section className="max-w-6xl mx-auto px-6 py-16">
-        <h2 className="text-4xl font-bold text-center mb-8 text-blue-900">Location</h2>
-        <iframe
-          title="Event Location"
-          src="https://maps.google.com/maps?q=tacloban%20city&t=&z=13&ie=UTF8&iwloc=&output=embed"
-          className="w-full h-64 rounded-2xl border-0 shadow-xl"
-        ></iframe>
-      </section>
-
-      {/* Footer */}
-      <footer className="bg-blue-900 text-white py-8 mt-16">
-        <div className="max-w-6xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center">
-          <p>&copy; {new Date().getFullYear()} Alexander Business Event. All rights reserved.</p>
-          <div className="flex gap-6 mt-4 md:mt-0">
-            <h4 className="hover:text-yellow-400 transition cursor-pointer">Facebook</h4>
-            <h4 className="hover:text-yellow-400 transition cursor-pointer">LinkedIn</h4>
-            <h4 className="hover:text-yellow-400 transition cursor-pointer">Email</h4>
+              ✕
+            </button>
+            <h3 className="text-2xl font-bold mb-6 text-center">
+              Reserve Your Spot
+            </h3>
+            <form className="space-y-4">
+              <input type="text" placeholder="Full Name" className="w-full border rounded-lg px-4 py-2" />
+              <input type="email" placeholder="Email" className="w-full border rounded-lg px-4 py-2" />
+              <button className="w-full bg-yellow-400 py-3 rounded-lg font-bold">
+                Confirm Registration
+              </button>
+            </form>
           </div>
         </div>
+      )}
+
+      {/* FOOTER */}
+      <footer className="bg-black py-10 text-center text-gray-400">
+        © {new Date().getFullYear()} Business Growth Mastery. All rights reserved.
       </footer>
+
     </div>
   );
 };
