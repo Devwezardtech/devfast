@@ -3,18 +3,20 @@ import { motion } from "framer-motion";
 
 /* Stable, curated images (NO broken images) */
 const menuImages = [
-  "https://images.unsplash.com/photo-1509042239860-f550ce710b93",
-  "https://images.unsplash.com/photo-1495474472287-4d71bcdd2085",
-  "https://images.unsplash.com/photo-1511920170033-f8396924c348",
+  "/lorecafe_image/aacafe3.png",
+  "/lorecafe_image/aacafe2.png",
+  "/lorecafe_image/aacafe1.png",
 ];
 
 const galleryImages = [
-  "https://images.unsplash.com/photo-1504754524776-8f4f37790ca0",
-  "https://images.unsplash.com/photo-1554118811-1e0d58224f24",
-  "https://images.unsplash.com/photo-1521017432531-fbd92d768814",
-  "https://images.unsplash.com/photo-1498804103079-a6351b050096",
-  "https://images.unsplash.com/photo-1445116572660-236099ec97a0",
-  "https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb",
+  "/lorecafe_image/cafe1.png",
+  "/lorecafe_image/cafe2.png",
+  "/lorecafe_image/cafe3.png",
+  "/lorecafe_image/cafe4.png",
+  "/lorecafe_image/cafe5.png",
+  "/lorecafe_image/cafe6.png",
+  "/lorecafe_image/cafe7.png",
+  "/lorecafe_image/cafe8.png",
 ];
 
 const LoreCafeLanding = () => {
