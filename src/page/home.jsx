@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { Card, CardContent } from "../components/ui/card";
 import { Button } from "../components/ui/button";
-import { Mail, CheckCircle} from "lucide-react";
+import { Mail, CheckCircle } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
 const fadeUp = {
@@ -9,15 +9,14 @@ const fadeUp = {
   visible: { opacity: 1, y: 0 },
 };
 
-const developerPhoto = "/developer_photo.png"; 
-
+const developerPhoto = "/developer_photo.png";
 
 export default function DevfastLanding() {
   const navigate = useNavigate();
   const go = (path) => navigate(path);
 
   return (
-    <div className="min-h-screen text-slate-900 bg-gradient-to-b from-sky-50 via-white to-slate-50">
+    <div className="min-h-screen text-slate-900 bg-gradient-to-b from-sky-50 via-white to-slate-50 font-sans">
 
       {/* HERO */}
       <section className="text-center py-32 px-6 relative overflow-hidden">
@@ -25,7 +24,7 @@ export default function DevfastLanding() {
           initial="hidden"
           animate="visible"
           variants={fadeUp}
-          className="text-4xl md:text-6xl font-extrabold tracking-tight"
+          className="text-4xl md:text-6xl font-extrabold tracking-tight text-gradient bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-cyan-400"
         >
           Devfast 🚀
         </motion.h1>
@@ -35,70 +34,69 @@ export default function DevfastLanding() {
           initial="hidden"
           animate="visible"
           transition={{ delay: 0.2 }}
-          className="mt-6 text-slate-600 max-w-2xl mx-auto text-lg"
+          className="mt-6 text-slate-600 max-w-2xl mx-auto text-lg leading-relaxed"
         >
           Fast, modern websites for startups and small businesses.
           From landing pages to full web apps — built to convert.
         </motion.p>
 
-        <Button className="mt-10 text-lg px-10 py-6 rounded-2xl bg-blue-500 hover:bg-blue-600 shadow-lg hover:shadow-xl transition">
+        <Button className="mt-10 text-lg px-12 py-6 rounded-3xl bg-blue-500 hover:bg-blue-600 shadow-2xl hover:shadow-3xl transition-transform transform hover:-translate-y-1">
           View Sample Projects
         </Button>
       </section>
 
       {/* SERVICES */}
-<section className="py-24 px-6 max-w-6xl mx-auto">
-  <h2 className="text-3xl font-bold text-center mb-12">
-    What I Offer
-  </h2>
+      <section className="py-24 px-6 max-w-6xl mx-auto">
+        <h2 className="text-3xl font-bold text-center mb-12 tracking-tight">
+          What I Offer
+        </h2>
 
-  <div className="grid md:grid-cols-3 gap-8">
-    {[
-      {
-        title: "Landing Pages",
-        description:
-          "High-converting landing pages designed to capture leads and turn visitors into customers.",
-      },
-      {
-        title: "Business Websites",
-        description:
-          "Professional websites that build trust, showcase your services, and strengthen your brand.",
-      },
-      {
-        title: "Web Applications",
-        description:
-          "Custom systems and web apps built for performance, scalability, and real business growth.",
-      },
-    ].map((service) => (
-      <motion.div
-        key={service.title}
-        whileHover={{ y: -8 }}
-        transition={{ type: "spring", stiffness: 200 }}
-      >
-        <Card className="bg-white rounded-2xl border border-slate-100 shadow-sm hover:shadow-xl transition-all duration-500 h-full">
-          <CardContent className="p-8">
-            <CheckCircle className="mb-5 text-blue-500 w-8 h-8" />
-            <h3 className="text-xl font-semibold text-slate-900">
-              {service.title}
-            </h3>
-            <p className="text-slate-600 mt-3 leading-relaxed">
-              {service.description}
-            </p>
-          </CardContent>
-        </Card>
-      </motion.div>
-    ))}
-  </div>
-</section>
-
+        <div className="grid md:grid-cols-3 gap-10">
+          {[
+            {
+              title: "Landing Pages",
+              description:
+                "High-converting landing pages designed to capture leads and turn visitors into customers.",
+            },
+            {
+              title: "Business Websites",
+              description:
+                "Professional websites that build trust, showcase your services, and strengthen your brand.",
+            },
+            {
+              title: "Web Applications",
+              description:
+                "Custom systems and web apps built for performance, scalability, and real business growth.",
+            },
+          ].map((service) => (
+            <motion.div
+              key={service.title}
+              whileHover={{ y: -10, scale: 1.03 }}
+              transition={{ type: "spring", stiffness: 250 }}
+            >
+              <Card className="bg-white rounded-3xl border border-slate-100 shadow-lg hover:shadow-2xl transition-all duration-500 h-full">
+                <CardContent className="p-8">
+                  <CheckCircle className="mb-5 text-blue-500 w-10 h-10" />
+                  <h3 className="text-xl font-semibold text-slate-900 mb-2">
+                    {service.title}
+                  </h3>
+                  <p className="text-slate-600 mt-2 leading-relaxed">
+                    {service.description}
+                  </p>
+                </CardContent>
+              </Card>
+            </motion.div>
+          ))}
+        </div>
+      </section>
 
       {/* PROJECTS */}
       <section className="py-28 px-6 max-w-6xl mx-auto">
-        <h2 className="text-3xl font-bold text-center mb-12">
+        <h2 className="text-3xl font-bold text-center mb-12 tracking-tight">
           Sample Projects
         </h2>
 
-        <div className="grid md:grid-cols-3 gap-8">
+        <div className="grid md:grid-cols-3 gap-10">
           {[
             { title: "Ecommerce Website / System", img: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f", action: () => window.location.href = "https://mus-ecommerce-shop.onrender.com" },
             { title: "LoreCafe", img: "/lorecafe_image/acafe3.png", action: () => go("/project/lorecafe") },
@@ -111,12 +109,12 @@ export default function DevfastLanding() {
             { title: "DonLeo Fitness", img: "https://images.unsplash.com/photo-1534438327276-14e5300c3a48", action: () => go("/project/donLeoFitness") },
             { title: "PrimeNest Realty", img: "https://images.unsplash.com/photo-1560518883-ce09059eeffa", action: () => go("/project/primeNestRealty") },
           ].map((project) => (
-            <motion.div key={project.title} whileHover={{ scale: 1.03 }}>
-              <Card className="bg-white rounded-2xl overflow-hidden border border-slate-100 shadow-sm hover:shadow-xl transition-all duration-500">
+            <motion.div key={project.title} whileHover={{ scale: 1.05, y: -5 }} transition={{ duration: 0.4 }}>
+              <Card className="bg-white rounded-3xl overflow-hidden border border-slate-100 shadow-lg hover:shadow-2xl transition-all duration-500">
                 <img
                   src={project.img}
                   alt={project.title}
-                  className="h-48 w-full object-cover"
+                  className="h-52 w-full object-cover hover:scale-105 transition-transform duration-500"
                 />
                 <CardContent className="p-6">
                   <h3 className="text-xl font-semibold text-slate-900">
@@ -124,7 +122,7 @@ export default function DevfastLanding() {
                   </h3>
                   <Button
                     onClick={project.action}
-                    className="mt-4 w-full bg-blue-500 hover:bg-blue-600"
+                    className="mt-4 w-full bg-gradient-to-r from-blue-500 to-cyan-400 hover:from-blue-600 hover:to-cyan-500 text-white font-semibold shadow-lg hover:shadow-xl transition-transform transform hover:-translate-y-1"
                   >
                     View This Sample
                   </Button>
@@ -136,181 +134,93 @@ export default function DevfastLanding() {
       </section>
 
       {/* TESTIMONIALS */}
-      <section className="py-24 px-6 bg-sky-50">
-        <h2 className="text-3xl font-bold text-center mb-12">
+      <section className="py-24 px-6 bg-gradient-to-r from-blue-50 to-white">
+        <h2 className="text-3xl font-bold text-center mb-12 tracking-tight">
           What Clients Say
         </h2>
 
-        <div className="grid md:grid-cols-3 gap-6 max-w-6xl mx-auto">
+        <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
           {[
             { name: "Michael Reyes", role: "Startup Founder", img: "https://randomuser.me/api/portraits/men/32.jpg", text: "Devfast delivered fast and the design looks premium. My conversion rate improved immediately." },
             { name: "Anna Cruz", role: "Cafe Owner", img: "https://randomuser.me/api/portraits/women/44.jpg", text: "The website looks professional and my customers love the booking feature." },
             { name: "James Lim", role: "Real Estate Agent", img: "https://randomuser.me/api/portraits/men/65.jpg", text: "Clean UI, smooth flow, and very easy to work with. Highly recommended." },
           ].map((t) => (
-            <Card key={t.name} className="bg-white rounded-2xl border border-slate-100 shadow-sm">
-              <CardContent className="p-6">
-                <div className="flex items-center gap-4">
-                  <img src={t.img} alt={t.name} className="w-12 h-12 rounded-full object-cover" />
-                  <div>
-                    <h4 className="font-semibold">{t.name}</h4>
-                    <p className="text-sm text-slate-500">{t.role}</p>
-                  </div>
+            <Card key={t.name} className="bg-white rounded-3xl border border-slate-100 shadow-lg hover:shadow-2xl transition-all duration-500 p-6">
+              <div className="flex items-center gap-4 mb-4">
+                <img src={t.img} alt={t.name} className="w-14 h-14 rounded-full object-cover shadow-md" />
+                <div>
+                  <h4 className="font-semibold text-slate-900">{t.name}</h4>
+                  <p className="text-sm text-slate-500">{t.role}</p>
                 </div>
-                <p className="text-slate-600 mt-4 text-sm">
-                  “{t.text}”
-                </p>
-              </CardContent>
+              </div>
+              <p className="text-slate-600 text-sm leading-relaxed">“{t.text}”</p>
             </Card>
           ))}
         </div>
       </section>
 
-    {/* CONTACT */}
-<section className="bg-gradient-to-r from-sky-50 to-white py-24 px-6">
-  <div className="max-w-3xl mx-auto text-center">
-    <h2 className="text-3xl font-bold text-slate-900">
-      Book an Appointment
-    </h2>
-    <p className="text-slate-600 mt-4">
-      Tell me about your project and I’ll get back to you.
-    </p>
-<div className="mt-10 grid gap-6 text-left">
-   <div>
-        <label className="block text-sm font-medium text-slate-700">
-          Your Name
-        </label>
-        <input
-          type="text"
-          name="Name"
-          required
-          className="mt-2 w-full rounded-xl border border-slate-200 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
-          placeholder="Enter your name"
-        />
-      </div>
-
-      <div>
-        <label className="block text-sm font-medium text-slate-700">
-          Email Address
-        </label>
-        <input
-          type="email"
-          name="Email"
-          required
-          className="mt-2 w-full rounded-xl border border-slate-200 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
-          placeholder="client@gmail.com"
-        />
-      </div>
-
-      <div>
-        <label className="block text-sm font-medium text-slate-700">
-          Project Details
-        </label>
-        <textarea
-          name="Message"
-          rows="5"
-          required
-          className="mt-2 w-full rounded-xl border border-slate-200 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
-          placeholder="Tell me what kind of website you need..."
-        />
-      </div>
-
-<div className="w-full items-center justify-center flex">
-
-</div>
-     
-  <a
-  href="https://m.me/801311679735475"
-  target="_blank"
-  rel="noopener noreferrer"
->
-
-        <div className="w-full items-center justify-center flex">
-          <Button className="py-4 px-8 text-lg rounded-xl bg-blue-500 hover:bg-blue-600 shadow-md flex items-center gap-2">
-          <Mail className="mr-2" />
-          Send Inquiry
-        </Button>
-
-        </div>
-        
-      </a>
-
-</div>
-  </div>
-</section>
-
-{/* MEET THE DEVELOPER */}
- <section className="py-24 px-6 bg-gradient-to-r from-blue-50 to-white relative overflow-hidden">
-
-      <div className="max-w-4xl mx-auto text-center relative z-10">
-        <h2 className="text-3xl font-bold text-slate-900 mb-12">
-         Developer
-        </h2>
-
-        <motion.div
-          className="flex flex-col md:flex-row items-center gap-10 bg-white rounded-3xl shadow-2xl p-8 hover:shadow-3xl transition-all duration-500"
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-        >
-          {/* Avatar */}
-          <motion.img
-            src={developerPhoto}
-            alt="Ejemar Maloloy-on"
-            className="w-44 h-44 rounded-full object-cover border-4 border-blue-500 shadow-lg"
-            whileHover={{ scale: 1.08 }}
-            transition={{ type: "spring", stiffness: 300 }}
-          />
-
-          {/* Developer Info */}
-          <div className="text-left md:text-left flex-1">
-            <h3 className="text-2xl font-bold text-slate-900 mb-2">
-              Ejemar Maloloy-on
-            </h3>
-            <p className="text-slate-600 mb-2 font-medium">Full-Stack Web Developer</p>
-            <p className="text-slate-600 mb-4 leading-relaxed">
-              I build fast, modern, and high-converting websites for startups and small businesses. 
-              Your project is my priority.
-            </p>
-
-            {/* Portfolio & Email Buttons */}
-            <div className="flex flex-col sm:flex-row sm:items-center gap-3 mb-4">
-              <a
-                href="https://devwezardtech.github.io/Portfolio/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center justify-center px-6 py-3 bg-blue-500 text-white rounded-xl font-semibold hover:bg-blue-600 transition shadow-md"
-              >
-                <span className="mr-2">Portfolio</span>
-                <CheckCircle className="w-4 h-4" />
-              </a>
-
-              <a
-                href="mailto:ejemarmaloloyon007@gmail.com"
-                className="inline-flex items-center justify-center px-6 py-3 bg-gray-200 text-slate-900 rounded-xl font-semibold hover:bg-gray-300 transition shadow-md"
-              >
-                <Mail className="mr-2 w-4 h-4" />
-                Email Me
-              </a>
-            </div>
-
-            {/* Social Icons */}
-            <div className="flex items-center gap-4 mt-2">
-              <div href="https://github.com/Devwezardtech" target="_blank" rel="noopener noreferrer" className="w-6 h-6 text-gray-700 hover:text-black transition">
-              </div>
-              <div href="https://www.linkedin.com/in/ejemarmaloloyon/" target="_blank" rel="noopener noreferrer" className="w-6 h-6 text-blue-600 hover:text-blue-800 transition">
-              </div>
-            </div>
-
-            <p className="mt-4 text-slate-500 text-sm">📞 +63 970 450 5022</p>
+      {/* CONTACT */}
+      <section className="bg-gradient-to-r from-sky-50 to-white py-24 px-6">
+        <div className="max-w-3xl mx-auto text-center">
+          <h2 className="text-3xl font-bold text-slate-900 mb-4">
+            Book an Appointment
+          </h2>
+          <p className="text-slate-600 mb-10">
+            Tell me about your project and I’ll get back to you.
+          </p>
+          <div className="grid gap-6 text-left">
+            <input className="mt-2 w-full rounded-2xl border border-slate-200 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500 shadow-sm" placeholder="Your Name" />
+            <input className="mt-2 w-full rounded-2xl border border-slate-200 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500 shadow-sm" placeholder="Email Address" />
+            <textarea className="mt-2 w-full rounded-2xl border border-slate-200 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500 shadow-sm" rows="5" placeholder="Project Details..." />
+            <a href="https://m.me/801311679735475" target="_blank" rel="noopener noreferrer">
+              <Button className="w-full py-4 px-8 text-lg rounded-2xl bg-gradient-to-r from-blue-500 to-cyan-400 hover:from-blue-600 hover:to-cyan-500 shadow-lg hover:shadow-2xl transition-transform transform hover:-translate-y-1 flex items-center justify-center gap-2">
+                <Mail className="w-5 h-5" /> Send Inquiry
+              </Button>
+            </a>
           </div>
-        </motion.div>
-      </div>
-    </section>
+        </div>
+      </section>
 
+      {/* MEET THE DEVELOPER */}
+      <section className="py-24 px-6 bg-gradient-to-r from-blue-50 to-white relative overflow-hidden">
+        <div className="max-w-4xl mx-auto text-center relative z-10">
+          <h2 className="text-3xl font-bold text-slate-900 mb-12 tracking-tight">
+            Developer
+          </h2>
+          <motion.div
+            className="flex flex-col md:flex-row items-center gap-10 bg-white rounded-3xl shadow-2xl hover:shadow-3xl p-8 transition-all duration-500"
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+          >
+            <motion.img
+              src={developerPhoto}
+              alt="Ejemar Maloloy-on"
+              className="w-44 h-44 rounded-full object-cover border-4 border-blue-500 shadow-xl"
+              whileHover={{ scale: 1.08 }}
+              transition={{ type: "spring", stiffness: 300 }}
+            />
+            <div className="text-left flex-1">
+              <h3 className="text-2xl font-bold text-slate-900 mb-2">Ejemar Maloloy-on</h3>
+              <p className="text-slate-600 mb-2 font-medium">Full-Stack Web Developer</p>
+              <p className="text-slate-600 mb-4 leading-relaxed">
+                I build fast, modern, and high-converting websites for startups and small businesses.
+              </p>
+              <div className="flex flex-col sm:flex-row sm:items-center gap-3 mb-4">
+                <a href="https://devwezardtech.github.io/Portfolio/" target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center px-6 py-3 bg-gradient-to-r from-blue-500 to-cyan-400 text-white rounded-2xl font-semibold hover:from-blue-600 hover:to-cyan-500 shadow-lg transition">
+                  <span className="mr-2">Portfolio</span><CheckCircle className="w-4 h-4" />
+                </a>
+                <a href="mailto:ejemarmaloloyon007@gmail.com" className="inline-flex items-center justify-center px-6 py-3 bg-gray-200 text-slate-900 rounded-2xl font-semibold hover:bg-gray-300 shadow-md transition">
+                  <Mail className="mr-2 w-4 h-4" /> Email Me
+                </a>
+              </div>
+              <p className="mt-4 text-slate-500 text-sm">📞 +63 970 450 5022</p>
+            </div>
+          </motion.div>
+        </div>
+      </section>
 
-
-
-      <footer className="text-center py-6 text-slate-400 text-sm">
+      <footer className="text-center py-6 text-slate-400 text-sm tracking-wide">
         © {new Date().getFullYear()} Devfast. Built fast. Built right.
       </footer>
     </div>
