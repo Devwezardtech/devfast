@@ -1,23 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import { motion } from "framer-motion";
 
-/* Stable, curated images (NO broken images) */
+/* Images */
 const menuImages = [
   "/lorecafe_image/aacafe3.png",
   "/lorecafe_image/aacafe2.png",
   "/lorecafe_image/aacafe1.png",
 ];
-
-{
-  /**
-   * this photo is for the backgrond of the hero section and also the inhance part or where the best location of the cafe is, but it is not used in the current design because it is not suitable for the hero section, but it can be used for the story section or the gallery section if needed.
-   * 
-   * "/lorecafe_image/acafe1.png",
-   * "/lorecafe_image/acafe2.png",
-   * "/lorecafe_image/acafe3.png",
-   * 
-   */
-}
 
 const galleryImages = [
   "/lorecafe_image/cafe1.png",
@@ -30,7 +19,19 @@ const galleryImages = [
   "/lorecafe_image/cafe8.png",
 ];
 
+/* Animation Variant */
+const fadeUp = {
+  hidden: { opacity: 0, y: 60 },
+  show: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.8, ease: "easeOut" },
+  },
+};
+
 const LoreCafeLanding = () => {
+  const [open, setOpen] = useState(false);
+
   const services = [
     { title: "Breakfast Specials", desc: "Freshly brewed coffee and pastries." },
     { title: "Lunch Menu", desc: "Delicious sandwiches and local dishes." },
@@ -43,38 +44,47 @@ const LoreCafeLanding = () => {
   ];
 
   return (
-    <div className="font-sans text-gray-800 bg-gray-50">
+    <div className="font-sans text-gray-800 bg-gradient-to-b from-amber-50 to-white">
 
       {/* HERO */}
-<motion.section
-  className="relative h-screen flex flex-col justify-center items-center text-center px-6 text-white"
-  style={{
-    backgroundImage: "url('/lorecafe_image/acafe1.png')",
-    backgroundSize: "cover",
-    backgroundPosition: "center",
-  }}
-  initial={{ opacity: 0 }}
-  animate={{ opacity: 1 }}
-  transition={{ duration: 1 }}
->
-  {/* Dark Overlay */}
-  <div className="absolute inset-0 bg-black/50"></div>
+      <motion.section
+        className="relative h-screen flex flex-col justify-center items-center text-center px-6 text-white"
+        style={{
+          backgroundImage: "url('/lorecafe_image/acafe1.png')",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          backgroundAttachment: "fixed",
+        }}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1 }}
+      >
+        <div className="absolute inset-0 bg-black/60"></div>
 
-  <div className="relative z-10">
-    <h1 className="text-5xl md:text-6xl font-bold mb-4 drop-shadow-lg">
-      LoreCafe
-    </h1>
-    <p className="text-lg md:text-2xl mb-8 max-w-xl">
-      Your cozy coffee heaven in Tacloban City ☕
-    </p>
-    <button className="bg-white text-black px-8 py-3 rounded-xl font-semibold shadow-lg hover:scale-105 transition">
-      Reserve a Table
-    </button>
-  </div>
-</motion.section>
+        <div className="relative z-10">
+          <h1 className="text-5xl md:text-6xl font-bold mb-4 drop-shadow-lg">
+            LoreCafe
+          </h1>
+          <p className="text-lg md:text-2xl mb-8 max-w-xl">
+            Your cozy coffee heaven in Tacloban City ☕
+          </p>
+          <button
+            onClick={() => setOpen(true)}
+            className="bg-white text-black px-8 py-3 rounded-xl font-semibold shadow-lg hover:scale-105 transition"
+          >
+            Reserve a Table
+          </button>
+        </div>
+      </motion.section>
 
       {/* MENU */}
-      <section className="max-w-6xl mx-auto px-6 py-20">
+      <motion.section
+        variants={fadeUp}
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true }}
+        className="max-w-6xl mx-auto px-6 py-20"
+      >
         <h2 className="text-3xl font-bold text-center mb-12">Our Menu</h2>
         <div className="grid md:grid-cols-3 gap-10">
           {services.map((item, idx) => (
@@ -92,40 +102,41 @@ const LoreCafeLanding = () => {
             </div>
           ))}
         </div>
+      </motion.section>
+
+      {/* STORY */}
+      <section
+        className="relative py-24 px-6 text-white text-center"
+        style={{
+          backgroundImage: "url('/lorecafe_image/acafe2.png')",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          backgroundAttachment: "fixed",
+        }}
+      >
+        <div className="absolute inset-0 bg-black/60"></div>
+        <div className="relative z-10 max-w-3xl mx-auto">
+          <h2 className="text-3xl font-bold mb-8">Our Story</h2>
+          <p className="text-lg leading-relaxed">
+            LoreCafe is a family-owned café in the heart of Tacloban City.
+            We serve handcrafted coffee, fresh pastries, and a warm space
+            where friends and families connect.
+          </p>
+        </div>
       </section>
 
-     {/* STORY */}
-<section
-  className="relative py-24 px-6 text-white text-center"
-  style={{
-    backgroundImage: "url('/lorecafe_image/acafe2.png')",
-    backgroundSize: "cover",
-    backgroundPosition: "center",
-  }}
->
-  {/* Overlay */}
-  <div className="absolute inset-0 bg-black/60"></div>
-
-  <div className="relative z-10 max-w-3xl mx-auto">
-    <h2 className="text-3xl font-bold mb-8">Our Story</h2>
-    <p className="text-lg leading-relaxed">
-      LoreCafe is a family-owned café in the heart of Tacloban City.
-      We serve handcrafted coffee, fresh pastries, and a warm space
-      where friends and families connect.
-    </p>
-  </div>
-</section>
-
-
       {/* GALLERY */}
-      <section className="max-w-6xl mx-auto px-6 py-20">
+      <motion.section
+        variants={fadeUp}
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true }}
+        className="max-w-6xl mx-auto px-6 py-20"
+      >
         <h2 className="text-3xl font-bold text-center mb-12">Gallery</h2>
         <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-6">
           {galleryImages.map((img, idx) => (
-            <div
-              key={idx}
-              className="overflow-hidden rounded-2xl shadow-lg group"
-            >
+            <div key={idx} className="overflow-hidden rounded-2xl shadow-lg group">
               <img
                 src={img}
                 alt={`Cafe Gallery ${idx}`}
@@ -134,10 +145,16 @@ const LoreCafeLanding = () => {
             </div>
           ))}
         </div>
-      </section>
+      </motion.section>
 
       {/* TESTIMONIALS */}
-      <section className="bg-yellow-50 py-20 px-6">
+      <motion.section
+        variants={fadeUp}
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true }}
+        className="bg-amber-50 py-20 px-6"
+      >
         <h2 className="text-3xl font-bold text-center mb-12">Customer Reviews</h2>
         <div className="max-w-4xl mx-auto grid md:grid-cols-2 gap-8">
           {testimonials.map((t, idx) => (
@@ -147,43 +164,26 @@ const LoreCafeLanding = () => {
             </div>
           ))}
         </div>
-      </section>
+      </motion.section>
 
-      <section
-  className="h-72 relative flex items-center justify-center text-white"
-  style={{
-    backgroundImage: "url('/lorecafe_image/acafe3.png')",
-    backgroundSize: "cover",
-    backgroundPosition: "center",
-  }}
->
-  <div className="absolute inset-0 bg-black/50"></div>
-</section>
-
-      {/* CONTACT & MAP */}
-      <section className="max-w-6xl mx-auto px-6 py-20">
+      {/* CONTACT */}
+      <motion.section
+        variants={fadeUp}
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true }}
+        className="max-w-6xl mx-auto px-6 py-20"
+      >
         <h2 className="text-3xl font-bold text-center mb-10">
           Contact & Location
         </h2>
         <div className="grid md:grid-cols-2 gap-8">
           <div className="bg-white p-6 rounded-2xl shadow-lg space-y-4">
-            <p className="text-gray-700">
-              📍 Tacloban City, Philippines
-            </p>
-            <p className="text-gray-700">
+            <p>📍 Tacloban City, Philippines</p>
+            <p>
               ⏰ Mon–Fri: 7AM – 9PM<br />
               Sat–Sun: 8AM – 10PM
             </p>
-
-            {/* Messenger CTA */}
-            <a
-              href="https://m.me/801311679735475"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-block mt-4 bg-blue-500 text-white px-6 py-3 rounded-xl font-semibold shadow-md hover:bg-blue-600 transition"
-            >
-              Message Us on Messenger
-            </a>
           </div>
 
           <iframe
@@ -192,18 +192,39 @@ const LoreCafeLanding = () => {
             className="w-full h-72 rounded-2xl border-0 shadow-lg"
           />
         </div>
-      </section>
+      </motion.section>
 
-      {/* FOOTER */}
-      <footer className="bg-yellow-600 text-white py-8">
-        <div className="max-w-6xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center">
-          <p>&copy; {new Date().getFullYear()} LoreCafe. All rights reserved.</p>
-          <div className="flex gap-6 mt-4 md:mt-0">
-            <span className="hover:text-yellow-300 cursor-pointer">Facebook</span>
-            <span className="hover:text-yellow-300 cursor-pointer">Instagram</span>
-            <span className="hover:text-yellow-300 cursor-pointer">Email</span>
+      {/* RESERVATION MODAL */}
+      {open && (
+        <div className="fixed inset-0 bg-black/60 flex items-center justify-center z-50">
+          <div className="bg-white rounded-2xl p-8 w-full max-w-md relative shadow-2xl">
+            <button
+              onClick={() => setOpen(false)}
+              className="absolute top-3 right-3 text-gray-500 hover:text-black"
+            >
+              ✕
+            </button>
+
+            <h3 className="text-2xl font-bold mb-6 text-center">
+              Reserve a Table
+            </h3>
+
+            <form className="space-y-4">
+              <input type="text" placeholder="Full Name" className="w-full border rounded-lg px-4 py-2" />
+              <input type="email" placeholder="Email" className="w-full border rounded-lg px-4 py-2" />
+              <input type="date" className="w-full border rounded-lg px-4 py-2" />
+              <input type="time" className="w-full border rounded-lg px-4 py-2" />
+              <button className="w-full bg-amber-700 text-white py-3 rounded-lg font-semibold hover:bg-amber-800 transition">
+                Confirm Reservation
+              </button>
+            </form>
           </div>
         </div>
+      )}
+
+      {/* FOOTER */}
+      <footer className="bg-amber-700 text-white py-2 text-center">
+        &copy; {new Date().getFullYear()} LoreCafe. All rights reserved.
       </footer>
 
     </div>
