@@ -10,11 +10,6 @@ const DonLeoFitnessLanding = () => {
     { name: "Personal Training Session", duration: "1 session", price: "$25" },
   ];
 
-  const testimonials = [
-    { name: "Mark D.", text: "Lost 10 lbs in 2 months! DonLeo is amazing." },
-    { name: "Sara P.", text: "Gained muscle and confidence. Highly recommend!" },
-  ];
-
   const gymPhotos = [...Array(15)].map((_, i) => `/fitness/gym${i + 1}.png`);
 
   const stats = [
