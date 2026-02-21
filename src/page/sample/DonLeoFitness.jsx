@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 
 const DonLeoFitnessLanding = () => {
   const [dark, setDark] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
 
   const programs = [
     { name: "Weight Loss Program", duration: "8 weeks", price: "$150" },
@@ -28,16 +29,50 @@ const DonLeoFitnessLanding = () => {
   return (
     <div className={`${dark ? "dark bg-[#0f172a] text-gray-100" : "bg-gray-50 text-gray-900"} scroll-smooth font-sans transition-all duration-700`}>
 
-      {/* Navbar */}
-      <nav className="fixed top-6 left-1/2 -translate-x-1/2 z-50 backdrop-blur-xl bg-white/70 dark:bg-white/5 border border-white/30 dark:border-white/10 px-10 py-4 rounded-full shadow-xl dark:shadow-[0_0_30px_rgba(255,255,255,0.05)] flex gap-10 items-center transition">
-        <a href="#hero" className="hover:opacity-70">Home</a>
-        <a href="#programs" className="hover:opacity-70">Programs</a>
-        <a href="#gallery" className="hover:opacity-70">Gallery</a>
-        <a href="#contact" className="hover:opacity-70">Contact</a>
-        <button onClick={() => setDark(!dark)} className="w-10 h-10 rounded-full flex items-center justify-center bg-white/10 dark:bg-white/5 backdrop-blur-md border border-white/20 hover:scale-110 transition">
-          {dark ? "☀️" : "🌙"}
-        </button>
-      </nav>
+   <nav className="fixed top-6 right-4 md:left-1/2 md:-translate-x-1/2 z-50 backdrop-blur-xl bg-white/70 dark:bg-white/5 border border-white/30 dark:border-white/10 px-6 md:px-10 py-4 rounded-full shadow-xl dark:shadow-[0_0_30px_rgba(255,255,255,0.05)] flex items-center justify-between md:justify-center transition">
+
+  {/* Mobile Right Side: Hamburger + Dark Mode */}
+  <div className="flex items-center gap-4 md:hidden">
+    {/* Hamburger */}
+    <button
+      onClick={() => setMenuOpen(prev => !prev)}
+      className="flex flex-col justify-between w-8 h-6 border-2 border-gray-500 dark:border-gray-300 p-1 rounded-md"
+    >
+      <span className={`block h-0.5 w-full bg-gray-900 dark:bg-white transform transition duration-300 ${menuOpen ? "rotate-45 translate-y-2" : ""}`} />
+      <span className={`block h-0.5 w-full bg-gray-900 dark:bg-white transition duration-300 ${menuOpen ? "opacity-0" : ""}`} />
+      <span className={`block h-0.5 w-full bg-gray-900 dark:bg-white transform transition duration-300 ${menuOpen ? "-rotate-45 -translate-y-2" : ""}`} />
+    </button>
+
+    {/* Dark Mode Toggle */}
+    <button onClick={() => setDark(!dark)} className="w-10 h-10 rounded-full flex items-center justify-center bg-white/10 dark:bg-white/5 backdrop-blur-md border border-white/20 hover:scale-110 transition">
+      {dark ? "☀️" : "🌙"}
+    </button>
+  </div>
+
+  {/* Desktop Menu Centered */}
+  <div className="hidden md:flex gap-10 items-center">
+    <a href="#hero" className="hover:opacity-70">Home</a>
+    <a href="#programs" className="hover:opacity-70">Programs</a>
+    <a href="#gallery" className="hover:opacity-70">Gallery</a>
+    <a href="#contact" className="hover:opacity-70">Contact</a>
+    {/* Dark Mode Toggle */}
+    <button onClick={() => setDark(!dark)} className="w-10 h-10 rounded-full flex items-center justify-center bg-white/10 dark:bg-white/5 backdrop-blur-md border border-white/20 hover:scale-110 transition">
+      {dark ? "☀️" : "🌙"}
+    </button>
+  </div>
+
+  {/* Mobile Menu Overlay */}
+  <motion.div
+    initial={{ opacity: 0, x: 50 }}
+    animate={menuOpen ? { opacity: 1, x: 0 } : { opacity: 0, x: 50 }}
+    className={`absolute top-20 right-4 w-11/12 max-w-xs bg-white/90 dark:bg-[#111827]/90 backdrop-blur-md border border-gray-200 dark:border-gray-700 rounded-2xl shadow-xl flex flex-col gap-6 p-6 md:hidden z-40 ${menuOpen ? "pointer-events-auto" : "pointer-events-none"}`}
+  >
+    <a href="#hero" onClick={() => setMenuOpen(false)} className="hover:opacity-70 text-lg font-semibold">Home</a>
+    <a href="#programs" onClick={() => setMenuOpen(false)} className="hover:opacity-70 text-lg font-semibold">Programs</a>
+    <a href="#gallery" onClick={() => setMenuOpen(false)} className="hover:opacity-70 text-lg font-semibold">Gallery</a>
+    <a href="#contact" onClick={() => setMenuOpen(false)} className="hover:opacity-70 text-lg font-semibold">Contact</a>
+  </motion.div>
+</nav>
 
       {/* Floating Gradient Blobs */}
       {blobs.map((b, i) => (
