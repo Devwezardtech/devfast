@@ -78,8 +78,8 @@ const DonLeoFitnessLanding = () => {
         {stats.map((s, idx) => (
           <motion.div
             key={idx}
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0, y: 30, scale: 0.95 }}
+            whileInView={{ opacity: 1, y: 0, scale: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: idx * 0.2 }}
             className="bg-white/90 dark:bg-[#111827]/80 rounded-3xl p-8 shadow-2xl dark:shadow-[0_0_50px_rgba(255,255,255,0.05)]"
@@ -105,8 +105,11 @@ const DonLeoFitnessLanding = () => {
           {programs.map((p, idx) => (
             <motion.div
               key={idx}
-              whileHover={{ y: -8, scale: 1.03 }}
-              className="bg-white/90 dark:bg-[#111827]/80 p-6 rounded-3xl shadow-xl dark:shadow-[0_0_40px_rgba(255,255,255,0.05)] text-center transition cursor-pointer"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              whileHover={{ y: -10, scale: 1.05 }}
+              transition={{ duration: 0.5 }}
+              className="bg-white/90 dark:bg-[#111827]/80 p-6 rounded-3xl shadow-xl dark:shadow-[0_0_40px_rgba(255,255,255,0.05)] text-center cursor-pointer"
             >
               <h3 className="text-xl font-semibold mb-2">{p.name}</h3>
               <p className="text-gray-600 dark:text-gray-300">{p.duration}</p>
@@ -117,26 +120,33 @@ const DonLeoFitnessLanding = () => {
       </motion.section>
 
       {/* GALLERY */}
-<motion.section
-  id="gallery"
-  className="max-w-6xl mx-auto px-6 py-16"
-  initial={{ opacity: 0 }}
-  whileInView={{ opacity: 1 }}
-  viewport={{ once: true }}
->
-  <h2 className="text-4xl font-bold text-center mb-12">Gym Gallery</h2>
-  <div className="grid md:grid-cols-5 gap-4">
-    {gymPhotos.map((img, idx) => (
-      <motion.img
-        key={idx}
-        src={img}
-        alt={`Gym ${idx + 1}`}
-        whileHover={{ scale: 1.05 }}
-        className="rounded-2xl shadow-xl dark:shadow-[0_0_30px_rgba(255,255,255,0.05)] transition"
-      />
-    ))}
-  </div>
-</motion.section>
+      <motion.section
+        id="gallery"
+        className="max-w-6xl mx-auto px-6 py-16"
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+        variants={{
+          hidden: {},
+          visible: { transition: { staggerChildren: 0.1 } }
+        }}
+      >
+        <h2 className="text-4xl font-bold text-center mb-12">Gym Gallery</h2>
+        <div className="grid md:grid-cols-5 gap-4">
+          {gymPhotos.map((img, idx) => (
+            <motion.img
+              key={idx}
+              src={img}
+              alt={`Gym ${idx + 1}`}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              whileHover={{ scale: 1.08, rotate: 1 }}
+              transition={{ duration: 0.4 }}
+              className="rounded-2xl shadow-xl dark:shadow-[0_0_30px_rgba(255,255,255,0.05)] cursor-pointer"
+            />
+          ))}
+        </div>
+      </motion.section>
 
       {/* CONTACT + BOOKING */}
       <motion.section
@@ -149,7 +159,12 @@ const DonLeoFitnessLanding = () => {
         <h2 className="text-4xl font-bold text-center mb-8">Contact & Book Coaching</h2>
         <div className="grid md:grid-cols-2 gap-12">
           {/* Booking Form */}
-          <form className="bg-white/90 dark:bg-[#111827]/80 p-8 rounded-3xl shadow-xl dark:shadow-[0_0_40px_rgba(255,255,255,0.05)] grid gap-4">
+          <motion.form
+            className="bg-white/90 dark:bg-[#111827]/80 p-8 rounded-3xl shadow-xl dark:shadow-[0_0_40px_rgba(255,255,255,0.05)] grid gap-4"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+          >
             <input type="text" placeholder="Full Name" className="border border-gray-300 dark:border-gray-500 p-4 rounded-2xl focus:outline-none focus:ring-2 focus:ring-green-500 transition"/>
             <input type="email" placeholder="Email Address" className="border border-gray-300 dark:border-gray-500 p-4 rounded-2xl focus:outline-none focus:ring-2 focus:ring-green-500 transition"/>
             <input type="tel" placeholder="Phone Number" className="border border-gray-300 dark:border-gray-500 p-4 rounded-2xl focus:outline-none focus:ring-2 focus:ring-green-500 transition"/>
@@ -160,7 +175,7 @@ const DonLeoFitnessLanding = () => {
             <input type="date" className="border border-gray-300 dark:border-gray-500 p-4 rounded-2xl focus:outline-none focus:ring-2 focus:ring-green-500 transition"/>
             <input type="time" className="border border-gray-300 dark:border-gray-500 p-4 rounded-2xl focus:outline-none focus:ring-2 focus:ring-green-500 transition"/>
             <button className="bg-green-800 text-white font-bold py-4 rounded-2xl shadow-lg hover:bg-green-700 transition">Book Coaching</button>
-          </form>
+          </motion.form>
 
           {/* Map & Contact Info */}
           <div className="flex flex-col gap-6">
@@ -183,6 +198,7 @@ const DonLeoFitnessLanding = () => {
       <footer className="bg-gradient-to-r from-green-800 to-teal-700 text-white py-4 text-center shadow-inner">
         <p>© 2026 DonLeo Fitness. All Rights Reserved.</p>
       </footer>
+
     </div>
   );
 };
