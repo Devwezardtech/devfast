@@ -139,20 +139,46 @@ const PrimeNestRealtyLanding = () => {
       </AnimatePresence>
 
       {/* CONTACT */}
-      <section id="contact" className="py-24 max-w-3xl mx-auto px-6">
-        <h2 className="text-4xl font-bold mb-10 text-center">Contact Us</h2>
-        <form className="space-y-6">
-          <input required placeholder="Full Name" className="w-full p-4 rounded-xl border dark:bg-white/5 dark:border-white/10" />
-          <input required type="email" placeholder="Email Address" className="w-full p-4 rounded-xl border dark:bg-white/5 dark:border-white/10" />
-          <textarea required placeholder="Message" rows="5" className="w-full p-4 rounded-xl border dark:bg-white/5 dark:border-white/10" />
-          <button className="w-full bg-gradient-to-r from-yellow-400 to-amber-500 text-black py-4 rounded-xl font-semibold shadow-lg hover:scale-105 transition">
-            Send Message
-          </button>
-        </form>
-      </section>
+<section
+  id="contact"
+  className="py-24 max-w-3xl mx-auto px-6"
+>
+  <h2 className="text-4xl font-bold mb-10 text-center text-gray-900 dark:text-gray-700">
+    Contact Us
+  </h2>
+
+  <form className="space-y-6">
+    <input
+      required
+      placeholder="Full Name"
+      className="w-full p-4 rounded-xl border border-gray-300 dark:border-gray-500 bg-white/90 dark:bg-white/10 backdrop-blur-md shadow-lg dark:shadow-[0_0_30px_rgba(255,255,255,0.05)] text-gray-900 dark:text-gray-100 placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-yellow-400 transition"
+    />
+
+    <input
+      required
+      type="email"
+      placeholder="Email Address"
+      className="w-full p-4 rounded-xl border border-gray-300 dark:border-gray-500 bg-white/90 dark:bg-white/10 backdrop-blur-md shadow-lg dark:shadow-[0_0_30px_rgba(255,255,255,0.05)] text-gray-900 dark:text-gray-100 placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-yellow-400 transition"
+    />
+
+    <textarea
+      required
+      placeholder="Message"
+      rows="5"
+      className="w-full p-4 rounded-xl border border-gray-300 dark:border-gray-500 bg-white/90 dark:bg-white/10 backdrop-blur-md shadow-lg dark:shadow-[0_0_30px_rgba(255,255,255,0.05)] text-gray-900 dark:text-gray-100 placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-yellow-400 transition"
+    />
+
+    <button
+      type="submit"
+      className="w-full bg-gradient-to-r from-yellow-400 to-amber-500 text-black dark:text-black py-4 rounded-xl font-semibold shadow-xl hover:scale-105 transition transform"
+    >
+      Send Message
+    </button>
+  </form>
+</section>
 
       {/* FOOTER */}
-      <footer className="bg-gray-950 text-gray-400 py-12 text-center">
+      <footer className="bg-gray-950 text-gray-400 py-3 text-center">
         <p>© 2026 PrimeNest Realty. All Rights Reserved.</p>
       </footer>
     </div>
