@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { motion } from "framer-motion";
 import { Card, CardContent } from "../components/ui/card";
 import { Button } from "../components/ui/button";
@@ -12,6 +13,8 @@ const fadeUp = {
 const developerPhoto = "/developer_photo.png";
 
 export default function DevfastLanding() {
+
+  const [showProfile, setShowProfile] = useState(false);
   const navigate = useNavigate();
   const go = (path) => navigate(path);
 
@@ -181,44 +184,94 @@ export default function DevfastLanding() {
         </div>
       </section>
 
-      {/* MEET THE DEVELOPER */}
-      <section className="py-24 px-6 bg-gradient-to-r from-blue-50 to-white relative overflow-hidden">
-        <div className="max-w-4xl mx-auto text-center relative z-10">
-          <h2 className="text-3xl font-bold text-slate-900 mb-12 tracking-tight">
-            Developer
-          </h2>
-          <motion.div
-            className="flex flex-col md:flex-row items-center gap-10 bg-white rounded-3xl shadow-2xl hover:shadow-3xl p-8 transition-all duration-500"
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-          >
-            <motion.img
-              src={developerPhoto}
-              alt="Ejemar Maloloy-on"
-              className="w-44 h-44 rounded-full object-cover border-4 border-blue-500 shadow-xl"
-              whileHover={{ scale: 1.08 }}
-              transition={{ type: "spring", stiffness: 300 }}
-            />
-            <div className="text-left flex-1">
-              <h3 className="text-2xl font-bold text-slate-900 mb-2">Ejemar Maloloy-on</h3>
-              <p className="text-slate-600 mb-2 font-medium">Full-Stack Web Developer</p>
-              <p className="text-slate-600 mb-4 leading-relaxed">
-                I build fast, modern, and high-converting websites for startups and small businesses.
-              </p>
-              <div className="flex flex-col sm:flex-row sm:items-center gap-3 mb-4">
-                <a href="https://devwezardtech.github.io/Portfolio/" target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center px-6 py-3 bg-gradient-to-r from-blue-500 to-cyan-400 text-white rounded-2xl font-semibold hover:from-blue-600 hover:to-cyan-500 shadow-lg transition">
-                  <span className="mr-2">Portfolio</span><CheckCircle className="w-4 h-4" />
-                </a>
-                <a href="mailto:ejemarmaloloyon007@gmail.com" className="inline-flex items-center justify-center px-6 py-3 bg-gray-200 text-slate-900 rounded-2xl font-semibold hover:bg-gray-300 shadow-md transition">
-                  <Mail className="mr-2 w-4 h-4" /> Email Me
-                </a>
-              </div>
-              <p className="mt-4 text-slate-500 text-sm">📞 +63 970 450 5022</p>
+     {/* MEET THE DEVELOPER */}
+<section className="py-24 px-6 bg-gradient-to-r from-blue-50 to-white relative overflow-hidden">
+  <div className="max-w-4xl mx-auto text-center relative z-10">
+
+    {/* Clickable Title Card */}
+    <motion.div
+      onClick={() => setShowProfile(!showProfile)}
+      whileHover={{ scale: 1.03 }}
+      className="cursor-pointer inline-block bg-white px-8 py-2 rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-500"
+    >
+      <h4 className="text-2xl font-bold text-slate-900 tracking-tight">
+        Developer
+      </h4>
+      <p className="text-slate-500 text-sm mt-1">
+        {showProfile ? "Click to hide profile" : "Click to view profile"}
+      </p>
+    </motion.div>
+
+    {/* Hidden Profile */}
+    <motion.div
+      initial={false}
+      animate={{
+        opacity: showProfile ? 1 : 0,
+        height: showProfile ? "auto" : 0,
+      }}
+      transition={{ duration: 0.6 }}
+      className="overflow-hidden"
+    >
+      {showProfile && (
+        <motion.div
+          className="mt-12 flex flex-col md:flex-row items-center gap-6 bg-white rounded-3xl p-8 transition-all duration-500"
+          initial={{ opacity: 0, y: 40 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+        >
+          {/* Avatar */}
+          <motion.img
+            src={developerPhoto}
+            alt="Developer"
+            className="w-44 h-44 rounded-full object-cover border-4 border-blue-500 shadow-xl"
+            whileHover={{ scale: 1.08 }}
+            transition={{ type: "spring", stiffness: 300 }}
+          />
+
+          {/* Info */}
+          <div className="text-left flex-1">
+            <h3 className="text-2xl font-bold text-slate-900 mb-2">
+              Ejemar Maloloy-on
+            </h3>
+
+            <p className="text-slate-600 mb-2 font-medium">
+              Full-Stack Web Developer
+            </p>
+
+            <p className="text-slate-600 mb-4 leading-relaxed">
+              I build fast, modern, and high-converting websites for startups and small businesses.
+            </p>
+
+            <div className="flex flex-col sm:flex-row sm:items-center gap-3 mb-4">
+              <a
+                href="https://devwezardtech.github.io/Portfolio/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center px-6 py-3 bg-gradient-to-r from-blue-500 to-cyan-400 text-white rounded-2xl font-semibold hover:from-blue-600 hover:to-cyan-500 shadow-lg transition"
+              >
+                <span className="mr-2">Portfolio</span>
+                <CheckCircle className="w-4 h-4" />
+              </a>
+
+              <a
+                href="mailto:ejemarmaloloyon007@gmail.com"
+                className="inline-flex items-center justify-center px-6 py-3 bg-gray-200 text-slate-900 rounded-2xl font-semibold hover:bg-gray-300 shadow-md transition"
+              >
+                <Mail className="mr-2 w-4 h-4" />
+                Email Me
+              </a>
             </div>
-          </motion.div>
-        </div>
-      </section>
+
+            <p className="mt-4 text-slate-500 text-sm">
+              📞 +63 970 450 5022
+            </p>
+          </div>
+        </motion.div>
+      )}
+    </motion.div>
+
+  </div>
+</section>
 
       <footer className="text-center py-6 text-slate-400 text-sm tracking-wide">
         © {new Date().getFullYear()} Devfast. Built fast. Built right.
