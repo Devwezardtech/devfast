@@ -65,7 +65,7 @@ const DonLeoFitnessLanding = () => {
   <motion.div
     initial={{ opacity: 0, x: 50 }}
     animate={menuOpen ? { opacity: 1, x: 0 } : { opacity: 0, x: 50 }}
-    className={`absolute top-20 right-4 w-11/12 max-w-xs bg-white/90 dark:bg-[#111827]/90 backdrop-blur-md border border-gray-200 dark:border-gray-700 rounded-2xl shadow-xl flex flex-col gap-6 p-6 md:hidden z-40 ${menuOpen ? "pointer-events-auto" : "pointer-events-none"}`}
+    className={`absolute top-20 right-4 w-11/12 text-white max-w-xs bg-white/90 dark:bg-[#111827]/90 backdrop-blur-md border border-gray-200 dark:border-gray-700 rounded-2xl shadow-xl flex flex-col gap-6 p-6 md:hidden z-40 ${menuOpen ? "pointer-events-auto" : "pointer-events-none"}`}
   >
     <a href="#hero" onClick={() => setMenuOpen(false)} className="hover:opacity-70 text-lg font-semibold">Home</a>
     <a href="#programs" onClick={() => setMenuOpen(false)} className="hover:opacity-70 text-lg font-semibold">Programs</a>
