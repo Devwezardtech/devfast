@@ -8,7 +8,7 @@ const PrimeNestRealtyLanding = () => {
   // Generate 10 properties dynamically
   const properties = Array.from({ length: 10 }, (_, i) => ({
     title: `Luxury Property ${i + 1}`,
-    price: `$${(180 + i * 10)},000`,
+    price: `₱${(3 + i * 3)},000,000`,
     location: "Tacloban City",
     img: `/primenestrealty/house${i + 1}.png`,
     hot: i % 3 === 0, // every 3rd property is "HOT"
