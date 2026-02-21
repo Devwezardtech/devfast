@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import { motion } from "framer-motion";
 
 const DonLeoFitnessLanding = () => {
+  const [dark, setDark] = useState(false);
+
   const programs = [
     { name: "Weight Loss Program", duration: "8 weeks", price: "$150" },
     { name: "Muscle Gain Program", duration: "12 weeks", price: "$200" },
@@ -13,98 +15,172 @@ const DonLeoFitnessLanding = () => {
     { name: "Sara P.", text: "Gained muscle and confidence. Highly recommend!" },
   ];
 
-  const gymPhotos = [...Array(10)].map(
-    (_, i) => `https://source.unsplash.com/400x300/?gym,fitness,${i}`
-  );
+  const gymPhotos = [...Array(15)].map((_, i) => `/fitness/gym${i + 1}.png`);
+
+  const stats = [
+    { label: "Clients Trained", value: 1200 },
+    { label: "Programs Offered", value: 15 },
+    { label: "Years Experience", value: 10 },
+  ];
+
+  const blobs = [
+    { size: 72, top: "10%", left: "5%", color: "from-pink-400 via-purple-500 to-indigo-500", duration: 20 },
+    { size: 56, top: "70%", left: "80%", color: "from-yellow-400 via-red-400 to-pink-500", duration: 25 },
+    { size: 80, top: "40%", left: "50%", color: "from-green-400 via-teal-500 to-blue-500", duration: 30 },
+    { size: 64, top: "85%", left: "20%", color: "from-orange-400 via-red-500 to-pink-400", duration: 28 },
+  ];
 
   return (
-    <div className="font-sans text-gray-800 bg-gray-50">
+    <div className={`${dark ? "dark bg-[#0f172a] text-gray-100" : "bg-gray-50 text-gray-900"} scroll-smooth font-sans transition-all duration-700`}>
+
+      {/* Navbar */}
+      <nav className="fixed top-6 left-1/2 -translate-x-1/2 z-50 backdrop-blur-xl bg-white/70 dark:bg-white/5 border border-white/30 dark:border-white/10 px-10 py-4 rounded-full shadow-xl dark:shadow-[0_0_30px_rgba(255,255,255,0.05)] flex gap-10 items-center transition">
+        <a href="#hero" className="hover:opacity-70">Home</a>
+        <a href="#programs" className="hover:opacity-70">Programs</a>
+        <a href="#gallery" className="hover:opacity-70">Gallery</a>
+        <a href="#contact" className="hover:opacity-70">Contact</a>
+        <button onClick={() => setDark(!dark)} className="w-10 h-10 rounded-full flex items-center justify-center bg-white/10 dark:bg-white/5 backdrop-blur-md border border-white/20 hover:scale-110 transition">
+          {dark ? "☀️" : "🌙"}
+        </button>
+      </nav>
+
+      {/* Floating Gradient Blobs */}
+      {blobs.map((b, i) => (
+        <motion.div
+          key={i}
+          className={`absolute rounded-full bg-gradient-to-r ${b.color} opacity-30 blur-3xl`}
+          style={{ width: b.size, height: b.size, top: b.top, left: b.left, zIndex: -1 }}
+          animate={{ y: ["0%", "10%", "0%"], x: ["0%", "5%", "0%"] }}
+          transition={{ repeat: Infinity, duration: b.duration, ease: "easeInOut" }}
+        />
+      ))}
 
       {/* HERO */}
       <motion.section
-        className="bg-gradient-to-r from-green-800 to-teal-700 text-white min-h-screen flex flex-col justify-center items-center text-center px-6"
+        id="hero"
+        className="relative min-h-screen flex flex-col justify-center items-center text-center px-6 overflow-hidden bg-cover bg-center"
+        style={{ backgroundImage: `url(${gymPhotos[11]})` }}
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
       >
-        <h1 className="text-5xl font-bold mb-4">DonLeo Fitness</h1>
-        <p className="text-lg md:text-2xl mb-6">Transform Your Body & Mind</p>
-        <button className="bg-yellow-400 text-green-800 px-8 py-3 rounded-lg font-bold hover:bg-yellow-300 transition">
-          Book Session
-        </button>
+        <div className="absolute inset-0 bg-black/40 backdrop-blur-sm"></div>
+        <div className="relative z-10">
+          <h1 className="text-5xl md:text-6xl font-extrabold mb-4 text-white drop-shadow-lg">DonLeo Fitness</h1>
+          <p className="text-lg md:text-2xl mb-6 text-white drop-shadow-md">Transform Your Body & Mind</p>
+          <a href="#contact" className="bg-yellow-400 text-green-800 px-8 py-4 rounded-2xl font-bold shadow-lg hover:bg-yellow-300 transition">
+            Book Coaching
+          </a>
+        </div>
+      </motion.section>
+
+      {/* STATS */}
+      <motion.section className="max-w-6xl mx-auto px-6 py-16 grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+        {stats.map((s, idx) => (
+          <motion.div
+            key={idx}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: idx * 0.2 }}
+            className="bg-white/90 dark:bg-[#111827]/80 rounded-3xl p-8 shadow-2xl dark:shadow-[0_0_50px_rgba(255,255,255,0.05)]"
+          >
+            <p className="text-4xl font-bold mb-2">{s.value}+</p>
+            <p className="font-semibold">{s.label}</p>
+          </motion.div>
+        ))}
       </motion.section>
 
       {/* PROGRAMS */}
-      <section className="max-w-6xl mx-auto px-6 py-16">
-        <h2 className="text-3xl font-bold text-center mb-12">Training Programs</h2>
-        <div className="grid md:grid-cols-3 gap-8">
+      <motion.section
+        id="programs"
+        className="max-w-6xl mx-auto px-6 py-16 bg-cover bg-center rounded-3xl relative"
+        style={{ backgroundImage: `url(${gymPhotos[12]})` }}
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: true }}
+      >
+        <div className="absolute inset-0 bg-black/40 rounded-3xl"></div>
+        <h2 className="text-4xl font-bold text-center mb-12 relative z-10 text-white drop-shadow-lg">Training Programs</h2>
+        <div className="grid md:grid-cols-3 gap-8 relative z-10">
           {programs.map((p, idx) => (
-            <div key={idx} className="bg-white p-6 rounded-xl shadow-lg text-center hover:scale-105 transition transform">
-              <h3 className="text-xl font-semibold">{p.name}</h3>
-              <p className="text-gray-600">{p.duration}</p>
+            <motion.div
+              key={idx}
+              whileHover={{ y: -8, scale: 1.03 }}
+              className="bg-white/90 dark:bg-[#111827]/80 p-6 rounded-3xl shadow-xl dark:shadow-[0_0_40px_rgba(255,255,255,0.05)] text-center transition cursor-pointer"
+            >
+              <h3 className="text-xl font-semibold mb-2">{p.name}</h3>
+              <p className="text-gray-600 dark:text-gray-300">{p.duration}</p>
               <p className="text-green-700 font-bold mt-2">{p.price}</p>
-            </div>
+            </motion.div>
           ))}
         </div>
-      </section>
-
-      {/* ABOUT TRAINER */}
-      <section className="bg-gray-100 py-16 px-6 text-center">
-        <h2 className="text-3xl font-bold mb-8">About DonLeo</h2>
-        <p className="max-w-3xl mx-auto text-gray-700">
-          DonLeo is a certified personal trainer with 10+ years of experience helping clients achieve their fitness goals. Specializing in weight loss, muscle gain, and functional training.
-        </p>
-      </section>
-
-      {/* TESTIMONIALS */}
-      <section className="max-w-6xl mx-auto px-6 py-16 bg-yellow-50">
-        <h2 className="text-3xl font-bold text-center mb-12">Client Transformations</h2>
-        <div className="grid md:grid-cols-2 gap-8">
-          {testimonials.map((t, idx) => (
-            <div key={idx} className="bg-white p-6 rounded-xl shadow-lg">
-              <p className="text-gray-700 mb-4">"{t.text}"</p>
-              <h4 className="font-semibold">{t.name}</h4>
-            </div>
-          ))}
-        </div>
-      </section>
+      </motion.section>
 
       {/* GALLERY */}
-      <section className="max-w-6xl mx-auto px-6 py-16">
-        <h2 className="text-3xl font-bold text-center mb-12">Gym Gallery</h2>
-        <div className="grid md:grid-cols-5 gap-4">
-          {gymPhotos.map((img, idx) => (
-            <img key={idx} src={img} alt={`Gym ${idx+1}`} className="rounded shadow-lg" />
-          ))}
+<motion.section
+  id="gallery"
+  className="max-w-6xl mx-auto px-6 py-16"
+  initial={{ opacity: 0 }}
+  whileInView={{ opacity: 1 }}
+  viewport={{ once: true }}
+>
+  <h2 className="text-4xl font-bold text-center mb-12">Gym Gallery</h2>
+  <div className="grid md:grid-cols-5 gap-4">
+    {gymPhotos.map((img, idx) => (
+      <motion.img
+        key={idx}
+        src={img}
+        alt={`Gym ${idx + 1}`}
+        whileHover={{ scale: 1.05 }}
+        className="rounded-2xl shadow-xl dark:shadow-[0_0_30px_rgba(255,255,255,0.05)] transition"
+      />
+    ))}
+  </div>
+</motion.section>
+
+      {/* CONTACT + BOOKING */}
+      <motion.section
+        id="contact"
+        className="max-w-4xl mx-auto px-6 py-16"
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: true }}
+      >
+        <h2 className="text-4xl font-bold text-center mb-8">Contact & Book Coaching</h2>
+        <div className="grid md:grid-cols-2 gap-12">
+          {/* Booking Form */}
+          <form className="bg-white/90 dark:bg-[#111827]/80 p-8 rounded-3xl shadow-xl dark:shadow-[0_0_40px_rgba(255,255,255,0.05)] grid gap-4">
+            <input type="text" placeholder="Full Name" className="border border-gray-300 dark:border-gray-500 p-4 rounded-2xl focus:outline-none focus:ring-2 focus:ring-green-500 transition"/>
+            <input type="email" placeholder="Email Address" className="border border-gray-300 dark:border-gray-500 p-4 rounded-2xl focus:outline-none focus:ring-2 focus:ring-green-500 transition"/>
+            <input type="tel" placeholder="Phone Number" className="border border-gray-300 dark:border-gray-500 p-4 rounded-2xl focus:outline-none focus:ring-2 focus:ring-green-500 transition"/>
+            <select className="border border-gray-300 dark:border-gray-500 p-4 rounded-2xl focus:outline-none focus:ring-2 focus:ring-green-500 transition">
+              <option>Select Program</option>
+              {programs.map((p, i) => (<option key={i}>{p.name}</option>))}
+            </select>
+            <input type="date" className="border border-gray-300 dark:border-gray-500 p-4 rounded-2xl focus:outline-none focus:ring-2 focus:ring-green-500 transition"/>
+            <input type="time" className="border border-gray-300 dark:border-gray-500 p-4 rounded-2xl focus:outline-none focus:ring-2 focus:ring-green-500 transition"/>
+            <button className="bg-green-800 text-white font-bold py-4 rounded-2xl shadow-lg hover:bg-green-700 transition">Book Coaching</button>
+          </form>
+
+          {/* Map & Contact Info */}
+          <div className="flex flex-col gap-6">
+            <iframe
+              title="DonLeo Fitness Location"
+              src="https://maps.google.com/maps?q=tacloban%20city&t=&z=13&ie=UTF8&iwloc=&output=embed"
+              className="w-full h-80 rounded-2xl border-0 shadow-xl"
+            ></iframe>
+            <div className="bg-white/90 dark:bg-[#111827]/80 p-6 rounded-3xl shadow-xl dark:shadow-[0_0_30px_rgba(255,255,255,0.05)]">
+              <h3 className="text-2xl font-semibold mb-2">Contact Info</h3>
+              <p>Email: info@donleofitness.com</p>
+              <p>Phone: +63 912 345 6789</p>
+              <p>Address: Tacloban City, Leyte, Philippines</p>
+            </div>
+          </div>
         </div>
-      </section>
+      </motion.section>
 
-      {/* BOOKING FORM */}
-      <section className="max-w-xl mx-auto px-6 py-16">
-        <h2 className="text-3xl font-bold text-center mb-8">Book Your Session</h2>
-        <form className="bg-white p-8 rounded-xl shadow-lg grid gap-4">
-          <input type="text" placeholder="Full Name" className="border p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500" />
-          <input type="email" placeholder="Email Address" className="border p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500" />
-          <input type="tel" placeholder="Phone Number" className="border p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500" />
-          <input type="date" className="border p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500" />
-          <input type="time" className="border p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500" />
-          <button className="bg-green-800 text-white font-bold py-3 rounded-lg hover:bg-green-700 transition">
-            Book Session
-          </button>
-        </form>
-      </section>
-
-      {/* MAP */}
-      <section className="max-w-6xl mx-auto px-6 py-16">
-        <h2 className="text-3xl font-bold text-center mb-6">Our Location</h2>
-        <iframe
-          title="DonLeo Fitness Location"
-          src="https://maps.google.com/maps?q=tacloban%20city&t=&z=13&ie=UTF8&iwloc=&output=embed"
-          className="w-full h-72 rounded-xl border-0"
-        ></iframe>
-      </section>
-
-      {/* FOOTER */}
-      <footer className="bg-gray-900 text-white py-8 text-center">
+      {/* Footer */}
+      <footer className="bg-gradient-to-r from-green-800 to-teal-700 text-white py-4 text-center shadow-inner">
         <p>© 2026 DonLeo Fitness. All Rights Reserved.</p>
       </footer>
     </div>
