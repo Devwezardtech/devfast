@@ -1,186 +1,158 @@
-import React from "react";
-import { motion } from "framer-motion";
+import React, { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 
 const PrimeNestRealtyLanding = () => {
-  const properties = [
-    {
-      title: "Modern Family House",
-      price: "$250,000",
-      location: "Tacloban City",
-      img: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c",
-    },
-    {
-      title: "Luxury Condo Unit",
-      price: "$180,000",
-      location: "Tacloban City",
-      img: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c",
-    },
-    {
-      title: "Spacious Townhouse",
-      price: "$210,000",
-      location: "Tacloban City",
-      img: "https://images.unsplash.com/photo-1598228723793-52759bba239c",
-    },
-  ];
+  const [dark, setDark] = useState(false);
+  const [selected, setSelected] = useState(null);
 
-  const testimonials = [
-    {
-      name: "Angela M.",
-      text: "PrimeNest helped us find our dream home fast and stress-free.",
-    },
-    {
-      name: "Robert C.",
-      text: "Very professional and responsive agent. Highly recommended!",
-    },
-  ];
+  // Generate 10 properties dynamically
+  const properties = Array.from({ length: 10 }, (_, i) => ({
+    title: `Luxury Property ${i + 1}`,
+    price: `$${(180 + i * 10)},000`,
+    location: "Tacloban City",
+    img: `/primenestrealty/house${i + 1}.png`,
+    hot: i % 3 === 0, // every 3rd property is "HOT"
+    gallery: [
+      `/primenestrealty/house${i + 1}.png`,
+      `/primenestrealty/house${((i + 1) % 10) + 1}.png`,
+    ],
+  }));
 
   return (
-    <div className="font-sans bg-gray-50 text-gray-800">
+    <div
+      className={`${
+        dark
+          ? "dark bg-gradient-to-br from-[#0f172a] via-[#0b1120] to-black text-gray-100"
+          : "bg-white text-gray-900"
+      } scroll-smooth font-sans transition-all duration-700`}
+    >
+      {/* Floating Luxury Navbar */}
+      <nav className="fixed top-6 left-1/2 -translate-x-1/2 z-50 backdrop-blur-xl bg-white/70 dark:bg-white/5 border border-white/30 dark:border-white/10 px-10 py-4 rounded-full shadow-xl dark:shadow-[0_0_30px_rgba(255,255,255,0.05)] flex gap-10 items-center transition">
+        <a href="#hero" className="hover:opacity-70">Home</a>
+        <a href="#properties" className="hover:opacity-70">Properties</a>
+        <a href="#contact" className="hover:opacity-70">Contact</a>
 
-    {/* HERO */}
-<section
-  className="relative min-h-screen flex items-center justify-center text-center text-white overflow-hidden"
->
-  {/* Background Image */}
-  <div
-    className="absolute inset-0 bg-cover bg-center"
-    style={{
-      backgroundImage:
-        "url('https://images.unsplash.com/photo-1600585154526-990dced4db0d')",
-    }}
-  ></div>
+        <button
+          onClick={() => setDark(!dark)}
+          className="w-10 h-10 rounded-full flex items-center justify-center bg-white/10 dark:bg-white/5 backdrop-blur-md border border-white/20 hover:scale-110 transition"
+        >
+          <span className="text-lg">{dark ? "☀️" : "🌙"}</span>
+        </button>
+      </nav>
 
-  {/* Dark Overlay */}
-  <div className="absolute inset-0 bg-black/60"></div>
+      {/* HERO */}
+      <section
+        id="hero"
+        className="relative min-h-screen flex items-center justify-center text-center text-white overflow-hidden"
+      >
+        <div
+          className="absolute inset-0 bg-cover bg-center scale-110"
+          style={{ backgroundImage: "url('/primenestrealty/house5.png')" }}
+        />
+        <div className="absolute inset-0 bg-black/70 backdrop-blur-sm" />
 
-  {/* Soft Gradient Fade (Bottom) */}
-  <div className="absolute bottom-0 left-0 w-full h-40 bg-gradient-to-t from-black/80 to-transparent"></div>
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1 }}
+          className="relative z-10 px-6 max-w-5xl"
+        >
+          <h1 className="text-7xl font-extrabold tracking-tight mb-8">
+            PrimeNest Realty
+          </h1>
+          <p className="text-2xl mb-10">
+            Luxury Living Elevated.
+          </p>
+        </motion.div>
+      </section>
 
-  {/* Content */}
-  <motion.div
-    initial={{ opacity: 0, y: 40 }}
-    animate={{ opacity: 1, y: 0 }}
-    transition={{ duration: 0.8 }}
-    className="relative z-10 px-6 max-w-4xl"
-  >
-    <h1 className="text-5xl md:text-7xl font-extrabold leading-tight mb-6 drop-shadow-lg">
-      PrimeNest Realty
-    </h1>
-
-    <p className="text-xl md:text-2xl text-gray-200 mb-8">
-      Discover Elegant Homes & Luxury Living in Tacloban City
-    </p>
-
-    <div className="flex justify-center gap-4 flex-wrap">
-      <button className="bg-yellow-400 text-gray-900 px-10 py-4 rounded-full font-semibold text-lg hover:bg-yellow-300 transition shadow-xl">
-        View Listings
-      </button>
-
-      <button className="border border-white px-10 py-4 rounded-full font-semibold text-lg hover:bg-white hover:text-black transition">
-        Contact Agent
-      </button>
-    </div>
-  </motion.div>
-</section>
-
-
-      {/* FEATURED PROPERTIES */}
-      <section className="max-w-6xl mx-auto px-6 py-24">
-        <h2 className="text-4xl font-bold text-center mb-16">
+      {/* PROPERTIES */}
+      <section id="properties" className="max-w-7xl mx-auto px-6 py-32">
+        <h2 className="text-5xl font-bold text-center mb-20">
           Featured Properties
         </h2>
 
-        <div className="grid md:grid-cols-3 gap-10">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-14">
           {properties.map((p, idx) => (
             <motion.div
               key={idx}
-              whileHover={{ scale: 1.04 }}
-              transition={{ duration: 0.4 }}
-              className="bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-2xl transition-all duration-500"
+              whileHover={{ y: -10 }}
+              className="group relative rounded-3xl overflow-hidden bg-white/70 dark:bg-white/5 backdrop-blur-xl border border-transparent dark:border-white/10 shadow-xl dark:shadow-[0_0_40px_rgba(0,0,0,0.6)] cursor-pointer transition"
+              onClick={() => setSelected(p)}
             >
+              {p.hot && (
+                <div className="absolute top-4 left-4 bg-red-500 text-white px-4 py-1 text-sm rounded-full z-20">
+                  HOT DEAL
+                </div>
+              )}
+
+              <div className="absolute bottom-4 right-4 bg-gradient-to-r from-yellow-400 to-amber-500 text-black px-4 py-2 rounded-full font-bold shadow-lg z-20">
+                {p.price}
+              </div>
+
               <img
                 src={p.img}
                 alt={p.title}
-                className="h-60 w-full object-cover"
+                className="h-72 w-full object-cover transition duration-1000 group-hover:scale-110"
               />
-              <div className="p-6">
-                <h3 className="text-xl font-semibold">{p.title}</h3>
-                <p className="text-gray-500">{p.location}</p>
-                <p className="text-yellow-500 font-bold mt-3 text-lg">
-                  {p.price}
-                </p>
-                <button className="mt-5 w-full bg-gray-900 text-white py-2 rounded-lg hover:bg-gray-800 transition">
-                  View Details
-                </button>
+
+              <div className="p-8">
+                <h3 className="text-2xl font-semibold">{p.title}</h3>
+                <p className="opacity-70">{p.location}</p>
               </div>
             </motion.div>
           ))}
         </div>
       </section>
 
-      {/* AGENT SECTION */}
-      <section className="bg-white py-24 px-6">
-        <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-12 items-center">
-          <img
-            src="https://images.unsplash.com/photo-1560250097-0b93528c311a"
-            alt="Agent"
-            className="rounded-2xl shadow-xl"
-          />
-          <div>
-            <h2 className="text-4xl font-bold mb-6">Meet Your Agent</h2>
-            <p className="text-gray-600 leading-relaxed">
-              Hi, I’m Alex Rivera, a licensed real estate expert with over 8 years
-              of experience helping families and investors secure the right
-              property. I’m committed to guiding you every step of the way.
-            </p>
-            <button className="mt-6 bg-yellow-400 text-gray-900 px-6 py-3 rounded-full font-semibold hover:bg-yellow-300 transition">
-              Contact Agent
-            </button>
-          </div>
-        </div>
-      </section>
+      {/* PROPERTY MODAL */}
+      <AnimatePresence>
+        {selected && (
+          <motion.div
+            className="fixed inset-0 bg-black/80 backdrop-blur-lg flex items-center justify-center z-50 p-6"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+          >
+            <div className="bg-white dark:bg-[#111827] dark:border dark:border-white/10 dark:shadow-[0_0_60px_rgba(0,0,0,0.8)] rounded-3xl p-8 max-w-3xl w-full relative transition">
+              <button
+                onClick={() => setSelected(null)}
+                className="absolute top-6 right-6 w-10 h-10 rounded-full flex items-center justify-center bg-black/10 dark:bg-white/10"
+              >
+                ×
+              </button>
 
-      {/* TESTIMONIALS */}
-      <section className="bg-gray-100 py-24 px-6">
-        <h2 className="text-4xl font-bold text-center mb-16">
-          What Our Clients Say
-        </h2>
+              <h2 className="text-3xl font-bold mb-6">{selected.title}</h2>
 
-        <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-8">
-          {testimonials.map((t, idx) => (
-            <div
-              key={idx}
-              className="bg-white p-8 rounded-2xl shadow-md hover:shadow-xl transition"
-            >
-              <p className="text-gray-700 mb-4 text-lg">“{t.text}”</p>
-              <h4 className="font-semibold text-gray-900">{t.name}</h4>
+              <div className="grid grid-cols-2 gap-4 mb-6">
+                {selected.gallery.map((img, i) => (
+                  <img key={i} src={img} className="rounded-xl" alt="" />
+                ))}
+              </div>
+
+              <button className="bg-gradient-to-r from-yellow-400 to-amber-500 text-black px-8 py-3 rounded-full font-semibold shadow-lg hover:scale-105 transition">
+                Book Viewing
+              </button>
             </div>
-          ))}
-        </div>
-      </section>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
-      {/* CTA SECTION */}
-      <section className="relative py-24 text-center text-white"
-        style={{
-          backgroundImage:
-            "url('https://images.unsplash.com/photo-1600585154526-990dced4db0d')",
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-        }}
-      >
-        <div className="absolute inset-0 bg-black/70"></div>
-        <div className="relative z-10 px-6">
-          <h2 className="text-4xl font-bold mb-6">
-            Ready to Find Your Dream Home?
-          </h2>
-          <button className="bg-yellow-400 text-gray-900 px-10 py-4 rounded-full font-semibold text-lg hover:bg-yellow-300 transition shadow-xl">
-            Schedule a Visit
+      {/* CONTACT */}
+      <section id="contact" className="py-24 max-w-3xl mx-auto px-6">
+        <h2 className="text-4xl font-bold mb-10 text-center">Contact Us</h2>
+        <form className="space-y-6">
+          <input required placeholder="Full Name" className="w-full p-4 rounded-xl border dark:bg-white/5 dark:border-white/10" />
+          <input required type="email" placeholder="Email Address" className="w-full p-4 rounded-xl border dark:bg-white/5 dark:border-white/10" />
+          <textarea required placeholder="Message" rows="5" className="w-full p-4 rounded-xl border dark:bg-white/5 dark:border-white/10" />
+          <button className="w-full bg-gradient-to-r from-yellow-400 to-amber-500 text-black py-4 rounded-xl font-semibold shadow-lg hover:scale-105 transition">
+            Send Message
           </button>
-        </div>
+        </form>
       </section>
 
       {/* FOOTER */}
-      <footer className="bg-gray-900 text-white py-8 text-center">
+      <footer className="bg-gray-950 text-gray-400 py-12 text-center">
         <p>© 2026 PrimeNest Realty. All Rights Reserved.</p>
       </footer>
     </div>
