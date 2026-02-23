@@ -108,7 +108,7 @@ export default function DevfastLanding() {
             { title: "AutoGalaxy", img: "/image/car3.png", action: () => go("/project/autogalaxy") },
             { title: "Eacha Restaurant", img: "https://images.unsplash.com/photo-1528605248644-14dd04022da1", action: () => go("/project/eacha") },
             { title: "Tattoo Artist Booking", img: "https://images.unsplash.com/photo-1545235617-9465d2a55698", action: () => go("/project/inkmaster") },
-            { title: "UrbanTee", img: "https://images.unsplash.com/photo-1521334884684-d80222895322", action: () => go("/project/urbanTee") },
+            { title: "UrbanTee", img: "/urbantee/urbantee1.png", action: () => go("/project/urbanTee") },
             { title: "DonLeo Fitness", img: "/fitness/gym3.png", action: () => go("/project/donLeoFitness") },
             { title: "PrimeNest Realty", img: "/primenestrealty/house8.png", action: () => go("/project/primeNestRealty") },
           ].map((project) => (
