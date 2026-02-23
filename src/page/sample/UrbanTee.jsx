@@ -1,18 +1,40 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
 
+const DescriptionWithToggle = ({ text, limit = 180 }) => {
+  const [showFull, setShowFull] = useState(false);
+  const isLong = text.length > limit;
+
+  return (
+    <div className="text-gray-400 mb-4">
+      <p>
+        {showFull || !isLong ? text : text.slice(0, limit) + "..."}
+      </p>
+      {isLong && (
+        <button
+          onClick={() => setShowFull(!showFull)}
+          className="text-yellow-400 font-semibold mt-1 hover:underline"
+        >
+          {showFull ? "See Less" : "See More"}
+        </button>
+      )}
+    </div>
+  );
+};
+
 const UrbanTeeLanding = () => {
   const [modalOpen, setModalOpen] = useState(false);
   const [selectedProduct, setSelectedProduct] = useState(null);
+  
 
   const products = [
     { id: 1, name: "UA Premium Hoodie V3.0 - Midnight Black", front: "/urbantee/urban1.png", back: "/urbantee/urban2.png", desc: "Heavyweight Fleece, 500GSM, Double Layered Hood, Embroidered, Old English design, TopGrade Rubber Print, Luxurious Comfort, Front Pockets, Labelled Tags, Rubber Patching, New Cracked Back Print" },
     { id: 2, name: "UA Premium Hoodie V3.0 - Moon Grey", front: "/urbantee/urban3.png", back: "/urbantee/urban4.png", desc: "Heavyweight Fleece, 500GSM, Double Layered Hood, Embroidered, Old English design, TopGrade Rubber Print, Luxurious Comfort, Front Pockets, Labelled Tags, Rubber Patching, New Cracked Back Print"},
     { id: 3, name: "UA Prime F.C.O. Hoodies Black", front: "/urbantee/urban5.png", back: "/urbantee/urban6.png", desc: "Heavyweight Fleece, 500GSM, Double Layered Hood, Embroidered, Old English design, TopGrade Rubber Print, Luxurious Comfort, Front Pockets, Labelled Tags, Rubber Patching, New Cracked Back Print"},
     { id: 4, name: "UA Prime F.C.O. Hoodies White", front: "/urbantee/urban8.png", back: "/urbantee/urban9.png", desc: "Deep white tone designed for elevated streetwear."},
-    { id: 5, name: "UA Plain Sweat Pants - Top Dye Grey", front: "/urbantee/urban10.png", back: "/urbantee/urban11.png", desc: "Elevate your casual wardrobe with the UA Plain Sweat Pants - Fleece Fabric | Top Dye Grey, designed for comfort and style.", price: "$25" },
-    { id: 6, name: "UA Prime F.C.O. Sweat Pants Black", front: "/urbantee/urban12.png", back: "/urbantee/urban12.png", desc: "Structured cotton silhouette with a clean modern finish.", price: "$25" },
-{ id: 7, name: "UA PRIME SHIRTS - F.C.O. White", front: "/urbantee/urban14.png", back: "/urbantee/urban15.png", desc: "Proudly crafted in Cebu City, Philippines. Available in 2 colorways. 310GSM pure cotton – substantial yet refined softness. Pre-shrunk, shrink-free construction for a consistent fit. Modern tailored cut with a sleek, versatile silhouette. Classic crew neck – timeless and resilient against wear. Front Premium rubber print – durable, crack- and peel-resistant finish. Engineered for breathability and all-day luxurious comfort. UA signature label – a mark of authenticity and Filipino pride. Part of the Back to Basic Collection – A limited release of essentials. Silkscreen back print - heat-cured for strong wash resistance, helping prevent premature fading and keeping the print looking premium over time.", price: "$30" },
+    { id: 5, name: "UA Plain Sweat Pants - Top Dye Grey", front: "/urbantee/urban10.png", back: "/urbantee/urban11.png", desc: "Elevate your casual wardrobe with the UA Plain Sweat Pants - Fleece Fabric | Top Dye Grey, designed for comfort and style." },
+    { id: 6, name: "UA Prime F.C.O. Sweat Pants Black", front: "/urbantee/urban12.png", back: "/urbantee/urban12.png", desc: "Structured cotton silhouette with a clean modern finish."},
+{ id: 7, name: "UA PRIME SHIRTS - F.C.O. White", front: "/urbantee/urban14.png", back: "/urbantee/urban15.png", desc: "Proudly crafted in Cebu City, Philippines. Available in 2 colorways. 310GSM pure cotton – substantial yet refined softness. Pre-shrunk, shrink-free construction for a consistent fit. Modern tailored cut with a sleek, versatile silhouette. Classic crew neck – timeless and resilient against wear. Front Premium rubber print – durable, crack- and peel-resistant finish. Engineered for breathability and all-day luxurious comfort. UA signature label – a mark of authenticity and Filipino pride. Part of the Back to Basic Collection – A limited release of essentials. Silkscreen back print - heat-cured for strong wash resistance, helping prevent premature fading and keeping the print looking premium over time." },
   ];
 
   const openModal = (product) => {
@@ -109,42 +131,70 @@ const UrbanTeeLanding = () => {
         </div>
       </section>
 
-      {/* ================= MODAL ================= */}
+    {/* ================= MODAL ================= */}
       {modalOpen && selectedProduct && (
         <div
-          className="fixed inset-0 bg-black/80 flex items-center justify-center z-50 p-6"
+          className="fixed inset-0 bg-black/80 flex items-center justify-center z-50 p-4 md:p-6 overflow-auto"
           onClick={closeModal}
         >
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.9 }}
-            className="bg-black rounded-2xl p-8 max-w-3xl w-full relative"
+            className="bg-black rounded-3xl w-full max-w-5xl md:h-auto relative shadow-2xl overflow-hidden"
             onClick={(e) => e.stopPropagation()}
           >
             <button
-              className="absolute top-4 right-4 text-white text-2xl font-bold"
+              className="absolute top-4 right-4 text-white text-3xl font-bold z-10 hover:text-yellow-400 transition"
               onClick={closeModal}
             >
               ×
             </button>
-            <div className="grid md:grid-cols-2 gap-6 mb-6">
-              <img
-                src={selectedProduct.front}
-                alt={`${selectedProduct.name} Front`}
-                className="rounded-xl"
-              />
-              {selectedProduct.back && (
-                <img
-                  src={selectedProduct.back}
-                  alt={`${selectedProduct.name} Back`}
-                  className="rounded-xl"
-                />
-              )}
+
+            <div className="md:flex md:gap-8 p-6 md:p-10">
+              {/* IMAGES */}
+              <div className="md:w-1/2 flex flex-col gap-4 mb-6 md:mb-0">
+                <div className="relative group">
+                  <img
+                    src={selectedProduct.front}
+                    alt={`${selectedProduct.name} Front`}
+                    className="rounded-2xl object-contain w-full h-64 md:h-[400px] transition duration-700 group-hover:opacity-0"
+                  />
+                  {selectedProduct.back && (
+                    <img
+                      src={selectedProduct.back}
+                      alt={`${selectedProduct.name} Back`}
+                      className="absolute inset-0 rounded-2xl object-contain opacity-0 group-hover:opacity-100 transition duration-700"
+                    />
+                  )}
+                </div>
+              </div>
+
+              {/* TEXT */}
+              <div className="md:w-1/2 flex flex-col justify-start">
+                <h3 className="text-3xl md:text-4xl font-bold mb-4">{selectedProduct.name}</h3>
+                
+                {/* DESCRIPTION WITH SEE MORE */}
+                <DescriptionWithToggle text={selectedProduct.desc} />
+
+                {selectedProduct.price && (
+                  <p className="text-yellow-400 font-bold text-2xl mt-4 mb-4">{selectedProduct.price}</p>
+                )}
+
+                <button
+                  className="bg-white text-black px-6 py-2 rounded-full font-semibold hover:scale-105 transition self-start"
+                  
+                >
+                <a
+  href="https://www.uaworldwide.com/"
+  rel="noopener noreferrer"
+  className="bg-white text-black px-6 py-2 rounded-full font-semibold hover:scale-105 transition self-start inline-block text-center"
+>
+  Visit UA Site
+</a>
+                </button>
+              </div>
             </div>
-            <h3 className="text-3xl font-bold mb-4">{selectedProduct.name}</h3>
-            <p className="text-gray-400 mb-2">{selectedProduct.desc}</p>
-            <p className="text-yellow-400 font-bold text-2xl mb-4">{selectedProduct.price}</p>
           </motion.div>
         </div>
       )}
