@@ -91,7 +91,7 @@ const UrbanTeeLanding = () => {
 </section>
 
      {/* ================= COLLECTION ================= */}
-<section className="py-32 px-6">
+<section ref={collectionRef} className="py-32 px-6">
   <h2 className="text-5xl font-bold text-center mb-24 tracking-widest">
     THE COLLECTION
   </h2>
