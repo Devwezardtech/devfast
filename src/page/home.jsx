@@ -101,13 +101,10 @@ export default function DevfastLanding() {
 
         <div className="grid md:grid-cols-3 gap-10">
           {[
-            { title: "Ecommerce Website / System", img: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f", action: () => window.location.href = "https://mus-ecommerce-shop.onrender.com" },
+            { title: "Ecommerce Website / System", img: "/ecommercesite.png", action: () => window.location.href = "https://mus-ecommerce-shop.onrender.com" },
             { title: "LoreCafe", img: "/lorecafe_image/acafe3.png", action: () => go("/project/lorecafe") },
             { title: "Engineer / Contractor", img: "https://images.unsplash.com/photo-1503387762-592deb58ef4e", action: () => go("/project/engineer") },
-            { title: "Event / Webinar", img: "https://images.unsplash.com/photo-1540575467063-178a50c2df87", action: () => go("/project/events/webinar") },
             { title: "AutoGalaxy", img: "/image/car3.png", action: () => go("/project/autogalaxy") },
-            { title: "Eacha Restaurant", img: "https://images.unsplash.com/photo-1528605248644-14dd04022da1", action: () => go("/project/eacha") },
-            { title: "Tattoo Artist Booking", img: "https://images.unsplash.com/photo-1545235617-9465d2a55698", action: () => go("/project/inkmaster") },
             { title: "UrbanTee", img: "/urbantee/urbantee1.png", action: () => go("/project/urbanTee") },
             { title: "DonLeo Fitness", img: "/fitness/gym3.png", action: () => go("/project/donLeoFitness") },
             { title: "PrimeNest Realty", img: "/primenestrealty/house8.png", action: () => go("/project/primeNestRealty") },
