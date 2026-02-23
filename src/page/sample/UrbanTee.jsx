@@ -1,5 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useRef} from "react";
 import { motion } from "framer-motion";
+
+
 
 const DescriptionWithToggle = ({ text, limit = 180 }) => {
   const [showFull, setShowFull] = useState(false);
@@ -25,6 +27,13 @@ const DescriptionWithToggle = ({ text, limit = 180 }) => {
 const UrbanTeeLanding = () => {
   const [modalOpen, setModalOpen] = useState(false);
   const [selectedProduct, setSelectedProduct] = useState(null);
+
+  const collectionRef = useRef(null);
+
+
+  const scrollToCollection = () => {
+  collectionRef.current?.scrollIntoView({ behavior: "smooth" });
+};
   
 
   const products = [
@@ -49,35 +58,37 @@ const UrbanTeeLanding = () => {
 
   return (
     <div className="bg-black text-white font-sans overflow-x-hidden scroll-smooth">
-
-      {/* ================= HERO ================= */}
-      <section
-        className="relative min-h-screen flex items-center justify-center text-center px-6"
-        style={{
-          backgroundImage: "url('/urbantee/urban16.png')",
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-          backgroundAttachment: "fixed",
-        }}
-      >
-        <div className="absolute inset-0 bg-black/70 backdrop-blur-sm" />
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1 }}
-          className="relative z-10 max-w-4xl"
-        >
-          <h1 className="text-6xl md:text-8xl font-extrabold tracking-[0.3em] mb-6">
-            URBANTEE
-          </h1>
-          <p className="text-xl md:text-2xl text-gray-300 mb-10">
-            Minimal. Timeless. Elevated.
-          </p>
-          <button className="bg-white text-black px-10 py-4 rounded-full font-semibold hover:scale-105 transition shadow-2xl">
-            Explore Collection
-          </button>
-        </motion.div>
-      </section>
+{/* ================= HERO ================= */}
+<section
+  className="relative min-h-screen flex flex-col md:flex-row items-center justify-center text-center md:text-center px-6"
+  style={{
+    backgroundImage: "url('/urbantee/urban16.png')",
+    backgroundSize: "cover",
+    backgroundPosition: "center",
+    backgroundAttachment: "fixed",
+  }}
+>
+  <div className="absolute inset-0 bg-black/70 backdrop-blur-sm" />
+  <motion.div
+    initial={{ opacity: 0, y: 40 }}
+    animate={{ opacity: 1, y: 0 }}
+    transition={{ duration: 1 }}
+    className="relative z-10 max-w-4xl flex flex-col items-center md:items-center"
+  >
+    <h1 className="text-5xl sm:text-6xl md:text-8xl font-extrabold tracking-[0.2em] mb-6">
+      URBANTEE
+    </h1>
+    <p className="text-lg sm:text-xl md:text-2xl text-gray-300 mb-10 max-w-xl">
+      Minimal. Timeless. Elevated.
+    </p>
+    <button
+  onClick={scrollToCollection}
+  className="bg-white text-black px-8 sm:px-10 py-3 sm:py-4 rounded-full font-semibold hover:scale-105 transition shadow-2xl"
+>
+  Explore Collection
+</button>
+  </motion.div>
+</section>
 
      {/* ================= COLLECTION ================= */}
 <section className="py-32 px-6">
@@ -100,6 +111,7 @@ const UrbanTeeLanding = () => {
           <div
             className={`relative group
               ${isReversed ? "md:order-2" : ""} 
+
               order-1`} // on mobile, always first
           >
             <img
@@ -207,55 +219,71 @@ const UrbanTeeLanding = () => {
         </div>
       )}
 
-      {/* ================= CAMPAIGNS AND FOOTER ================= */}
-      {/* Keep your original campaign break sections exactly the same */}
-      <section
-        className="h-screen flex items-center justify-center text-center"
-        style={{
-          backgroundImage: "url('/urbantee/urban16.png')",
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-          backgroundAttachment: "fixed",
-        }}
-      >
-        <div className="bg-black/60 w-full h-full flex items-center justify-center">
-          <h2 className="text-6xl font-extrabold tracking-[0.4em]">
-            STREET ESSENCE
-          </h2>
-        </div>
-      </section>
+    <section
+  className="h-screen flex flex-col md:flex-row items-center justify-center text-center md:text-left"
+  style={{
+    backgroundImage: "url('/urbantee/urban16.png')",
+    backgroundSize: "cover",
+    backgroundPosition: "center",
+    backgroundAttachment: "fixed",
+  }}
+>
+  <div className="bg-black/60 w-full h-full flex flex-col md:flex-row items-center justify-center p-6 md:p-12">
+   
+    <div className="md:w-1/2 md:pl-12 text-center md:text-left">
+      <h2 className="text-4xl md:text-6xl font-extrabold mb-4">
+        STREET ESSENCE
+      </h2>
+      <p className="text-gray-300 text-lg md:text-xl">
+        Urban streetwear inspired by the essence of city life. Designed for comfort and elevated style.
+      </p>
+    </div>
+  </div>
+</section>
 
       <section
-        className="h-screen flex items-center justify-center text-center"
-        style={{
-          backgroundImage: "url('/urbantee/urban14.png')",
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-          backgroundAttachment: "fixed",
-        }}
-      >
-        <div className="bg-black/60 w-full h-full flex items-center justify-center">
-          <h2 className="text-6xl font-extrabold tracking-[0.4em]">
-            MODERN FORM
-          </h2>
-        </div>
-      </section>
+  className="h-screen flex flex-col md:flex-row-reverse items-center justify-center text-center md:text-left"
+  style={{
+    backgroundImage: "url('/urbantee/urban14.png')",
+    backgroundSize: "cover",
+    backgroundPosition: "center",
+    backgroundAttachment: "fixed",
+  }}
+>
+  <div className="bg-black/60 w-full h-full flex flex-col md:flex-row-reverse items-center justify-center p-6 md:p-12">
+   
+    <div className="md:w-1/2 md:pr-12 text-center md:text-left">
+      <h2 className="text-4xl md:text-6xl font-extrabold mb-4">
+        MODERN FORM
+      </h2>
+      <p className="text-gray-300 text-lg md:text-xl">
+        Sleek silhouettes with modern tailoring that brings style and comfort together.
+      </p>
+    </div>
+  </div>
+</section>
 
-      <section
-        className="h-screen flex items-center justify-center text-center"
-        style={{
-          backgroundImage: "url('/urbantee/urban15.png')",
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-          backgroundAttachment: "fixed",
-        }}
-      >
-        <div className="bg-black/60 w-full h-full flex items-center justify-center">
-          <h2 className="text-6xl font-extrabold tracking-[0.4em]">
-            ELEVATED STREET
-          </h2>
-        </div>
-      </section>
+     <section
+  className="h-screen flex flex-col md:flex-row items-center justify-center text-center md:text-left"
+  style={{
+    backgroundImage: "url('/urbantee/urban15.png')",
+    backgroundSize: "cover",
+    backgroundPosition: "center",
+    backgroundAttachment: "fixed",
+  }}
+>
+  <div className="bg-black/60 w-full h-full flex flex-col md:flex-row items-center justify-center p-6 md:p-12">
+   
+    <div className="md:w-1/2 md:pl-12 text-center md:text-left">
+      <h2 className="text-4xl md:text-6xl font-extrabold mb-4">
+        ELEVATED STREET
+      </h2>
+      <p className="text-gray-300 text-lg md:text-xl">
+        Elevate your streetwear style with versatile pieces designed for everyday wear and standout looks.
+      </p>
+    </div>
+  </div>
+</section>
 
       <footer className="border-t border-white/10 py-4 text-center text-gray-500">
         © 2026 UrbanTee. All Rights Reserved.
