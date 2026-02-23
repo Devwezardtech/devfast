@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 const PrimeNestRealtyLanding = () => {
   const [dark, setDark] = useState(false);
   const [selected, setSelected] = useState(null);
+  const [menuOpen, setMenuOpen] = useState(false);
 
   // Generate 10 properties dynamically
   const properties = Array.from({ length: 10 }, (_, i) => ({
@@ -18,6 +19,14 @@ const PrimeNestRealtyLanding = () => {
     ],
   }));
 
+  useEffect(() => {
+  if (menuOpen) {
+    document.body.style.overflow = "hidden";
+  } else {
+    document.body.style.overflow = "auto";
+  }
+}, [menuOpen]);
+
   return (
     <div
       className={`${
@@ -27,18 +36,58 @@ const PrimeNestRealtyLanding = () => {
       } scroll-smooth font-sans transition-all duration-700`}
     >
       {/* Floating Luxury Navbar */}
-      <nav className="fixed top-6 left-1/2 -translate-x-1/2 z-50 backdrop-blur-xl bg-white/70 dark:bg-white/5 border border-white/30 dark:border-white/10 px-10 py-4 rounded-full shadow-xl dark:shadow-[0_0_30px_rgba(255,255,255,0.05)] flex gap-10 items-center transition">
-        <a href="#hero" className="hover:opacity-70">Home</a>
-        <a href="#properties" className="hover:opacity-70">Properties</a>
-        <a href="#contact" className="hover:opacity-70">Contact</a>
+     <nav className="fixed top-6 right-4 md:left-1/2 md:-translate-x-1/2 z-50 backdrop-blur-xl bg-white/70 dark:bg-white/5 border border-white/30 dark:border-white/10 px-6 md:px-10 py-4 rounded-full shadow-xl dark:shadow-[0_0_30px_rgba(255,255,255,0.05)] flex items-center justify-between md:justify-center w-auto md:w-auto transition">
 
-        <button
-          onClick={() => setDark(!dark)}
-          className="w-10 h-10 rounded-full flex items-center justify-center bg-white/10 dark:bg-white/5 backdrop-blur-md border border-white/20 hover:scale-110 transition"
-        >
-          <span className="text-lg">{dark ? "☀️" : "🌙"}</span>
-        </button>
+        {/* MOBILE RIGHT SIDE */}
+        <div className="flex items-center gap-4 md:hidden">
+          <button
+            onClick={() => setMenuOpen(!menuOpen)}
+            className="flex flex-col justify-between w-8 h-6"
+          >
+            <span className={`h-0.5 bg-current transition ${menuOpen ? "rotate-45 translate-y-2" : ""}`} />
+            <span className={`h-0.5 bg-current transition ${menuOpen ? "opacity-0" : ""}`} />
+            <span className={`h-0.5 bg-current transition ${menuOpen ? "-rotate-45 -translate-y-2" : ""}`} />
+          </button>
+
+          <button
+            onClick={() => setDark(!dark)}
+            className="w-10 h-10 rounded-full flex items-center justify-center bg-white/10 dark:bg-white/5 backdrop-blur-md border border-white/20 hover:scale-110 transition"
+          >
+            {dark ? "☀️" : "🌙"}
+          </button>
+        </div>
+
+        {/* DESKTOP MENU */}
+        <div className="hidden md:flex gap-10 items-center">
+          <a href="#hero">Home</a>
+          <a href="#properties">Properties</a>
+          <a href="#contact">Contact</a>
+
+          <button
+            onClick={() => setDark(!dark)}
+            className="w-10 h-10 rounded-full flex items-center justify-center bg-white/10 dark:bg-white/5 backdrop-blur-md border border-white/20 hover:scale-110 transition"
+          >
+            {dark ? "☀️" : "🌙"}
+          </button>
+        </div>
       </nav>
+
+      {/* ======= MOBILE FULL SCREEN MENU ======= */}
+      <AnimatePresence>
+        {menuOpen && (
+          <motion.div
+            initial={{ x: "100%" }}
+            animate={{ x: 0 }}
+            exit={{ x: "100%" }}
+            transition={{ type: "spring", stiffness: 300, damping: 30 }}
+            className="fixed top-0 right-0 h-full bg-white dark:bg-[#0f172a] z-40 flex flex-col p-4 gap-4 text-lg font-bold md:hidden text-white w-1/2 "
+          >
+            <a href="#hero" onClick={() => setMenuOpen(false)}>Home</a>
+            <a href="#properties" onClick={() => setMenuOpen(false)}>Properties</a>
+            <a href="#contact" onClick={() => setMenuOpen(false)}>Contact</a>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       {/* HERO */}
       <section
