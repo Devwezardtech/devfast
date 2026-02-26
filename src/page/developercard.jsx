@@ -35,7 +35,7 @@ export default function DeveloperCard() {
               Email Me
             </a>
             <a
-          href="https://m.me/801311679735475"
+          href="https://m.me/maloloyon.ejemar"
           target="_blank"
           rel="noopener noreferrer"
           className="flex-1 inline-flex items-center justify-center px-6 py-3 bg-green-500 text-white rounded-2xl font-semibold hover:bg-green-600 transition"
