@@ -118,8 +118,7 @@ export default function DevfastLanding() {
           transition={{ delay: 0.2 }}
           className="relative mt-8 text-slate-600 max-w-3xl mx-auto text-xl leading-relaxed"
         >
-          Premium websites, high-converting landing pages, and scalable web systems
-          built to attract clients and drive revenue.
+          Fast, professional, and easy-to-manage sites that grow your business and drive revenue.
         </motion.p>
 
         <div className="mt-10 flex flex-col sm:flex-row justify-center gap-4">
