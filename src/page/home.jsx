@@ -272,7 +272,7 @@ export default function DevfastLanding() {
     ></div>
 
     {/* Modal Content */}
-    <div className="relative z-10 w-full max-w-3xl bg-white rounded-3xl p-6 sm:p-8 shadow-xl">
+    <div className="relative z-10 w-full max-w-3xl rounded-3xl p-6 sm:p-8 shadow-xl">
       <motion.div
   initial={{ opacity: 0, scale: 0.95 }}
   animate={{ opacity: 1, scale: 1 }}
