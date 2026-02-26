@@ -27,13 +27,17 @@ export default function DeveloperCard() {
               <CheckCircle className="w-4 h-4" />
             </a>
 
-            <a
-              href="mailto:ejemarmaloloyon007@gmail.com"
+            <div
+              onClick={() =>
+              window.location.assign(
+                "mailto:ejemarmaloloyon007@gmail.com?subject=Project Inquiry&body=Hi, I would like to start a project with you."
+              )
+            }
               className="inline-flex items-center justify-center px-6 py-3 bg-gray-200 text-slate-900 rounded-2xl font-semibold hover:bg-gray-300 shadow-md transition"
             >
               <Mail className="mr-2 w-4 h-4" />
               Email Me
-            </a>
+            </div>
             <a
           href="https://m.me/maloloyon.ejemar"
           target="_blank"

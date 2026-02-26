@@ -125,9 +125,7 @@ export default function DevfastLanding() {
         <div className="mt-10 flex flex-col sm:flex-row justify-center gap-4">
           <Button
             onClick={() =>
-              window.location.assign(
-                "mailto:ejemarmaloloyon007@gmail.com?subject=Project Inquiry&body=Hi, I would like to start a project with you."
-              )
+              contactRef.current?.scrollIntoView({ behavior: "smooth" })
             }
             className="inline-flex items-center justify-center px-6 py-3 text-sm md:text-base font-semibold rounded-full bg-gradient-to-r from-blue-600 to-cyan-500 text-white shadow-lg hover:scale-105 hover:shadow-xl transition duration-300 mx-16 md:mx-0"
           >
@@ -236,12 +234,16 @@ export default function DevfastLanding() {
 
       {/* Buttons */}
       <div className="flex flex-col sm:flex-row gap-4 w-full">
-        <a
-          href="mailto:devfastt@gmail.com"
+        <div
+          onClick={() =>
+              window.location.assign(
+                "mailto:devfastt@gmail.com?subject=Project Inquiry&body=Hi, I would like to start a project with you."
+              )
+            }
           className="flex-1 inline-flex items-center justify-center gap-2 px-6 py-4 bg-blue-500 text-white rounded-2xl font-semibold hover:bg-blue-600 transition transform hover:-translate-y-1 shadow-md"
         >
           <Mail className="w-5 h-5" /> Email
-        </a>
+        </div>
         <a
           href="https://m.me/801311679735475"
           target="_blank"
