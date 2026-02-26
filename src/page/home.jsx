@@ -106,7 +106,7 @@ export default function DevfastLanding() {
           animate="visible"
           variants={fadeUp}
           transition={{ duration: 0.8 }}
-          className="relative text-5xl md:text-7xl font-extrabold tracking-tight bg-gradient-to-r from-blue-600 via-cyan-500 to-indigo-600 bg-clip-text text-transparent"
+          className="relative text-4xl md:text-5xl font-extrabold tracking-tight bg-gradient-to-r from-blue-600 via-cyan-500 to-indigo-600 bg-clip-text text-transparent"
         >
           We Build Websites That Grow Businesses.
         </motion.h1>
@@ -129,7 +129,7 @@ export default function DevfastLanding() {
                 "mailto:ejemarmaloloyon007@gmail.com?subject=Project Inquiry&body=Hi, I would like to start a project with you."
               )
             }
-            className="inline-flex items-center justify-center px-6 py-3 text-sm md:text-base font-semibold rounded-full bg-gradient-to-r from-blue-600 to-cyan-500 text-white shadow-lg hover:scale-105 hover:shadow-xl transition duration-300"
+            className="inline-flex items-center justify-center px-6 py-3 text-sm md:text-base font-semibold rounded-full bg-gradient-to-r from-blue-600 to-cyan-500 text-white shadow-lg hover:scale-105 hover:shadow-xl transition duration-300 mx-16 md:mx-0"
           >
             Start Your Project
           </Button>
@@ -139,7 +139,7 @@ export default function DevfastLanding() {
             onClick={() =>
               projectsRef.current?.scrollIntoView({ behavior: "smooth" })
             }
-            className="inline-flex items-center justify-center px-6 py-3 text-sm md:text-base font-semibold rounded-full border border-slate-300 text-slate-700 hover:bg-slate-100 transition duration-300"
+            className="inline-flex items-center justify-center px-6 py-3 text-sm md:text-base font-semibold rounded-full border border-slate-300 text-slate-700 hover:bg-slate-100 transition duration-300 mx-16 md:mx-0"
           >
             View Our Work
           </Button>
