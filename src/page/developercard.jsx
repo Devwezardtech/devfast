@@ -1,8 +1,5 @@
-import { useState } from "react";
-import { motion } from "framer-motion";
-import { CheckCircle, Mail } from "lucide-react";
 
-const developerPhoto = "/developer_photo.png";
+import { CheckCircle, Mail } from "lucide-react";
 
 export default function DeveloperCard() {
   return (
