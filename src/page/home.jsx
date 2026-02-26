@@ -1,151 +1,196 @@
-import { useState, useRef  } from "react";
+// DevfastLanding.jsx
+import { useState, useRef } from "react";
 import { motion } from "framer-motion";
 import { Card, CardContent } from "../components/ui/card";
 import { Button } from "../components/ui/button";
-import { Mail, CheckCircle } from "lucide-react";
+import { Mail, CheckCircle, Menu, X } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+import DeveloperCard from "./developercard";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 30 },
   visible: { opacity: 1, y: 0 },
 };
 
-const developerPhoto = "/developer_photo.png";
-
 export default function DevfastLanding() {
-
-  const [showProfile, setShowProfile] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [showDeveloperModal, setShowDeveloperModal] = useState(false); // modal state
   const navigate = useNavigate();
   const go = (path) => navigate(path);
 
   const projectsRef = useRef(null);
+  const servicesRef = useRef(null);
+  const contactRef = useRef(null);
+
+  const sections = [
+    { label: "Home", ref: null },
+    { label: "Services", ref: servicesRef },
+    { label: "Projects", ref: projectsRef },
+    { label: "Contact", ref: contactRef },
+    { label: "Developer", ref: null }, // special case
+  ];
+
+  const handleScroll = (sec) => {
+    if (sec.label === "Developer") {
+      setShowDeveloperModal(true);
+      setMenuOpen(false);
+      window.scrollTo({ top: document.body.scrollHeight, behavior: "smooth" });
+    } else if (sec.ref) {
+      sec.ref.current.scrollIntoView({ behavior: "smooth" });
+      setMenuOpen(false);
+      setShowDeveloperModal(false); // hide developer when scrolling to other sections
+    } else {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+      setShowDeveloperModal(false);
+    }
+  };
 
   return (
     <div className="min-h-screen text-slate-900 bg-gradient-to-b from-sky-50 via-white to-slate-50 font-sans">
-{/* ================= HERO ================= */}
-<section className="relative py-40 px-6 text-center overflow-hidden">
 
-  {/* Glow Effects */}
-  <div className="absolute -top-40 -left-40 w-[500px] h-[500px] bg-blue-500/20 blur-[120px] rounded-full" />
-  <div className="absolute -bottom-40 -right-40 w-[500px] h-[500px] bg-cyan-400/20 blur-[120px] rounded-full" />
+      {/* ================= NAVBAR / HAMBURGER ================= */}
+      <nav className="fixed top-0 left-0 w-full z-50 bg-white/80 backdrop-blur-md shadow-md">
+        <div className="max-w-6xl mx-auto flex justify-between items-center p-4">
+          <div
+            className="text-2xl font-bold text-blue-600 cursor-pointer"
+            onClick={() => handleScroll({ label: "Home" })}
+          >
+            Devfast
+          </div>
 
-  <motion.h1
-    initial="hidden"
-    animate="visible"
-    variants={fadeUp}
-    transition={{ duration: 0.8 }}
-    className="relative text-5xl md:text-7xl font-extrabold tracking-tight bg-gradient-to-r from-blue-600 via-cyan-500 to-indigo-600 bg-clip-text text-transparent"
-  >
-    We Build Websites That Grow Businesses.
-  </motion.h1>
+          {/* Desktop Menu */}
+          <ul className="hidden md:flex gap-6 font-medium text-slate-700">
+            {sections.map((sec) => (
+              <li
+                key={sec.label}
+                className="hover:text-blue-600 cursor-pointer transition-colors"
+                onClick={() => handleScroll(sec)}
+              >
+                {sec.label}
+              </li>
+            ))}
+          </ul>
 
-  <motion.p
-    initial="hidden"
-    animate="visible"
-    variants={fadeUp}
-    transition={{ delay: 0.2 }}
-    className="relative mt-8 text-slate-600 max-w-3xl mx-auto text-xl leading-relaxed"
-  >
-    Premium websites, high-converting landing pages, and scalable web systems
-    built to attract clients and drive revenue.
-  </motion.p>
+          {/* Hamburger */}
+          <div className="md:hidden">
+            <button onClick={() => setMenuOpen(!menuOpen)}>
+              {menuOpen ? <X size={28} /> : <Menu size={28} />}
+            </button>
+          </div>
+        </div>
 
-  <div className="mt-10 flex flex-col sm:flex-row justify-center gap-4">
+        {/* Mobile Menu */}
+        {menuOpen && (
+          <motion.ul
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="flex flex-col gap-4 text-center py-6 text-lg font-medium text-slate-700"
+          >
+            {sections.map((sec) => (
+              <li key={sec.label} onClick={() => handleScroll(sec)}>
+                {sec.label}
+              </li>
+            ))}
+          </motion.ul>
+        )}
+      </nav>
 
-  {/* Start Your Project */}
-  <Button
-    onClick={() =>
-      window.location.assign(
-        "mailto:ejemarmaloloyon007@gmail.com?subject=Project Inquiry&body=Hi, I would like to start a project with you."
-      )
-    }
-    className="inline-flex items-center justify-center px-6 py-3 text-sm md:text-base font-semibold rounded-full bg-gradient-to-r from-blue-600 to-cyan-500 text-white shadow-lg hover:scale-105 hover:shadow-xl transition duration-300"
-  >
-    Start Your Project
-  </Button>
+      {/* ================= HERO ================= */}
+      <section className="relative py-40 px-6 text-center overflow-hidden">
+        <div className="absolute -top-40 -left-40 w-[500px] h-[500px] bg-blue-500/20 blur-[120px] rounded-full" />
+        <div className="absolute -bottom-40 -right-40 w-[500px] h-[500px] bg-cyan-400/20 blur-[120px] rounded-full" />
 
-  {/* View Our Work */}
- <Button
-    variant="outline"
-    onClick={() =>
-      projectsRef.current?.scrollIntoView({ behavior: "smooth" })
-    }
-    className="inline-flex items-center justify-center px-6 py-3 text-sm md:text-base font-semibold rounded-full border border-slate-300 text-slate-700 hover:bg-slate-100 transition duration-300"
-  >
-    View Our Work
-  </Button>
+        <motion.h1
+          initial="hidden"
+          animate="visible"
+          variants={fadeUp}
+          transition={{ duration: 0.8 }}
+          className="relative text-5xl md:text-7xl font-extrabold tracking-tight bg-gradient-to-r from-blue-600 via-cyan-500 to-indigo-600 bg-clip-text text-transparent"
+        >
+          We Build Websites That Grow Businesses.
+        </motion.h1>
 
-</div>
-</section>
+        <motion.p
+          initial="hidden"
+          animate="visible"
+          variants={fadeUp}
+          transition={{ delay: 0.2 }}
+          className="relative mt-8 text-slate-600 max-w-3xl mx-auto text-xl leading-relaxed"
+        >
+          Premium websites, high-converting landing pages, and scalable web systems
+          built to attract clients and drive revenue.
+        </motion.p>
 
-{/* ================= STATS ================= */}
-<section className="py-24 px-6 bg-slate-50">
-  <div className="max-w-6xl mx-auto grid md:grid-cols-3 gap-12 text-center">
-    {[
-      { number: "20+", label: "Projects Delivered" },
-      { number: "100%", label: "Client Satisfaction" },
-      { number: "Fast", label: "Performance Optimized" },
-    ].map((stat) => (
-      <div key={stat.label}>
-        <h3 className="text-5xl font-extrabold text-blue-600">
-          {stat.number}
-        </h3>
-        <p className="mt-2 text-slate-600">{stat.label}</p>
-      </div>
-    ))}
-  </div>
-</section>
+        <div className="mt-10 flex flex-col sm:flex-row justify-center gap-4">
+          <Button
+            onClick={() =>
+              window.location.assign(
+                "mailto:ejemarmaloloyon007@gmail.com?subject=Project Inquiry&body=Hi, I would like to start a project with you."
+              )
+            }
+            className="inline-flex items-center justify-center px-6 py-3 text-sm md:text-base font-semibold rounded-full bg-gradient-to-r from-blue-600 to-cyan-500 text-white shadow-lg hover:scale-105 hover:shadow-xl transition duration-300"
+          >
+            Start Your Project
+          </Button>
 
-{/* ================= SERVICES ================= */}
-<section className="py-28 px-6 max-w-6xl mx-auto">
-  <h2 className="text-4xl font-bold text-center mb-16">
-    What We Deliver
-  </h2>
+          <Button
+            variant="outline"
+            onClick={() =>
+              projectsRef.current?.scrollIntoView({ behavior: "smooth" })
+            }
+            className="inline-flex items-center justify-center px-6 py-3 text-sm md:text-base font-semibold rounded-full border border-slate-300 text-slate-700 hover:bg-slate-100 transition duration-300"
+          >
+            View Our Work
+          </Button>
+        </div>
+      </section>
 
-  <div className="grid md:grid-cols-3 gap-10">
-    {[
-      {
-        title: "Landing Pages",
-        description:
-          "High-converting landing pages designed to capture leads and turn visitors into customers.",
-      },
-      {
-        title: "Business Websites",
-        description:
-          "Professional websites that build trust and elevate your brand.",
-      },
-      {
-        title: "Web Applications",
-        description:
-          "Custom systems built for scalability and performance.",
-      },
-    ].map((service) => (
-      <motion.div
-        key={service.title}
-        whileHover={{ y: -10, scale: 1.03 }}
-        transition={{ type: "spring", stiffness: 250 }}
-      >
-        <Card className="bg-white rounded-3xl border border-slate-100 shadow-xl hover:shadow-2xl transition-all duration-500 h-full">
-          <CardContent className="p-8">
-            <CheckCircle className="mb-5 text-blue-600 w-10 h-10" />
-            <h3 className="text-xl font-semibold text-slate-900 mb-2">
-              {service.title}
-            </h3>
-            <p className="text-slate-600 mt-2 leading-relaxed">
-              {service.description}
-            </p>
-          </CardContent>
-        </Card>
-      </motion.div>
-    ))}
-  </div>
-</section>
+      {/* ================= STATS ================= */}
+      <section className="py-24 px-6 bg-slate-50">
+        <div className="max-w-6xl mx-auto grid md:grid-cols-3 gap-12 text-center">
+          {[
+            { number: "20+", label: "Projects Delivered" },
+            { number: "100%", label: "Client Satisfaction" },
+            { number: "Fast", label: "Performance Optimized" },
+          ].map((stat) => (
+            <div key={stat.label}>
+              <h3 className="text-5xl font-extrabold text-blue-600">{stat.number}</h3>
+              <p className="mt-2 text-slate-600">{stat.label}</p>
+            </div>
+          ))}
+        </div>
+      </section>
 
-      {/* PROJECTS */}
+      {/* ================= SERVICES ================= */}
+      <section ref={servicesRef} className="py-28 px-6 max-w-6xl mx-auto">
+        <h2 className="text-4xl font-bold text-center mb-16">What We Deliver</h2>
+
+        <div className="grid md:grid-cols-3 gap-10">
+          {[
+            { title: "Landing Pages", description: "High-converting landing pages designed to capture leads and turn visitors into customers." },
+            { title: "Business Websites", description: "Professional websites that build trust and elevate your brand." },
+            { title: "Web Applications", description: "Custom systems built for scalability and performance." },
+          ].map((service) => (
+            <motion.div
+              key={service.title}
+              whileHover={{ y: -10, scale: 1.03 }}
+              transition={{ type: "spring", stiffness: 250 }}
+            >
+              <Card className="bg-white rounded-3xl border border-slate-100 shadow-xl hover:shadow-2xl transition-all duration-500 h-full">
+                <CardContent className="p-8">
+                  <CheckCircle className="mb-5 text-blue-600 w-10 h-10" />
+                  <h3 className="text-xl font-semibold text-slate-900 mb-2">{service.title}</h3>
+                  <p className="text-slate-600 mt-2 leading-relaxed">{service.description}</p>
+                </CardContent>
+              </Card>
+            </motion.div>
+          ))}
+        </div>
+      </section>
+
+      {/* ================= PROJECTS ================= */}
       <section ref={projectsRef} className="py-28 px-6 max-w-6xl mx-auto">
-        <h2 className="text-3xl font-bold text-center mb-12 tracking-tight">
-          Sample Projects
-        </h2>
+        <h2 className="text-3xl font-bold text-center mb-12 tracking-tight">Sample Projects</h2>
 
         <div className="grid md:grid-cols-3 gap-10">
           {[
@@ -159,19 +204,10 @@ export default function DevfastLanding() {
           ].map((project) => (
             <motion.div key={project.title} whileHover={{ scale: 1.05, y: -5 }} transition={{ duration: 0.4 }}>
               <Card className="bg-white rounded-3xl overflow-hidden border border-slate-100 shadow-lg hover:shadow-2xl transition-all duration-500">
-                <img
-                  src={project.img}
-                  alt={project.title}
-                  className="h-52 w-full object-cover hover:scale-105 transition-transform duration-500"
-                />
+                <img src={project.img} alt={project.title} className="h-52 w-full object-cover hover:scale-105 transition-transform duration-500" />
                 <CardContent className="p-6">
-                  <h3 className="text-xl font-semibold text-slate-900">
-                    {project.title}
-                  </h3>
-                  <Button
-                    onClick={project.action}
-                    className="mt-4 w-full bg-gradient-to-r from-blue-500 to-cyan-400 hover:from-blue-600 hover:to-cyan-500 text-white font-semibold shadow-lg hover:shadow-xl transition-transform transform hover:-translate-y-1"
-                  >
+                  <h3 className="text-xl font-semibold text-slate-900">{project.title}</h3>
+                  <Button onClick={project.action} className="mt-4 w-full bg-gradient-to-r from-blue-500 to-cyan-400 hover:from-blue-600 hover:to-cyan-500 text-white font-semibold shadow-lg hover:shadow-xl transition-transform transform hover:-translate-y-1">
                     View This Sample
                   </Button>
                 </CardContent>
@@ -181,45 +217,15 @@ export default function DevfastLanding() {
         </div>
       </section>
 
-      {/* TESTIMONIALS */}
-      <section className="py-24 px-6 bg-gradient-to-r from-blue-50 to-white">
-        <h2 className="text-3xl font-bold text-center mb-12 tracking-tight">
-          What Clients Say
-        </h2>
-
-        <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-          {[
-            { name: "Michael Reyes", role: "Startup Founder", img: "https://randomuser.me/api/portraits/men/32.jpg", text: "Devfast delivered fast and the design looks premium. My conversion rate improved immediately." },
-            { name: "Anna Cruz", role: "Cafe Owner", img: "https://randomuser.me/api/portraits/women/44.jpg", text: "The website looks professional and my customers love the booking feature." },
-            { name: "James Lim", role: "Real Estate Agent", img: "https://randomuser.me/api/portraits/men/65.jpg", text: "Clean UI, smooth flow, and very easy to work with. Highly recommended." },
-          ].map((t) => (
-            <Card key={t.name} className="bg-white rounded-3xl border border-slate-100 shadow-lg hover:shadow-2xl transition-all duration-500 p-6">
-              <div className="flex items-center gap-4 mb-4">
-                <img src={t.img} alt={t.name} className="w-14 h-14 rounded-full object-cover shadow-md" />
-                <div>
-                  <h4 className="font-semibold text-slate-900">{t.name}</h4>
-                  <p className="text-sm text-slate-500">{t.role}</p>
-                </div>
-              </div>
-              <p className="text-slate-600 text-sm leading-relaxed">“{t.text}”</p>
-            </Card>
-          ))}
-        </div>
-      </section>
-
-      {/* CONTACT */}
-      <section className="bg-gradient-to-r from-sky-50 to-white py-24 px-6">
+      {/* ================= CONTACT ================= */}
+      <section ref={contactRef} className="bg-gradient-to-r from-sky-50 to-white py-24 px-6">
         <div className="max-w-3xl mx-auto text-center">
-          <h2 className="text-3xl font-bold text-slate-900 mb-4">
-            Book an Appointment
-          </h2>
-          <p className="text-slate-600 mb-10">
-            Tell me about your project and I’ll get back to you.
-          </p>
+          <h2 className="text-3xl font-bold text-slate-900 mb-4">Book an Appointment</h2>
+          <p className="text-slate-600 mb-10">Tell me about your project and I’ll get back to you.</p>
           <div className="grid gap-6 text-left">
             <input className="mt-2 w-full rounded-2xl border border-slate-200 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500 shadow-sm" placeholder="Your Name" />
             <input className="mt-2 w-full rounded-2xl border border-slate-200 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500 shadow-sm" placeholder="Email Address" />
-            <textarea className="mt-2 w-full rounded-2xl border border-slate-200 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500 shadow-sm" rows="5" placeholder="Project Details..." />
+            <textarea className="mt-2 w-full rounded-2xl border border-slate-200 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500 shadow-sm" rows={5} placeholder="Project Details..." />
             <a href="https://m.me/801311679735475" target="_blank" rel="noopener noreferrer">
               <Button className="w-full py-4 px-8 text-lg rounded-2xl bg-gradient-to-r from-blue-500 to-cyan-400 hover:from-blue-600 hover:to-cyan-500 shadow-lg hover:shadow-2xl transition-transform transform hover:-translate-y-1 flex items-center justify-center gap-2">
                 <Mail className="w-5 h-5" /> Send Inquiry
@@ -229,94 +235,20 @@ export default function DevfastLanding() {
         </div>
       </section>
 
-     {/* MEET THE DEVELOPER */}
-<section className="py-24 px-6 bg-gradient-to-r from-blue-50 to-white relative overflow-hidden">
-  <div className="max-w-4xl mx-auto text-center relative z-10">
+     {showDeveloperModal && (
+  <div className="fixed inset-0 flex items-center justify-center z-50 px-4 sm:px-6"> 
+    {/* Overlay */}
+    <div
+      className="absolute inset-0 bg-black/50 backdrop-blur-sm"
+      onClick={() => setShowDeveloperModal(false)}
+    ></div>
 
-    {/* Clickable Title Card */}
-    <motion.div
-      onClick={() => setShowProfile(!showProfile)}
-      whileHover={{ scale: 1.03 }}
-      className="cursor-pointer inline-block bg-white px-8 py-2 rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-500"
-    >
-      <h4 className="text-2xl font-bold text-slate-900 tracking-tight">
-        Developer
-      </h4>
-      <p className="text-slate-500 text-sm mt-1">
-        {showProfile ? "Click to hide profile" : "Click to view profile"}
-      </p>
-    </motion.div>
-
-    {/* Hidden Profile */}
-    <motion.div
-      initial={false}
-      animate={{
-        opacity: showProfile ? 1 : 0,
-        height: showProfile ? "auto" : 0,
-      }}
-      transition={{ duration: 0.6 }}
-      className="overflow-hidden"
-    >
-      {showProfile && (
-        <motion.div
-          className="mt-12 flex flex-col md:flex-row items-center gap-6 bg-white rounded-3xl p-8 transition-all duration-500"
-          initial={{ opacity: 0, y: 40 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-        >
-          {/* Avatar */}
-          <motion.img
-            src={developerPhoto}
-            alt="Developer"
-            className="w-44 h-44 rounded-full object-cover border-4 border-blue-500 shadow-xl"
-            whileHover={{ scale: 1.08 }}
-            transition={{ type: "spring", stiffness: 300 }}
-          />
-
-          {/* Info */}
-          <div className="text-left flex-1">
-            <h3 className="text-2xl font-bold text-slate-900 mb-2">
-              Ejemar Maloloy-on
-            </h3>
-
-            <p className="text-slate-600 mb-2 font-medium">
-              Full-Stack Web Developer
-            </p>
-
-            <p className="text-slate-600 mb-4 leading-relaxed">
-              I build fast, modern, and high-converting websites for startups and small businesses.
-            </p>
-
-            <div className="flex flex-col sm:flex-row sm:items-center gap-3 mb-4">
-              <a
-                href="https://devwezardtech.github.io/Portfolio/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center justify-center px-6 py-3 bg-gradient-to-r from-blue-500 to-cyan-400 text-white rounded-2xl font-semibold hover:from-blue-600 hover:to-cyan-500 shadow-lg transition"
-              >
-                <span className="mr-2">Portfolio</span>
-                <CheckCircle className="w-4 h-4" />
-              </a>
-
-              <a
-                href="mailto:ejemarmaloloyon007@gmail.com"
-                className="inline-flex items-center justify-center px-6 py-3 bg-gray-200 text-slate-900 rounded-2xl font-semibold hover:bg-gray-300 shadow-md transition"
-              >
-                <Mail className="mr-2 w-4 h-4" />
-                Email Me
-              </a>
-            </div>
-
-            <p className="mt-4 text-slate-500 text-sm">
-              📞 +63 970 450 5022
-            </p>
-          </div>
-        </motion.div>
-      )}
-    </motion.div>
-
+    {/* Modal Content */}
+    <div className="relative z-10 w-full max-w-3xl bg-white rounded-3xl p-6 sm:p-8 shadow-xl">
+      <DeveloperCard />
+    </div>
   </div>
-</section>
+)}
 
       <footer className="text-center py-6 text-slate-400 text-sm tracking-wide">
         © {new Date().getFullYear()} Devfast. Built fast. Built right.
