@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef  } from "react";
 import { motion } from "framer-motion";
 import { Card, CardContent } from "../components/ui/card";
 import { Button } from "../components/ui/button";
@@ -18,83 +18,131 @@ export default function DevfastLanding() {
   const navigate = useNavigate();
   const go = (path) => navigate(path);
 
+  const projectsRef = useRef(null);
+
   return (
     <div className="min-h-screen text-slate-900 bg-gradient-to-b from-sky-50 via-white to-slate-50 font-sans">
+{/* ================= HERO ================= */}
+<section className="relative py-40 px-6 text-center overflow-hidden">
 
-      {/* HERO */}
-      <section className="text-center py-32 px-6 relative overflow-hidden">
-        <motion.h1
-          initial="hidden"
-          animate="visible"
-          variants={fadeUp}
-          className="text-4xl md:text-6xl font-extrabold tracking-tight text-gradient bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-cyan-400"
-        >
-          Devfast 🚀
-        </motion.h1>
+  {/* Glow Effects */}
+  <div className="absolute -top-40 -left-40 w-[500px] h-[500px] bg-blue-500/20 blur-[120px] rounded-full" />
+  <div className="absolute -bottom-40 -right-40 w-[500px] h-[500px] bg-cyan-400/20 blur-[120px] rounded-full" />
 
-        <motion.p
-          variants={fadeUp}
-          initial="hidden"
-          animate="visible"
-          transition={{ delay: 0.2 }}
-          className="mt-6 text-slate-600 max-w-2xl mx-auto text-lg leading-relaxed"
-        >
-          Fast, modern websites for startups and small businesses.
-          From landing pages to full web apps — built to convert.
-        </motion.p>
+  <motion.h1
+    initial="hidden"
+    animate="visible"
+    variants={fadeUp}
+    transition={{ duration: 0.8 }}
+    className="relative text-5xl md:text-7xl font-extrabold tracking-tight bg-gradient-to-r from-blue-600 via-cyan-500 to-indigo-600 bg-clip-text text-transparent"
+  >
+    We Build Websites That Grow Businesses.
+  </motion.h1>
 
-        <Button className="mt-10 text-lg px-12 py-6 rounded-3xl bg-blue-500 hover:bg-blue-600 shadow-2xl hover:shadow-3xl transition-transform transform hover:-translate-y-1">
-          View Sample Projects
-        </Button>
-      </section>
+  <motion.p
+    initial="hidden"
+    animate="visible"
+    variants={fadeUp}
+    transition={{ delay: 0.2 }}
+    className="relative mt-8 text-slate-600 max-w-3xl mx-auto text-xl leading-relaxed"
+  >
+    Premium websites, high-converting landing pages, and scalable web systems
+    built to attract clients and drive revenue.
+  </motion.p>
 
-      {/* SERVICES */}
-      <section className="py-24 px-6 max-w-6xl mx-auto">
-        <h2 className="text-3xl font-bold text-center mb-12 tracking-tight">
-          What I Offer
-        </h2>
+  <div className="mt-10 flex flex-col sm:flex-row justify-center gap-4">
 
-        <div className="grid md:grid-cols-3 gap-10">
-          {[
-            {
-              title: "Landing Pages",
-              description:
-                "High-converting landing pages designed to capture leads and turn visitors into customers.",
-            },
-            {
-              title: "Business Websites",
-              description:
-                "Professional websites that build trust, showcase your services, and strengthen your brand.",
-            },
-            {
-              title: "Web Applications",
-              description:
-                "Custom systems and web apps built for performance, scalability, and real business growth.",
-            },
-          ].map((service) => (
-            <motion.div
-              key={service.title}
-              whileHover={{ y: -10, scale: 1.03 }}
-              transition={{ type: "spring", stiffness: 250 }}
-            >
-              <Card className="bg-white rounded-3xl border border-slate-100 shadow-lg hover:shadow-2xl transition-all duration-500 h-full">
-                <CardContent className="p-8">
-                  <CheckCircle className="mb-5 text-blue-500 w-10 h-10" />
-                  <h3 className="text-xl font-semibold text-slate-900 mb-2">
-                    {service.title}
-                  </h3>
-                  <p className="text-slate-600 mt-2 leading-relaxed">
-                    {service.description}
-                  </p>
-                </CardContent>
-              </Card>
-            </motion.div>
-          ))}
-        </div>
-      </section>
+  {/* Start Your Project */}
+  <Button
+    onClick={() =>
+      window.location.assign(
+        "mailto:ejemarmaloloyon007@gmail.com?subject=Project Inquiry&body=Hi, I would like to start a project with you."
+      )
+    }
+    className="inline-flex items-center justify-center px-6 py-3 text-sm md:text-base font-semibold rounded-full bg-gradient-to-r from-blue-600 to-cyan-500 text-white shadow-lg hover:scale-105 hover:shadow-xl transition duration-300"
+  >
+    Start Your Project
+  </Button>
+
+  {/* View Our Work */}
+ <Button
+    variant="outline"
+    onClick={() =>
+      projectsRef.current?.scrollIntoView({ behavior: "smooth" })
+    }
+    className="inline-flex items-center justify-center px-6 py-3 text-sm md:text-base font-semibold rounded-full border border-slate-300 text-slate-700 hover:bg-slate-100 transition duration-300"
+  >
+    View Our Work
+  </Button>
+
+</div>
+</section>
+
+{/* ================= STATS ================= */}
+<section className="py-24 px-6 bg-slate-50">
+  <div className="max-w-6xl mx-auto grid md:grid-cols-3 gap-12 text-center">
+    {[
+      { number: "20+", label: "Projects Delivered" },
+      { number: "100%", label: "Client Satisfaction" },
+      { number: "Fast", label: "Performance Optimized" },
+    ].map((stat) => (
+      <div key={stat.label}>
+        <h3 className="text-5xl font-extrabold text-blue-600">
+          {stat.number}
+        </h3>
+        <p className="mt-2 text-slate-600">{stat.label}</p>
+      </div>
+    ))}
+  </div>
+</section>
+
+{/* ================= SERVICES ================= */}
+<section className="py-28 px-6 max-w-6xl mx-auto">
+  <h2 className="text-4xl font-bold text-center mb-16">
+    What We Deliver
+  </h2>
+
+  <div className="grid md:grid-cols-3 gap-10">
+    {[
+      {
+        title: "Landing Pages",
+        description:
+          "High-converting landing pages designed to capture leads and turn visitors into customers.",
+      },
+      {
+        title: "Business Websites",
+        description:
+          "Professional websites that build trust and elevate your brand.",
+      },
+      {
+        title: "Web Applications",
+        description:
+          "Custom systems built for scalability and performance.",
+      },
+    ].map((service) => (
+      <motion.div
+        key={service.title}
+        whileHover={{ y: -10, scale: 1.03 }}
+        transition={{ type: "spring", stiffness: 250 }}
+      >
+        <Card className="bg-white rounded-3xl border border-slate-100 shadow-xl hover:shadow-2xl transition-all duration-500 h-full">
+          <CardContent className="p-8">
+            <CheckCircle className="mb-5 text-blue-600 w-10 h-10" />
+            <h3 className="text-xl font-semibold text-slate-900 mb-2">
+              {service.title}
+            </h3>
+            <p className="text-slate-600 mt-2 leading-relaxed">
+              {service.description}
+            </p>
+          </CardContent>
+        </Card>
+      </motion.div>
+    ))}
+  </div>
+</section>
 
       {/* PROJECTS */}
-      <section className="py-28 px-6 max-w-6xl mx-auto">
+      <section ref={projectsRef} className="py-28 px-6 max-w-6xl mx-auto">
         <h2 className="text-3xl font-bold text-center mb-12 tracking-tight">
           Sample Projects
         </h2>
