@@ -86,7 +86,9 @@ export default function DevfastLanding() {
     className="flex flex-col gap-4 text-center py-6 text-lg font-medium text-slate-700"
   >
     {sections.map((sec) => (
-      <li key={sec.label} onClick={() => handleScroll(sec)}>
+      <li key={sec.label} onClick={() => handleScroll(sec)}
+      className="w-full text-center cursor-pointer py-3 hover:bg-gray-100 rounded-lg transition-colors"
+    >
         {sec.label}
       </li>
     ))}
