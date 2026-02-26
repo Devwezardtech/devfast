@@ -37,6 +37,14 @@ export default function DeveloperCard() {
               <Mail className="mr-2 w-4 h-4" />
               Email Me
             </a>
+            <a
+          href="https://m.me/801311679735475"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="flex-1 inline-flex items-center justify-center px-6 py-3 bg-green-500 text-white rounded-2xl font-semibold hover:bg-green-600 transition"
+        >
+          Messenger
+        </a>
           </div>
           <p className="mt-4 text-slate-500 text-sm">📞 +63 970 450 5022</p>
         </div>

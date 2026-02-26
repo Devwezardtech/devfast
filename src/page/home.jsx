@@ -1,9 +1,8 @@
-// DevfastLanding.jsx
 import { useState, useRef } from "react";
 import { motion } from "framer-motion";
 import { Card, CardContent } from "../components/ui/card";
 import { Button } from "../components/ui/button";
-import { Mail, CheckCircle, Menu, X } from "lucide-react";
+import { Mail, CheckCircle, Menu, X, MessageCircle } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import DeveloperCard from "./developercard";
 
@@ -80,19 +79,19 @@ export default function DevfastLanding() {
         </div>
 
         {/* Mobile Menu */}
-        {menuOpen && (
-          <motion.ul
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="flex flex-col gap-4 text-center py-6 text-lg font-medium text-slate-700"
-          >
-            {sections.map((sec) => (
-              <li key={sec.label} onClick={() => handleScroll(sec)}>
-                {sec.label}
-              </li>
-            ))}
-          </motion.ul>
-        )}
+       {menuOpen && (
+  <motion.ul
+    initial={{ opacity: 0, y: -20 }}
+    animate={{ opacity: 1, y: 0 }}
+    className="flex flex-col gap-4 text-center py-6 text-lg font-medium text-slate-700"
+  >
+    {sections.map((sec) => (
+      <li key={sec.label} onClick={() => handleScroll(sec)}>
+        {sec.label}
+      </li>
+    ))}
+  </motion.ul>
+)}
       </nav>
 
       {/* ================= HERO ================= */}
@@ -217,27 +216,52 @@ export default function DevfastLanding() {
         </div>
       </section>
 
-      {/* ================= CONTACT ================= */}
-      <section ref={contactRef} className="bg-gradient-to-r from-sky-50 to-white py-24 px-6">
-        <div className="max-w-3xl mx-auto text-center">
-          <h2 className="text-3xl font-bold text-slate-900 mb-4">Book an Appointment</h2>
-          <p className="text-slate-600 mb-10">Tell me about your project and I’ll get back to you.</p>
-          <div className="grid gap-6 text-left">
-            <input className="mt-2 w-full rounded-2xl border border-slate-200 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500 shadow-sm" placeholder="Your Name" />
-            <input className="mt-2 w-full rounded-2xl border border-slate-200 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500 shadow-sm" placeholder="Email Address" />
-            <textarea className="mt-2 w-full rounded-2xl border border-slate-200 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500 shadow-sm" rows={5} placeholder="Project Details..." />
-            <a href="https://m.me/801311679735475" target="_blank" rel="noopener noreferrer">
-              <Button className="w-full py-4 px-8 text-lg rounded-2xl bg-gradient-to-r from-blue-500 to-cyan-400 hover:from-blue-600 hover:to-cyan-500 shadow-lg hover:shadow-2xl transition-transform transform hover:-translate-y-1 flex items-center justify-center gap-2">
-                <Mail className="w-5 h-5" /> Send Inquiry
-              </Button>
-            </a>
-          </div>
-        </div>
-      </section>
+<section ref={contactRef} className="bg-gradient-to-r from-sky-50 to-white py-24 px-6">
+  <div className="max-w-3xl mx-auto text-center">
+    {/* Header */}
+   <h2 className="text-3xl md:text-4xl font-extrabold text-slate-900 mb-4">
+  Talk to Us
+</h2>
+<p className="text-slate-600 mb-12 text-lg md:text-xl">
+  Got an idea for a website or app? Send us a message and we'll start building it with you.
+</p>
+
+    {/* Contact Card */}
+    <div className="relative z-10 w-full max-w-md mx-auto bg-white rounded-3xl p-8 sm:p-10 shadow-xl flex flex-col items-center gap-6">
+      <p className="text-slate-700 text-center font-medium">
+        Choose your preferred way to contact:
+      </p>
+
+      {/* Buttons */}
+      <div className="flex flex-col sm:flex-row gap-4 w-full">
+        <a
+          href="mailto:devfastt@gmail.com"
+          className="flex-1 inline-flex items-center justify-center gap-2 px-6 py-4 bg-blue-500 text-white rounded-2xl font-semibold hover:bg-blue-600 transition transform hover:-translate-y-1 shadow-md"
+        >
+          <Mail className="w-5 h-5" /> Email
+        </a>
+        <a
+          href="https://m.me/801311679735475"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="flex-1 inline-flex items-center justify-center gap-2 px-6 py-4 bg-green-500 text-white rounded-2xl font-semibold hover:bg-green-600 transition transform hover:-translate-y-1 shadow-md"
+        >
+          <MessageCircle className="w-5 h-5" /> Messenger
+        </a>
+      </div>
+
+      {/* Optional small note */}
+      <p className="text-slate-400 text-sm mt-4">
+        We'll respond within 59 minutes to 24 hours.
+      </p>
+    </div>
+  </div>
+</section>
 
      {showDeveloperModal && (
   <div className="fixed inset-0 flex items-center justify-center z-50 px-4 sm:px-6"> 
     {/* Overlay */}
+    
     <div
       className="absolute inset-0 bg-black/50 backdrop-blur-sm"
       onClick={() => setShowDeveloperModal(false)}
@@ -245,7 +269,14 @@ export default function DevfastLanding() {
 
     {/* Modal Content */}
     <div className="relative z-10 w-full max-w-3xl bg-white rounded-3xl p-6 sm:p-8 shadow-xl">
-      <DeveloperCard />
+      <motion.div
+  initial={{ opacity: 0, scale: 0.95 }}
+  animate={{ opacity: 1, scale: 1 }}
+  exit={{ opacity: 0, scale: 0.95 }}
+  transition={{ duration: 0.3 }}
+>
+  <DeveloperCard />
+</motion.div>
     </div>
   </div>
 )}
