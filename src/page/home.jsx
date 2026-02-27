@@ -239,7 +239,7 @@ export default function DevfastLanding() {
         <div
           onClick={() =>
               window.location.assign(
-                "mailto:devfastt@gmail.com?subject=Project Inquiry&body= Hi, I would like to start a project with you. name:%0D%0A email:%0D%0A project details:%0D%0A about my project:%0D%0A%0D%0A timeline:%0D%0A%0D%0A budget:%0D%0A checklist:%0D%0A%0D%0A%0D%0A%0D%0A%0D%0A%0D%0A%0D%0A%0D%0A%0D%0A what kind of website or app do you want to build?%0D%0A%0D%0A%0D%0A%0D%0A%0D%0A%0D%0A%0D%0A%0D%0A%0D%0A%0D%0A%0D%0A%0D%0A (ecommerce, business website, web application, etc.)"
+                "mailto:devfastt@gmail.com?subject=Project Inquiry&body= Hi, I would like to start a project with you.%0D%0A%0D%0A%0D%0A%0D%0A name:%0D%0A%0D%0A email:%0D%0A%0D%0A project details:%0D%0A%0D%0A timeline:%0D%0A%0D%0A budget:%0D%0A%0D%0A checklist:%0D%0A%0D%0A what kind of website or app do you want to build?%0D%0A%0D%0A (ecommerce, business website, web application, etc.)"
               )
             }
           className="flex-1 inline-flex items-center justify-center gap-2 px-6 py-4 bg-blue-500 text-white rounded-2xl font-semibold hover:bg-blue-600 transition transform hover:-translate-y-1 shadow-md"
