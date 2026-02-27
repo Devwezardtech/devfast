@@ -239,7 +239,7 @@ export default function DevfastLanding() {
         <div
           onClick={() =>
               window.location.assign(
-  "mailto:devfastt@gmail.com?subject=Project Consultation Request&body=Dear Devfast Team,%0D%0A%0D%0AI would like to request a consultation regarding a new development project.%0D%0A%0D%0APlease review the project details below:%0D%0A%0D%0A1. Full Name:%0D%0A2. Company / Business Name:%0D%0A3. Contact Email and Phone Number:%0D%0A4. Project Type (Business Website, E-commerce, Web Application, etc.):%0D%0A5. Project Overview:%0D%0A6. Primary Business Goals:%0D%0A7. Target Launch Timeline:%0D%0A8. Estimated Budget Range:%0D%0A%0D%0AWe look forward to reviewing your requirements and providing a tailored proposal.%0D%0A%0D%0AKind regards,"
+  "mailto:devfastt@gmail.com?subject=Project Consultation Request&body=Dear Devfast Team,%0D%0A%0D%0AI would like to request a consultation regarding a new development project.%0D%0A%0D%0APlease review the project details below:%0D%0A%0D%0A Full Name:%0D%0A Company / Business Name:%0D%0A Contact Email and Phone Number:%0D%0A Project Type (Business Website, E-commerce, Web Application, etc.):%0D%0A Project Overview:%0D%0A Primary Business Goals:%0D%0A Target Launch Timeline:%0D%0A Estimated Budget Range:%0D%0A%0D%0AWe look forward to reviewing your requirements and providing a tailored proposal.%0D%0A%0D%0AKind regards,"
 )
             }
           className="flex-1 inline-flex items-center justify-center gap-2 px-6 mx-8 md:mx-0 py-4 bg-blue-500 text-white rounded-2xl font-semibold hover:bg-blue-600 transition transform hover:-translate-y-1 shadow-md"
@@ -247,13 +247,13 @@ export default function DevfastLanding() {
           <Mail className="w-5 h-5" /> Email
         </div>
         <a
-          href="https://m.me/801311679735475"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="flex-1 inline-flex items-center justify-center gap-2 px-6 py-4 mx-8 md:mx-0 bg-green-500 text-white rounded-2xl font-semibold hover:bg-green-600 transition transform hover:-translate-y-1 shadow-md"
-        >
-          <MessageCircle className="w-5 h-5" /> Messenger
-        </a>
+  href="https://m.me/801311679735475?text=Dear%20Devfast%20Team,%0A%0AI%20would%20like%20to%20request%20a%20consultation%20regarding%20a%20new%20development%20project.%0A%0APlease%20find%20the%20project%20details%20below:%0A%0A1.%20Full%20Name:%0A2.%20Company%20/%20Business%20Name:%0A3.%20Contact%20Email%20and%20Phone%20Number:%0A4.%20Project%20Type%20(Business%20Website,%20E-commerce,%20Web%20Application,%20etc.):%0A5.%20Project%20Overview:%0A6.%20Primary%20Business%20Goals:%0A7.%20Target%20Launch%20Timeline:%0A8.%20Estimated%20Budget%20Range:%0A%0AI%20look%20forward%20to%20your%20response."
+  target="_blank"
+  rel="noopener noreferrer"
+  className="flex-1 inline-flex items-center justify-center gap-2 px-6 py-4 mx-8 md:mx-0 bg-green-500 text-white rounded-2xl font-semibold hover:bg-green-600 transition transform hover:-translate-y-1 shadow-md"
+>
+  <MessageCircle className="w-5 h-5" /> Messenger
+</a>
       </div>
 
       {/* Optional small note */}
