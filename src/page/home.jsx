@@ -190,7 +190,7 @@ export default function DevfastLanding() {
       <section ref={projectsRef} className="py-28 px-6 max-w-6xl mx-auto">
         <h2 className="text-3xl font-bold text-center mb-12 tracking-tight">Sample Projects</h2>
 
-        <div className="grid md:grid-cols-3 gap-10">
+        <div className="grid md:grid-cols-3 gap-10 px-8 md:px-0">
           {[
             { title: "Ecommerce Website / System", img: "/ecommercesite.png", action: () => window.location.href = "https://mus-ecommerce-shop.onrender.com" },
             { title: "LoreCafe", img: "/lorecafe_image/acafe3.png", action: () => go("/project/lorecafe") },
@@ -205,9 +205,12 @@ export default function DevfastLanding() {
                 <img src={project.img} alt={project.title} className="h-52 w-full object-cover hover:scale-105 transition-transform duration-500" />
                 <CardContent className="p-6">
                   <h3 className="text-xl font-semibold text-slate-900">{project.title}</h3>
-                  <Button onClick={project.action} className="mt-4 w-full bg-gradient-to-r from-blue-500 to-cyan-400 hover:from-blue-600 hover:to-cyan-500 text-white font-semibold shadow-lg hover:shadow-xl transition-transform transform hover:-translate-y-1">
+                  <div className="mx-16 md:mx-8">
+                    <Button onClick={project.action} className="mt-4 w-full bg-gradient-to-r from-blue-500 to-cyan-400 hover:from-blue-600 hover:to-cyan-500 text-white font-semibold shadow-lg hover:shadow-xl transition-transform transform hover:-translate-y-1">
                     View This Sample
                   </Button>
+                  </div>
+                  
                 </CardContent>
               </Card>
             </motion.div>
