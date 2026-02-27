@@ -218,10 +218,10 @@ export default function DevfastLanding() {
         </div>
       </section>
 
-<section ref={contactRef} className="bg-gradient-to-r from-sky-50 to-white py-24 px-6">
+<section ref={contactRef} className="bg-gradient-to-r from-sky-50 to-white py-24 px-14">
   <div className="max-w-3xl mx-auto text-center">
     {/* Header */}
-   <h2 className="text-3xl md:text-4xl font-extrabold text-slate-900 mb-4">
+   <h2 className="text-2xl md:text-3xl font-extrabold text-slate-900 mb-4">
   Talk to Us
 </h2>
 <p className="text-slate-600 mb-12 text-lg md:text-xl">
@@ -239,7 +239,7 @@ export default function DevfastLanding() {
         <div
           onClick={() =>
               window.location.assign(
-                "mailto:devfastt@gmail.com?subject=Project Inquiry&body=Hi, I would like to start a project with you."
+                "mailto:devfastt@gmail.com?subject=Project Inquiry&body=Hi, I would like to start a project with you. Please let me know how to proceed.name:%0D%0Aemail:%0D%0Aproject details:%0D%0A about my project:%0D%0A%0D%0A timeline:%0D%0A%0D%0A budget:%0D%0A"
               )
             }
           className="flex-1 inline-flex items-center justify-center gap-2 px-6 py-4 bg-blue-500 text-white rounded-2xl font-semibold hover:bg-blue-600 transition transform hover:-translate-y-1 shadow-md"
