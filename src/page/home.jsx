@@ -239,8 +239,8 @@ export default function DevfastLanding() {
         <div
           onClick={() =>
               window.location.assign(
-                "mailto:devfastt@gmail.com?subject=Project Inquiry&body= Hi, I would like to start a project with you.%0D%0A%0D%0A%0D%0A%0D%0A name:%0D%0A%0D%0A email:%0D%0A%0D%0A project details:%0D%0A%0D%0A timeline:%0D%0A%0D%0A budget:%0D%0A%0D%0A checklist:%0D%0A%0D%0A what kind of website or app do you want to build?%0D%0A%0D%0A (ecommerce, business website, web application, etc.)"
-              )
+  "mailto:devfastt@gmail.com?subject=Project Consultation Request&body=Dear Devfast Team,%0D%0A%0D%0AI would like to request a consultation regarding a new development project.%0D%0A%0D%0APlease review the project details below:%0D%0A%0D%0A1. Full Name:%0D%0A2. Company / Business Name:%0D%0A3. Contact Email and Phone Number:%0D%0A4. Project Type (Business Website, E-commerce, Web Application, etc.):%0D%0A5. Project Overview:%0D%0A6. Primary Business Goals:%0D%0A7. Target Launch Timeline:%0D%0A8. Estimated Budget Range:%0D%0A%0D%0AWe look forward to reviewing your requirements and providing a tailored proposal.%0D%0A%0D%0AKind regards,"
+)
             }
           className="flex-1 inline-flex items-center justify-center gap-2 px-6 mx-8 md:mx-0 py-4 bg-blue-500 text-white rounded-2xl font-semibold hover:bg-blue-600 transition transform hover:-translate-y-1 shadow-md"
         >
