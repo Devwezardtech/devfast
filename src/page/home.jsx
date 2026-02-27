@@ -97,7 +97,7 @@ export default function DevfastLanding() {
       </nav>
 
       {/* ================= HERO ================= */}
-      <section className="relative py-40 px-6 text-center overflow-hidden">
+      <section className="relative py-40 px-8 text-center overflow-hidden">
         <div className="absolute -top-40 -left-40 w-[500px] h-[500px] bg-blue-500/20 blur-[120px] rounded-full" />
         <div className="absolute -bottom-40 -right-40 w-[500px] h-[500px] bg-cyan-400/20 blur-[120px] rounded-full" />
 
@@ -126,7 +126,7 @@ export default function DevfastLanding() {
             onClick={() =>
               contactRef.current?.scrollIntoView({ behavior: "smooth" })
             }
-            className="inline-flex items-center justify-center px-6 py-3 text-sm md:text-base font-semibold rounded-full bg-gradient-to-r from-blue-600 to-cyan-500 text-white shadow-lg hover:scale-105 hover:shadow-xl transition duration-300 mx-16 md:mx-0"
+            className="inline-flex items-center justify-center px-6 py-3 text-sm md:text-base font-semibold rounded-full bg-gradient-to-r from-blue-600 to-cyan-500 text-white shadow-lg hover:scale-105 hover:shadow-xl transition duration-300 mx-24 md:mx-0"
           >
             Start Your Project
           </Button>
@@ -136,7 +136,7 @@ export default function DevfastLanding() {
             onClick={() =>
               projectsRef.current?.scrollIntoView({ behavior: "smooth" })
             }
-            className="inline-flex items-center justify-center px-6 py-3 text-sm md:text-base font-semibold rounded-full border border-slate-300 text-slate-700 hover:bg-slate-100 transition duration-300 mx-16 md:mx-0"
+            className="inline-flex items-center justify-center px-6 py-3 text-sm md:text-base font-semibold rounded-full border border-slate-300 text-slate-700 hover:bg-slate-100 transition duration-300 mx-24 md:mx-0"
           >
             View Our Work
           </Button>
@@ -160,7 +160,7 @@ export default function DevfastLanding() {
       </section>
 
       {/* ================= SERVICES ================= */}
-      <section ref={servicesRef} className="py-28 px-6 max-w-6xl mx-auto">
+      <section ref={servicesRef} className="py-28 px-14 max-w-6xl mx-auto">
         <h2 className="text-4xl font-bold text-center mb-16">What We Deliver</h2>
 
         <div className="grid md:grid-cols-3 gap-10">
@@ -187,10 +187,10 @@ export default function DevfastLanding() {
       </section>
 
       {/* ================= PROJECTS ================= */}
-      <section ref={projectsRef} className="py-28 px-6 max-w-6xl mx-auto">
+      <section ref={projectsRef} className="py-28 px-14 max-w-6xl mx-auto">
         <h2 className="text-3xl font-bold text-center mb-12 tracking-tight">Sample Projects</h2>
 
-        <div className="grid md:grid-cols-3 gap-10 px-8 md:px-0">
+        <div className="grid md:grid-cols-3 gap-10">
           {[
             { title: "Ecommerce Website / System", img: "/ecommercesite.png", action: () => window.location.href = "https://mus-ecommerce-shop.onrender.com" },
             { title: "LoreCafe", img: "/lorecafe_image/acafe3.png", action: () => go("/project/lorecafe") },
