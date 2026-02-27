@@ -205,7 +205,7 @@ export default function DevfastLanding() {
                 <img src={project.img} alt={project.title} className="h-52 w-full object-cover hover:scale-105 transition-transform duration-500" />
                 <CardContent className="p-6">
                   <h3 className="text-xl font-semibold text-slate-900">{project.title}</h3>
-                  <div className="mx-14 md:mx-8">
+                  <div className="mx-8 md:mx-8">
                     <Button onClick={project.action} className="mt-4 w-full bg-gradient-to-r from-blue-500 to-cyan-400 hover:from-blue-600 hover:to-cyan-500 text-white font-semibold shadow-lg hover:shadow-xl transition-transform transform hover:-translate-y-1">
                     View This Sample
                   </Button>
