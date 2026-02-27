@@ -126,7 +126,7 @@ export default function DevfastLanding() {
             onClick={() =>
               contactRef.current?.scrollIntoView({ behavior: "smooth" })
             }
-            className="inline-flex items-center justify-center px-6 py-3 text-sm md:text-base font-semibold rounded-full bg-gradient-to-r from-blue-600 to-cyan-500 text-white shadow-lg hover:scale-105 hover:shadow-xl transition duration-300 mx-24 md:mx-0"
+            className="inline-flex items-center justify-center px-6 py-3 text-sm md:text-base font-semibold rounded-full bg-gradient-to-r from-blue-600 to-cyan-500 text-white shadow-lg hover:scale-105 hover:shadow-xl transition duration-300 mx-16 md:mx-0"
           >
             Start Your Project
           </Button>
@@ -136,7 +136,7 @@ export default function DevfastLanding() {
             onClick={() =>
               projectsRef.current?.scrollIntoView({ behavior: "smooth" })
             }
-            className="inline-flex items-center justify-center px-6 py-3 text-sm md:text-base font-semibold rounded-full border border-slate-300 text-slate-700 hover:bg-slate-100 transition duration-300 mx-24 md:mx-0"
+            className="inline-flex items-center justify-center px-6 py-3 text-sm md:text-base font-semibold rounded-full border border-slate-300 text-slate-700 hover:bg-slate-100 transition duration-300 mx-16 md:mx-0"
           >
             View Our Work
           </Button>
@@ -205,7 +205,7 @@ export default function DevfastLanding() {
                 <img src={project.img} alt={project.title} className="h-52 w-full object-cover hover:scale-105 transition-transform duration-500" />
                 <CardContent className="p-6">
                   <h3 className="text-xl font-semibold text-slate-900">{project.title}</h3>
-                  <div className="mx-16 md:mx-8">
+                  <div className="mx-14 md:mx-8">
                     <Button onClick={project.action} className="mt-4 w-full bg-gradient-to-r from-blue-500 to-cyan-400 hover:from-blue-600 hover:to-cyan-500 text-white font-semibold shadow-lg hover:shadow-xl transition-transform transform hover:-translate-y-1">
                     View This Sample
                   </Button>
@@ -242,7 +242,7 @@ export default function DevfastLanding() {
                 "mailto:devfastt@gmail.com?subject=Project Inquiry&body= Hi, I would like to start a project with you.%0D%0A%0D%0A%0D%0A%0D%0A name:%0D%0A%0D%0A email:%0D%0A%0D%0A project details:%0D%0A%0D%0A timeline:%0D%0A%0D%0A budget:%0D%0A%0D%0A checklist:%0D%0A%0D%0A what kind of website or app do you want to build?%0D%0A%0D%0A (ecommerce, business website, web application, etc.)"
               )
             }
-          className="flex-1 inline-flex items-center justify-center gap-2 px-6 py-4 bg-blue-500 text-white rounded-2xl font-semibold hover:bg-blue-600 transition transform hover:-translate-y-1 shadow-md"
+          className="flex-1 inline-flex items-center justify-center gap-2 px-6 mx-8 md:mx-0 py-4 bg-blue-500 text-white rounded-2xl font-semibold hover:bg-blue-600 transition transform hover:-translate-y-1 shadow-md"
         >
           <Mail className="w-5 h-5" /> Email
         </div>
@@ -250,7 +250,7 @@ export default function DevfastLanding() {
           href="https://m.me/801311679735475"
           target="_blank"
           rel="noopener noreferrer"
-          className="flex-1 inline-flex items-center justify-center gap-2 px-6 py-4 bg-green-500 text-white rounded-2xl font-semibold hover:bg-green-600 transition transform hover:-translate-y-1 shadow-md"
+          className="flex-1 inline-flex items-center justify-center gap-2 px-6 py-4 mx-8 md:mx-0 bg-green-500 text-white rounded-2xl font-semibold hover:bg-green-600 transition transform hover:-translate-y-1 shadow-md"
         >
           <MessageCircle className="w-5 h-5" /> Messenger
         </a>
