@@ -49,7 +49,7 @@ export default function DevfastLanding() {
 
       {/* ================= NAVBAR / HAMBURGER ================= */}
       <nav className="fixed top-0 left-0 w-full z-50 bg-white/80 backdrop-blur-md shadow-md">
-        <div className="max-w-6xl mx-auto flex justify-between items-center p-4">
+        <div className="max-w-6xl mx-auto flex justify-between items-center p-4 px-8">
           <div
             className="text-2xl font-bold text-blue-600 cursor-pointer"
             onClick={() => handleScroll({ label: "Home" })}
@@ -144,7 +144,7 @@ export default function DevfastLanding() {
       </section>
 
       {/* ================= STATS ================= */}
-      <section className="py-24 px-6 bg-slate-50">
+      <section className="py-24 px-8 bg-slate-50">
         <div className="max-w-6xl mx-auto grid md:grid-cols-3 gap-12 text-center">
           {[
             { number: "20+", label: "Projects Delivered" },
@@ -160,7 +160,7 @@ export default function DevfastLanding() {
       </section>
 
       {/* ================= SERVICES ================= */}
-      <section ref={servicesRef} className="py-28 px-14 max-w-6xl mx-auto">
+      <section ref={servicesRef} className="py-28 px-8 max-w-6xl mx-auto">
         <h2 className="text-4xl font-bold text-center mb-16">What We Deliver</h2>
 
         <div className="grid md:grid-cols-3 gap-10">
@@ -187,7 +187,7 @@ export default function DevfastLanding() {
       </section>
 
       {/* ================= PROJECTS ================= */}
-      <section ref={projectsRef} className="py-28 px-14 max-w-6xl mx-auto">
+      <section ref={projectsRef} className="py-28 px-8 max-w-6xl mx-auto">
         <h2 className="text-3xl font-bold text-center mb-12 tracking-tight">Sample Projects</h2>
 
         <div className="grid md:grid-cols-3 gap-10">
@@ -218,7 +218,7 @@ export default function DevfastLanding() {
         </div>
       </section>
 
-<section ref={contactRef} className="bg-gradient-to-r from-sky-50 to-white py-24 px-14">
+<section ref={contactRef} className="bg-gradient-to-r from-sky-50 to-white py-24 px-8">
   <div className="max-w-3xl mx-auto text-center">
     {/* Header */}
    <h2 className="text-2xl md:text-3xl font-extrabold text-slate-900 mb-4">
@@ -239,7 +239,7 @@ export default function DevfastLanding() {
         <div
           onClick={() =>
               window.location.assign(
-                "mailto:devfastt@gmail.com?subject=Project Inquiry&body=Hi, I would like to start a project with you. Please let me know how to proceed.name:%0D%0Aemail:%0D%0Aproject details:%0D%0A about my project:%0D%0A%0D%0A timeline:%0D%0A%0D%0A budget:%0D%0A"
+                "mailto:devfastt@gmail.com?subject=Project Inquiry&body= Hi, I would like to start a project with you. name:%0D%0A email:%0D%0A project details:%0D%0A about my project:%0D%0A%0D%0A timeline:%0D%0A%0D%0A budget:%0D%0A checklist:%0D%0A%0D%0A%0D%0A%0D%0A%0D%0A%0D%0A%0D%0A%0D%0A%0D%0A what kind of website or app do you want to build?%0D%0A%0D%0A%0D%0A%0D%0A%0D%0A%0D%0A%0D%0A%0D%0A%0D%0A%0D%0A%0D%0A%0D%0A (ecommerce, business website, web application, etc.)"
               )
             }
           className="flex-1 inline-flex items-center justify-center gap-2 px-6 py-4 bg-blue-500 text-white rounded-2xl font-semibold hover:bg-blue-600 transition transform hover:-translate-y-1 shadow-md"
