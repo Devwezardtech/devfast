@@ -20,7 +20,7 @@ const DonLeoFitnessLanding = () => {
   const stats = [
     { label: "Clients Trained", value: 1200 },
     { label: "Programs Offered", value: 15 },
-    { label: "Years Experience", value: 10 },
+    { label: "Years Experience", value: 8 },
   ];
 
   const blobs = [
@@ -33,7 +33,7 @@ const DonLeoFitnessLanding = () => {
   return (
     <div className={`${dark ? "dark bg-[#0f172a] text-gray-100" : "bg-gray-200 text-gray-900"} scroll-smooth font-sans transition-all duration-700`}>
 
-   <nav className="fixed top-6 right-4 md:left-1/2 md:-translate-x-1/2 z-50 backdrop-blur-xl bg-white/70 dark:bg-white/5 border border-white/30 dark:border-white/10 px-6 md:px-10 py-4 rounded-full shadow-xl dark:shadow-[0_0_30px_rgba(255,255,255,0.05)] flex items-center justify-between md:justify-center transition">
+   <nav className="fixed top-6 right-4 md:left-1/2 md:-translate-x-1/2 z-50 backdrop-blur-xl bg-white/70 dark:bg-white/5 border border-white/30 dark:border-white/10 px-6 md:px-10 py-1 rounded-full shadow-xl dark:shadow-[0_0_30px_rgba(255,255,255,0.05)] flex items-center justify-between md:justify-center transition">
 
   {/* Mobile Right Side: Hamburger + Dark Mode */}
   <div className="flex items-center gap-4 md:hidden">
@@ -48,7 +48,7 @@ const DonLeoFitnessLanding = () => {
     </button>
 
     {/* Dark Mode Toggle */}
-    <button onClick={() => setDark(!dark)} className="w-10 h-10 rounded-full flex items-center justify-center bg-white/10 dark:bg-white/5 backdrop-blur-md border border-white/20 hover:scale-110 transition">
+    <button onClick={() => setDark(!dark)} className="w-8 h-8 md:w-10 md:h-10 rounded-full flex items-center justify-center bg-white/10 dark:bg-white/5 backdrop-blur-md border border-white/20 hover:scale-110 transition">
       {dark ? "☀️" : "🌙"}
     </button>
   </div>
