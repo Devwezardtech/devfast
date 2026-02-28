@@ -10,9 +10,9 @@ const DonLeoFitnessLanding = () => {
   const navigate = useNavigate();
 
   const programs = [
-    { name: "Weight Loss Program", duration: "8 weeks", price: "$150" },
-    { name: "Muscle Gain Program", duration: "12 weeks", price: "$200" },
-    { name: "Personal Training Session", duration: "1 session", price: "$25" },
+    { name: "Weight Loss Program", duration: "8 weeks", price: "$299" },
+    { name: "Muscle Gain Program", duration: "12 weeks", price: "$399" },
+    { name: "Personal Training Session", duration: "1 session", price: "$99" },
   ];
 
   const gymPhotos = [...Array(15)].map((_, i) => `/fitness/gym${i + 1}.png`);
