@@ -1,10 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { useNavigate } from "react-router-dom";
+import { ArrowLeft } from "lucide-react";
 
 const PrimeNestRealtyLanding = () => {
   const [dark, setDark] = useState(false);
   const [selected, setSelected] = useState(null);
   const [menuOpen, setMenuOpen] = useState(false);
+
+  const navigate = useNavigate();
 
   // Generate 10 properties dynamically
   const properties = Array.from({ length: 10 }, (_, i) => ({
@@ -106,6 +110,14 @@ const PrimeNestRealtyLanding = () => {
           transition={{ duration: 1 }}
           className="relative z-10 px-6 max-w-5xl"
         >
+
+          <button
+  onClick={() => navigate(-1)}
+  className="fixed top-6 left-6 z-50 flex items-center gap-2 text-white px-4 py-2 transition"
+>
+  <ArrowLeft className="w-5 h-5" />
+</button>
+
           <h1 className="text-7xl font-extrabold tracking-tight mb-8">
             PrimeNest Realty
           </h1>

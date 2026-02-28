@@ -1,9 +1,13 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
+import { useNavigate } from "react-router-dom";
+import { ArrowLeft } from "lucide-react";
 
 const DonLeoFitnessLanding = () => {
   const [dark, setDark] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+
+  const navigate = useNavigate();
 
   const programs = [
     { name: "Weight Loss Program", duration: "8 weeks", price: "$150" },
@@ -93,6 +97,14 @@ const DonLeoFitnessLanding = () => {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
       >
+
+        <button
+          onClick={() => navigate(-1)}
+          className="fixed top-6 left-6 z-50 flex items-center gap-2 text-white px-4 py-2 transition"
+        >
+          <ArrowLeft className="w-5 h-5" />
+        </button>
+
         <div className="absolute inset-0 bg-black/40 backdrop-blur-sm"></div>
         <div className="relative z-10">
           <h1 className="text-5xl md:text-6xl font-extrabold mb-4 text-white drop-shadow-lg">DonLeo Fitness</h1>

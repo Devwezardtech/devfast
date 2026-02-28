@@ -1,5 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
+import { useNavigate } from "react-router-dom";
+import { ArrowLeft } from "lucide-react";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 60 },
@@ -20,6 +22,8 @@ const cars = [
 ];
 
 const AutoGalaxyPremiumLanding = () => {
+const navigate = useNavigate();
+
   return (
     <div className="bg-black text-white font-sans scroll-smooth overflow-x-hidden">
 
@@ -36,6 +40,13 @@ const AutoGalaxyPremiumLanding = () => {
         animate={{ opacity: 1 }}
         transition={{ duration: 1 }}
       >
+
+        <button
+  onClick={() => navigate(-1)}
+  className="fixed top-6 left-6 z-50 flex items-center gap-2 text-white px-4 py-2 transition"
+>
+  <ArrowLeft className="w-5 h-5" />
+</button>
          <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/40 to-black/70"></div>
 
         <div className="relative z-10 max-w-4xl">

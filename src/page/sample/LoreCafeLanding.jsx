@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
+import { useNavigate } from "react-router-dom";
+import { ArrowLeft } from "lucide-react";
 
 /* Images */
 const menuImages = [
@@ -32,6 +34,8 @@ const fadeUp = {
 const LoreCafeLanding = () => {
   const [open, setOpen] = useState(false);
 
+  const navigate = useNavigate();
+
   const services = [
     { title: "Breakfast Specials", desc: "Freshly brewed coffee and pastries." },
     { title: "Lunch Menu", desc: "Delicious sandwiches and local dishes." },
@@ -59,6 +63,14 @@ const LoreCafeLanding = () => {
         animate={{ opacity: 1 }}
         transition={{ duration: 1 }}
       >
+
+        <button
+  onClick={() => navigate(-1)}
+  className="fixed top-6 left-6 z-50 flex items-center gap-2 text-white px-4 py-2 transition"
+>
+  <ArrowLeft className="w-5 h-5" />
+</button>
+
         <div className="absolute inset-0 bg-black/60"></div>
 
         <div className="relative z-10">

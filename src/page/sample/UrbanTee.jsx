@@ -1,11 +1,15 @@
 import React, { useState, useRef} from "react";
 import { motion } from "framer-motion";
+import { useNavigate } from "react-router-dom";
+import { ArrowLeft } from "lucide-react";
 
 
 
 const DescriptionWithToggle = ({ text, limit = 180 }) => {
   const [showFull, setShowFull] = useState(false);
   const isLong = text.length > limit;
+
+ 
 
   return (
     <div className="text-gray-400 mb-4">
@@ -27,6 +31,8 @@ const DescriptionWithToggle = ({ text, limit = 180 }) => {
 const UrbanTeeLanding = () => {
   const [modalOpen, setModalOpen] = useState(false);
   const [selectedProduct, setSelectedProduct] = useState(null);
+
+   const navigate = useNavigate();
 
   const collectionRef = useRef(null);
 
@@ -68,6 +74,14 @@ const UrbanTeeLanding = () => {
     backgroundAttachment: "fixed",
   }}
 >
+
+  <button
+  onClick={() => navigate(-1)}
+  className="fixed top-6 left-6 z-50 flex items-center gap-2 text-white px-4 py-2 transition"
+>
+  <ArrowLeft className="w-5 h-5" />
+</button>
+
   <div className="absolute inset-0 bg-black/70 backdrop-blur-sm" />
   <motion.div
     initial={{ opacity: 0, y: 40 }}
