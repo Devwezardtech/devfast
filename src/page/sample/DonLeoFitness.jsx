@@ -126,7 +126,7 @@ const DonLeoFitnessLanding = () => {
             transition={{ duration: 0.8, delay: idx * 0.2 }}
             className="bg-white/90 dark:bg-[#111827]/80 rounded-3xl p-8 shadow-2xl dark:shadow-[0_0_50px_rgba(255,255,255,0.05)]"
           >
-            <p className="text-4xl font-bold mb-2">{s.value}+</p>
+            <p className="text-4xl font-bold mb-2 text-blue-300">{s.value}+</p>
             <p className="font-semibold">{s.label}</p>
           </motion.div>
         ))}
@@ -153,7 +153,7 @@ const DonLeoFitnessLanding = () => {
               transition={{ duration: 0.5 }}
               className="bg-white/90 dark:bg-[#111827]/80 p-6 rounded-3xl shadow-xl dark:shadow-[0_0_40px_rgba(255,255,255,0.05)] text-center cursor-pointer"
             >
-              <h3 className="text-xl font-semibold mb-2">{p.name}</h3>
+              <h3 className="text-xl font-semibold mb-2 text-yellow-200">{p.name}</h3>
               <p className="text-gray-600 dark:text-gray-300">{p.duration}</p>
               <p className="text-green-700 font-bold mt-2">{p.price}</p>
             </motion.div>
@@ -173,8 +173,8 @@ const DonLeoFitnessLanding = () => {
           visible: { transition: { staggerChildren: 0.1 } }
         }}
       >
-        <h2 className="text-4xl font-bold text-center mb-12">Gym Gallery</h2>
-        <div className="grid md:grid-cols-5 gap-4">
+        <h2 className="text-4xl font-bold text-center mb-12">Visit Now</h2>
+        <div className="grid md:grid-cols-5 gap-4 mx-12">
           {gymPhotos.map((img, idx) => (
             <motion.img
               key={idx}
@@ -210,12 +210,12 @@ const DonLeoFitnessLanding = () => {
             <input type="text" placeholder="Full Name" className="border border-gray-300 dark:border-gray-500 p-4 rounded-2xl focus:outline-none focus:ring-2 focus:ring-green-500 transition"/>
             <input type="email" placeholder="Email Address" className="border border-gray-300 dark:border-gray-500 p-4 rounded-2xl focus:outline-none focus:ring-2 focus:ring-green-500 transition"/>
             <input type="tel" placeholder="Phone Number" className="border border-gray-300 dark:border-gray-500 p-4 rounded-2xl focus:outline-none focus:ring-2 focus:ring-green-500 transition"/>
-            <select className="border border-gray-300 dark:border-gray-500 p-4 rounded-2xl focus:outline-none focus:ring-2 focus:ring-green-500 transition">
+            <select className="border border-gray-300 dark:border-gray-500 p-4 rounded-2xl focus:outline-none focus:ring-2 focus:ring-green-500 transition text-gray-700">
               <option>Select Program</option>
               {programs.map((p, i) => (<option key={i}>{p.name}</option>))}
             </select>
-            <input type="date" className="border border-gray-300 dark:border-gray-500 p-4 rounded-2xl focus:outline-none focus:ring-2 focus:ring-green-500 transition"/>
-            <input type="time" className="border border-gray-300 dark:border-gray-500 p-4 rounded-2xl focus:outline-none focus:ring-2 focus:ring-green-500 transition"/>
+            <input type="date" className="text-gray-700 border border-gray-300 dark:border-gray-500 p-4 rounded-2xl focus:outline-none focus:ring-2 focus:ring-green-500 transition"/>
+            <input type="time" className="text-gray-700 border border-gray-300 dark:border-gray-500 p-4 rounded-2xl focus:outline-none focus:ring-2 focus:ring-green-500 transition"/>
             <button className="bg-green-800 text-white font-bold py-4 rounded-2xl shadow-lg hover:bg-green-700 transition">Book Coaching</button>
           </motion.form>
 
@@ -226,7 +226,7 @@ const DonLeoFitnessLanding = () => {
               src="https://maps.google.com/maps?q=tacloban%20city&t=&z=13&ie=UTF8&iwloc=&output=embed"
               className="w-full h-80 rounded-2xl border-0 shadow-xl"
             ></iframe>
-            <div className="bg-white/90 dark:bg-[#111827]/80 p-6 rounded-3xl shadow-xl dark:shadow-[0_0_30px_rgba(255,255,255,0.05)]">
+            <div className="bg-white/90 dark:bg-[#111827]/80 p-6 rounded-3xl shadow-xl dark:shadow-[0_0_30px_rgba(255,255,255,0.05)] text-gray-700 dark:text-gray-300">
               <h3 className="text-2xl font-semibold mb-2">Contact Info</h3>
               <p>Email: info@donleofitness.com</p>
               <p>Phone: +63 912 345 6789</p>
